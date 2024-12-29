@@ -22,17 +22,13 @@ namespace ClassicUO.Renderer
 {
     internal sealed class UltimaBatcher2D : IDisposable
     {
+        private readonly RasterizerState _rasterizerState;
         private BlendState _blendState;
-        private SamplerState _sampler;
-        private RasterizerState _rasterizerState;
         private bool _started;
         private DepthStencilState _stencil;
         private bool _useScissor;
         private int _numSprites;
         private Matrix _transformMatrix;
-        private Matrix _projectionMatrix = new Matrix(0f,                         //(float)( 2.0 / (double)viewport.Width ) is the actual value we will use
-                                                      0.0f, 0.0f, 0.0f, 0.0f, 0f, //(float)( -2.0 / (double)viewport.Height ) is the actual value we will use
-                                                      0.0f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f, -1.0f, 1.0f, 0.0f, 1.0f);
 
         private Material hueMaterial;
         private Material xbrMaterial;
@@ -59,7 +55,6 @@ namespace ClassicUO.Renderer
             GraphicsDevice = device;
             _blendState = BlendState.AlphaBlend;
             _rasterizerState = RasterizerState.CullNone;
-            _sampler = SamplerState.PointClamp;
 
             _rasterizerState = new RasterizerState
             {
@@ -1041,7 +1036,7 @@ namespace ClassicUO.Renderer
         }
 
         [MethodImpl(256)]
-        public bool Draw2D(Texture2D texture, float x, float y, float width, float height, ref XnaVector3 hue)
+        public bool Draw2D(Texture2D texture, int x, int y, float width, float height, ref XnaVector3 hue)
         {
             if (texture.UnityTexture == null)
             {
@@ -1241,13 +1236,16 @@ namespace ClassicUO.Renderer
         {
             hueMaterial.SetTexture(HueTex1, GraphicsDevice.Textures[1].UnityTexture);
             hueMaterial.SetTexture(HueTex2, GraphicsDevice.Textures[2].UnityTexture);
-            Begin(null, Matrix.Identity);
+            //SetMatrixToDefault();
+            //Begin(null, _transformMatrix);
         }
 
         public void Begin(Effect effect)
         {
             CustomEffect = effect;
             Begin(effect, Matrix.Identity);
+            //SetMatrixToDefault();
+            //Begin(effect, _transformMatrix);
         }
 
         [MethodImpl(256)]
@@ -1269,6 +1267,17 @@ namespace ClassicUO.Renderer
 
             CustomEffect = customEffect;
             _transformMatrix = transform_matrix;
+        }
+
+        private void SetMatrixToDefault()
+        {
+            var viewport = GraphicsDevice.Viewport;
+            Matrix.CreateOrthographicOffCenter(
+                viewport.X,
+                viewport.X + viewport.Width,
+                viewport.Y + viewport.Height, 
+                viewport.Y, 
+                0, 1, out _transformMatrix);
         }
 
         //Because XNA's Blend enum starts with 1, we duplicate BlendMode.Zero for 0th index
@@ -1315,7 +1324,6 @@ namespace ClassicUO.Renderer
             GraphicsDevice.DepthStencilState = _stencil;
 
             // GraphicsDevice.RasterizerState = _useScissor ? _rasterizerState : RasterizerState.CullNone;
-            // GraphicsDevice.SamplerStates[0] = _sampler;
             hueMaterial.SetFloat(Scissor, _useScissor ? 1 : 0);
             if (_useScissor)
             {
@@ -1327,21 +1335,10 @@ namespace ClassicUO.Renderer
                 hueMaterial.SetVector(ScissorRect, scissorVector4);
             }
 
-            SetMatrixForEffect(DefaultEffect);
+            DefaultEffect.ApplyStates(ref _transformMatrix);
         }
 
-        private void SetMatrixForEffect(MatrixEffect effect)
-        {
-            _projectionMatrix.M11 = (float) (2.0 / GraphicsDevice.Viewport.Width);
-            _projectionMatrix.M22 = (float) (-2.0 / GraphicsDevice.Viewport.Height);
-
-            Matrix.Multiply(ref _transformMatrix,
-                            ref _projectionMatrix,
-                            out Matrix matrix);
-
-            effect.ApplyStates(matrix);
-        }
-
+        [MethodImpl(256)]
         public void EnableScissorTest(bool enable)
         {
             if (enable == _useScissor)
@@ -1354,23 +1351,18 @@ namespace ClassicUO.Renderer
             ApplyStates();
         }
 
+        [MethodImpl(256)]
         public void SetBlendState(BlendState blend)
         {
             _blendState = blend ?? BlendState.AlphaBlend;
             ApplyStates();
         }
 
+        [MethodImpl(256)]
         public void SetStencil(DepthStencilState stencil)
         {
             _stencil = stencil ?? Stencil;
             ApplyStates();
-        }
-
-        public void SetSampler(SamplerState sampler)
-        {
-            //Flush(); // TODO: add it?
-
-            _sampler = sampler ?? SamplerState.PointClamp;
         }
 
         public void Dispose()
@@ -1381,7 +1373,6 @@ namespace ClassicUO.Renderer
         private class IsometricEffect : MatrixEffect
         {
             private Vector2 _viewPort;
-            private Matrix _matrix = Matrix.Identity;
 
             public IsometricEffect(GraphicsDevice graphicsDevice) : base(graphicsDevice, Resources.IsometricEffect)
             {
@@ -1404,15 +1395,15 @@ namespace ClassicUO.Renderer
             public EffectParameter Brighlight { get; }
 
 
-            public override void ApplyStates(Matrix matrix)
+            public override void ApplyStates(ref Matrix matrix)
             {
-                 WorldMatrix.SetValue(_matrix);
+                WorldMatrix.SetValue(Matrix.Identity);
 
                 _viewPort.x = GraphicsDevice.Viewport.Width;
                 _viewPort.y = GraphicsDevice.Viewport.Height;
                 Viewport.SetValue(_viewPort);
 
-                base.ApplyStates(matrix);
+                base.ApplyStates(ref matrix);
             }
         }
 
