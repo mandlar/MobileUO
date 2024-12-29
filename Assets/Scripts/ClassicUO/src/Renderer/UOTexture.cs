@@ -121,6 +121,16 @@ namespace ClassicUO.Renderer
         {
         }
 
+         public ArtTexture(int offsetX, int offsetY, int offsetW, int offsetH, int width, int height) : base(width, height)
+        {
+            ImageRectangle = new Rectangle(offsetX, offsetY, offsetW, offsetH);
+        }
+
+        public ArtTexture(Rectangle rect, int width, int height) : base(width, height)
+        {
+            ImageRectangle = rect;
+        }
+
         public Rectangle ImageRectangle;
     }
 }

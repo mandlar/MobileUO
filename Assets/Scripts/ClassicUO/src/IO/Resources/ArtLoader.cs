@@ -76,7 +76,6 @@ namespace ClassicUO.IO.Resources
             });
         }
 
-        // MobileUO: added keepData parameter
         public override ArtTexture GetTexture(uint g, bool keepData = false)
         {
             if (g >= Resources.Length)
@@ -168,7 +167,6 @@ namespace ClassicUO.IO.Resources
                 first = next;
             }
 
-            // MobileUO: added clear logic
             _file?.Dispose();
             _file = null;
             _instance = null;
@@ -180,17 +178,19 @@ namespace ClassicUO.IO.Resources
             ClearUnusedResources(_landResources, count);
         }
 
-        public unsafe uint[] ReadStaticArt(ushort graphic, out short width, out short height, out Rectangle bounds)
+        public unsafe uint[] ReadStaticArt(ushort graphic, out short width, out short height, out Rectangle imageRectangle)
         {
-            ref UOFileIndex entry = ref GetValidRefEntry(graphic + 0x4000);
+            imageRectangle.X = 0;
+            imageRectangle.Y = 0;
+            imageRectangle.Width = 0;
+            imageRectangle.Height = 0;
 
-            bounds = Rectangle.Empty;
+            ref UOFileIndex entry = ref GetValidRefEntry(graphic + 0x4000);
 
             if (entry.Length == 0)
             {
-                width = 0;
-                height = 0;
-                
+                width = height = 0;
+
                 return null;
             }
 
@@ -200,9 +200,7 @@ namespace ClassicUO.IO.Resources
             height = _file.ReadShort();
 
             if (width == 0 || height == 0)
-            {
                 return null;
-            }
 
             uint[] pixels = new uint[width * height];
             ushort* ptr = (ushort*) _file.PositionAddress;
@@ -228,14 +226,11 @@ namespace ClassicUO.IO.Resources
                     x += xoffs;
                     int pos = y * width + x;
 
-                    for (int j = 0; j < run; ++j, ++pos)
+                    for (int j = 0; j < run; j++)
                     {
                         ushort val = *ptr++;
 
-                        if (val != 0)
-                        {
-                            pixels[pos] = Utility.HuesHelper.Color16To32(val) | 0xFF_00_00_00;
-                        }
+                        pixels[pos++] = val == 0 && run == 1 ? 0x01 : Utility.HuesHelper.Color16To32(val) | 0xFF_00_00_00;
                     }
 
                     x += run;
@@ -243,7 +238,149 @@ namespace ClassicUO.IO.Resources
                 else
                 {
                     x = 0;
-                    ++y;
+                    y++;
+                    ptr = (ushort*) (datastart + lineoffsets[y] * 2);
+                }
+            }
+
+            if (graphic >= 0x2053 && graphic <= 0x2062 || graphic >= 0x206A && graphic <= 0x2079)
+            {
+                for (int i = 0; i < width; i++)
+                {
+                    pixels[i] = 0;
+                    pixels[(height - 1) * width + i] = 0;
+                }
+
+                for (int i = 0; i < height; i++)
+                {
+                    pixels[i * width] = 0;
+                    pixels[i * width + width - 1] = 0;
+                }
+            }
+            else if (StaticFilters.IsCave(graphic) && ProfileManager.Current != null && ProfileManager.Current.EnableCaveBorder)
+            {
+                for (int yy = 0; yy < height; yy++)
+                {
+                    int startY = yy != 0 ? -1 : 0;
+                    int endY = yy + 1 < height ? 2 : 1;
+
+                    for (int xx = 0; xx < width; xx++)
+                    {
+                        ref uint pixel = ref pixels[yy * width + xx];
+
+                        if (pixel == 0)
+                        {
+                            continue;
+                        }
+
+                        int startX = xx != 0 ? -1 : 0;
+                        int endX = xx + 1 < width ? 2 : 1;
+
+                        for (int i = startY; i < endY; i++)
+                        {
+                            int currentY = yy + i;
+
+                            for (int j = startX; j < endX; j++)
+                            {
+                                int currentX = xx + j;
+
+                                ref uint currentPixel = ref pixels[currentY * width + currentX];
+
+                                if (currentPixel == 0u) 
+                                    pixel = 0xFF_00_00_00;
+                            }
+                        }
+                    }
+                }
+            }
+
+            int pos1 = 0;
+
+            for (y = 0; y < height; y++)
+            {
+                for (x = 0; x < width; x++)
+                {
+                    if (pixels[pos1++] != 0)
+                    {
+                        minX = Math.Min(minX, x);
+                        maxX = Math.Max(maxX, x);
+                        minY = Math.Min(minY, y);
+                        maxY = Math.Max(maxY, y);
+                    }
+                }
+            }
+
+            imageRectangle.X = minX;
+            imageRectangle.Y = minY;
+            imageRectangle.Width = maxX - minX;
+            imageRectangle.Height = maxY - minY;
+
+            return pixels;
+        }
+
+
+        private unsafe void ReadStaticArt(ref ArtTexture texture, ushort graphic)
+        {
+            Rectangle imageRectangle = new Rectangle();
+
+            ref UOFileIndex entry = ref GetValidRefEntry(graphic + 0x4000);
+
+            if (entry.Length == 0)
+            {
+                return;
+            }
+
+            _file.Seek(entry.Offset);
+            _file.Skip(4);
+            short width = _file.ReadShort();
+            short height = _file.ReadShort();
+
+            if (width == 0 || height == 0)
+            {
+                return;
+            }
+
+            uint[] pixels = new uint[width * height];
+            ushort* ptr = (ushort*) _file.PositionAddress;
+            ushort* lineoffsets = ptr;
+            byte* datastart = (byte*) ptr + height * 2;
+            int x = 0;
+            int y = 0;
+            ptr = (ushort*) (datastart + lineoffsets[0] * 2);
+            int minX = width, minY = height, maxX = 0, maxY = 0;
+
+            while (y < height)
+            {
+                ushort xoffs = *ptr++;
+                ushort run = *ptr++;
+
+                if (xoffs + run >= 2048)
+                {
+                    texture = new ArtTexture(imageRectangle, 0, 0);
+                    return;
+                }
+
+                if (xoffs + run != 0)
+                {
+                    x += xoffs;
+                    int pos = y * width + x;
+
+                    for (int j = 0; j < run; j++, pos++)
+                    {
+                        ushort val = *ptr++;
+
+                        if (val != 0)
+                        {
+                            pixels[pos] = Utility.HuesHelper.Color16To32(val) | 0xFF_00_00_00;
+                        }          
+                    }
+
+                    x += run;
+                }
+                else
+                {
+                    x = 0;
+                    y++;
                     ptr = (ushort*) (datastart + lineoffsets[y] * 2);
                 }
             }
@@ -303,9 +440,9 @@ namespace ClassicUO.IO.Resources
 
             int pos1 = 0;
 
-            for (y = 0; y < height; ++y)
+            for (y = 0; y < height; y++)
             {
-                for (x = 0; x < width; ++x)
+                for (x = 0; x < width; x++)
                 {
                     if (pixels[pos1++] != 0)
                     {
@@ -317,33 +454,19 @@ namespace ClassicUO.IO.Resources
                 }
             }
 
+            imageRectangle.X = minX;
+            imageRectangle.Y = minY;
+            imageRectangle.Width = maxX - minX;
+            imageRectangle.Height = maxY - minY;
 
             entry.Width = (short) ((width >> 1) - 22);
             entry.Height = (short) (height - 44);
 
-            bounds.X = minX;
-            bounds.Y = minY;
-            bounds.Width = maxX - minX;
-            bounds.Height = maxY - minY;
-
-            return pixels;
-        }
-
-
-        private void ReadStaticArt(ref ArtTexture texture, ushort graphic)
-        {
-            uint[] pixels = ReadStaticArt(graphic, out short width, out short height, out Rectangle rect);
-
-            if (pixels != null)
-            {
-                texture = new ArtTexture(width, height);
-                texture.ImageRectangle = rect;
-                texture.PushData(pixels);
-            }
+            texture = new ArtTexture(imageRectangle, width, height);
+            texture.PushData(pixels);
         }
         
-        // MobileUO: SetDataPointerEXT is not implemented, continue to use SetData implementation
-         private void ReadLandArt(ref UOTexture32 texture, ushort graphic)
+        private void ReadLandArt(ref UOTexture32 texture, ushort graphic)
         {
             const int SIZE = 44 * 44;
 
