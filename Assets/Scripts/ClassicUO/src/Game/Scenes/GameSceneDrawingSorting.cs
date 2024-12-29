@@ -728,8 +728,6 @@ namespace ClassicUO.Game.Scenes
             int oldDrawOffsetY = _offset.Y;
             var old_scaled_offset = _last_scaled_offset;
 
-            float zoom = Camera.Zoom;
-
             int winGamePosX = 0;
             int winGamePosY = 0;
             int winGameWidth = ProfileManager.Current.GameWindowSize.X;
@@ -739,11 +737,12 @@ namespace ClassicUO.Game.Scenes
             winGameCenterX -= (int) World.Player.Offset.X;
             winGameCenterY -= (int) (World.Player.Offset.Y - World.Player.Offset.Z);
 
-            int tileOffX = World.Player.X;
-            int tileOffY = World.Player.Y;
+            int tileOffX = World.Player.X + Camera.Position.X / 44;
+            int tileOffY = World.Player.Y + Camera.Position.Y / 44;
 
             int winDrawOffsetX = (tileOffX - tileOffY) * 22 - winGameCenterX;
             int winDrawOffsetY = (tileOffX + tileOffY) * 22 - winGameCenterY;
+
 
             int winGameScaledOffsetX;
             int winGameScaledOffsetY;
@@ -756,11 +755,11 @@ namespace ClassicUO.Game.Scenes
                 float right = winGameWidth + left;
                 float top = winGamePosY;
                 float bottom = winGameHeight + top;
-                float newRight = right * zoom;
-                float newBottom = bottom * zoom;
+                float newRight = right * Camera.Zoom;
+                float newBottom = bottom * Camera.Zoom;
 
-                winGameScaledOffsetX = (int) ((left * zoom) - (newRight - right));
-                winGameScaledOffsetY = (int) ((top * zoom) - (newBottom - bottom));
+                winGameScaledOffsetX = (int) ((left * Camera.Zoom) - (newRight - right));
+                winGameScaledOffsetY = (int) ((top * Camera.Zoom) - (newBottom - bottom));
                 winGameScaledWidth = (int) (newRight - winGameScaledOffsetX);
                 winGameScaledHeight = (int) (newBottom - winGameScaledOffsetY);
             }
@@ -773,15 +772,8 @@ namespace ClassicUO.Game.Scenes
             }
 
 
-            //if (_use_render_target)
-            //{
-            //    winDrawOffsetX += winGameScaledOffsetX >> 1;
-            //    winDrawOffsetY += winGameScaledOffsetY >> 1;
-            //}
-
-            int width = (int) ((winGameWidth / 44 + 1) * zoom);
-            int height = (int) ((winGameHeight / 44 + 1) * zoom);
-         
+            int width = (int) ((winGameWidth / 44 + 1) * Camera.Zoom);
+            int height = (int) ((winGameHeight / 44 + 1) * Camera.Zoom);
 
             if (width < height)
             {
@@ -825,52 +817,39 @@ namespace ClassicUO.Game.Scenes
             if (maxBlockY >= MapLoader.Instance.MapsDefaultSize[World.Map.Index, 1])
                 maxBlockY = MapLoader.Instance.MapsDefaultSize[World.Map.Index, 1] - 1;
 
-            int drawOffset = (int) (44 / zoom);
+            int drawOffset = (int) (Camera.Zoom * 40.0);
+            float maxX = winGamePosX + winGameWidth + drawOffset;
+            float maxY = winGamePosY + winGameHeight + drawOffset;
+            float newMaxX = maxX * Camera.Zoom;
+            float newMaxY = maxY * Camera.Zoom;
 
-            Point p = Point.Zero;
-            p.X -= drawOffset;
-            p.Y -= drawOffset;
-            p = Camera.ScreenToWorld(p);
-            int minPixelsX = p.X;
-            int minPixelsY = p.Y;
-
-            p.X = Camera.Bounds.Width + drawOffset;
-            p.Y = Camera.Bounds.Height + drawOffset;
-            p = Camera.ScreenToWorld(p);
-            int maxPixelsX = p.X;
-            int maxPixelsY = p.Y;
-
+            int minPixelsX = (int) (((winGamePosX - drawOffset) * Camera.Zoom) - (newMaxX - maxX));
+            int maxPixelsX = (int) newMaxX;
+            int minPixelsY = (int) (((winGamePosY - drawOffset) * Camera.Zoom) - (newMaxY - maxY));
+            int maxPixelsY = (int) newMaxY;
 
             if (UpdateDrawPosition || oldDrawOffsetX != winDrawOffsetX || oldDrawOffsetY != winDrawOffsetY || old_scaled_offset.X != winGameScaledOffsetX || old_scaled_offset.Y != winGameScaledOffsetY)
             {
                 UpdateDrawPosition = true;
 
-
-                if (_use_render_target && (_world_render_target == null ||
-                    _world_render_target.Width != (int) (winGameWidth * zoom) || 
-                    _world_render_target.Height != (int) (winGameHeight * zoom)))
+                if (_lightRenderTarget == null || _lightRenderTarget.Width != winGameWidth || _lightRenderTarget.Height != winGameHeight)
                 {
+                    _lightRenderTarget?.Dispose();
                     _world_render_target?.Dispose();
 
                     PresentationParameters pp = Client.Game.GraphicsDevice.PresentationParameters;
 
-                    _world_render_target = new RenderTarget2D(Client.Game.GraphicsDevice,
-                                                              (int) (winGameWidth * 1),
-                                                              (int) (winGameHeight * 1),
-                                                              false,
-                                                              pp.BackBufferFormat,
-                                                              pp.DepthStencilFormat,
-                                                              pp.MultiSampleCount,
-                                                              pp.RenderTargetUsage);
-                }
-
-                if (_lightRenderTarget == null || _lightRenderTarget.Width != winGameWidth || _lightRenderTarget.Height != winGameHeight)
-                {
-                    _lightRenderTarget?.Dispose();
-
-                    PresentationParameters pp = Client.Game.GraphicsDevice.PresentationParameters;
-
-                    
+                    if (_use_render_target)
+                    {
+                        _world_render_target = new RenderTarget2D(Client.Game.GraphicsDevice,
+                            winGameWidth,
+                            winGameHeight,
+                            false,
+                            pp.BackBufferFormat,
+                            pp.DepthStencilFormat,
+                            pp.MultiSampleCount,
+                            pp.RenderTargetUsage);
+                    }
 
                     _lightRenderTarget = new RenderTarget2D(Client.Game.GraphicsDevice,
                         winGameWidth,
@@ -888,8 +867,8 @@ namespace ClassicUO.Game.Scenes
             _maxTile.X = realMaxRangeX;
             _maxTile.Y = realMaxRangeY;
 
-            _minPixel.X = minPixelsX;
-            _minPixel.Y = minPixelsY;
+            _minPixel.X = minPixelsX - 44;
+            _minPixel.Y = minPixelsY - 44;
             _maxPixel.X = maxPixelsX;
             _maxPixel.Y = maxPixelsY;
 
