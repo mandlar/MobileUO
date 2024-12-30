@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Runtime.CompilerServices;
+using ClassicUO.Configuration;
+using ClassicUO.Game;
 using ClassicUO.Input;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using UnityEngine.UIElements;
 
 namespace ClassicUO.Renderer
 {
@@ -181,14 +184,18 @@ namespace ClassicUO.Renderer
         public Point WorldToScreen(Point point)
         {
             UpdateMatrices();
-            
-            float x = ((point.X * _transform.M11) + (point.Y * _transform.M21) + _transform.M41);
-            float y = ((point.X * _transform.M12) + (point.Y * _transform.M22) + _transform.M42);
 
-            point.X = (int) Math.Round((((x + 1f) * 0.5f) * Bounds.Width) + Bounds.X);
-            point.Y = (int) Math.Round((((-y + 1f) * 0.5f) * Bounds.Height) + Bounds.Y);
+            point.X += Bounds.X;
+            point.Y += Bounds.Y;
 
-            //Transform(ref point, ref _transform, out point);
+            point.X = (int) (point.X / Zoom);
+            point.Y = (int) (point.Y / Zoom);
+
+            point.X -= (int) (Bounds.X / Zoom);
+            point.Y -= (int) (Bounds.Y / Zoom);
+
+            point.X += Bounds.X;
+            point.Y += Bounds.Y;
 
             return point;
         }
@@ -204,15 +211,14 @@ namespace ClassicUO.Renderer
 
         public Point MouseToWorldPosition()
         {
-            //Point mouse = Mouse.Position;
+            Point mouse = Mouse.Position;
 
-            //mouse.X -= Bounds.X;
-            //mouse.Y -= Bounds.Y;
-
-            return ScreenToWorld(Mouse.Position);
+            mouse.X = (int) ((Mouse.Position.X - (ProfileManager.Current.GameWindowPosition.X + 5)) * Zoom);
+            mouse.Y = (int) ((Mouse.Position.Y - (ProfileManager.Current.GameWindowPosition.Y + 5)) * Zoom);
+            return mouse;
         }
 
-        private void UpdateMatrices()
+         private void UpdateMatrices()
         {
             if (!_updateMatrixes)
             {
@@ -240,20 +246,6 @@ namespace ClassicUO.Renderer
                 1,
                 out _transform
             );
-
-            //Matrix temp;
-            //Matrix.CreateTranslation(-Origin.X, -Origin.Y, 0f, out _transform);
-
-            //float zoom = 1f / Zoom;
-
-            //if (zoom != 1f)
-            //{
-            //    Matrix.CreateScale(zoom, zoom, 1f, out temp);
-            //    Matrix.Multiply(ref _transform, ref temp, out _transform);
-            //}
-
-            //Matrix.CreateTranslation(Origin.X, Origin.Y, 0f, out temp);
-            //Matrix.Multiply(ref _transform, ref temp, out _transform);
 
 
             Matrix.Invert(ref _transform, out _inverseTransform);

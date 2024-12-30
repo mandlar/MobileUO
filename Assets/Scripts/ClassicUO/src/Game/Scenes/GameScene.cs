@@ -846,7 +846,7 @@ namespace ClassicUO.Game.Scenes
                 //int maxPixelsY = p.Y;
 
                 batcher.Begin(null, Camera.ViewTransformMatrix);
-                batcher.Draw2D(_world_render_target, 0, 0, width, height, ref hue);
+                batcher.Draw2D(_world_render_target, posX, posY, width, height, ref hue);
                 batcher.End();
 
                 //batcher.SetSampler(null);
@@ -1046,14 +1046,14 @@ namespace ClassicUO.Game.Scenes
             {
                 _selectionLines.Z = 0.3F;
                 batcher.Draw2D(Texture2DCache.GetTexture(Color.Black), 
-                               _selectionStart.X - Camera.Bounds.X, _selectionStart.Y - Camera.Bounds.Y, 
+                               _selectionStart.X, _selectionStart.Y, 
                                Mouse.Position.X - _selectionStart.X, 
                                Mouse.Position.Y - _selectionStart.Y, 
                                ref _selectionLines);
 
                 _selectionLines.Z = 0.7f;
                 batcher.DrawRectangle(Texture2DCache.GetTexture(Color.DeepSkyBlue),
-                                      _selectionStart.X - Camera.Bounds.X, _selectionStart.Y - Camera.Bounds.Y,
+                                      _selectionStart.X, _selectionStart.Y,
                                       Mouse.Position.X - _selectionStart.X,
                                       Mouse.Position.Y - _selectionStart.Y,
                                       ref _selectionLines);
