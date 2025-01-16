@@ -3,6 +3,6 @@
 	url = https://github.com/ClassicUO/ClassicUO.git
 	# commit = 303c2ae699ca02caa6b09fbe5fbcb0c92f8bbd68
 
-[submodule "Assets/Scripts/MP3Sharp"]
-	path = Assets/Scripts/MP3Sharp
+[submodule "external/MP3Sharp"]
+	path = external/MP3Sharp
 	url = https://github.com/andreakarasho/MP3Sharp.git
