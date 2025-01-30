@@ -37,16 +37,18 @@ using System.Threading.Tasks;
 using ClassicUO.Game;
 using ClassicUO.Renderer;
 using ClassicUO.Utility;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace ClassicUO.IO.Resources
 {
-    internal class GumpsLoader : UOFileLoader<UOTexture>
+    internal class GumpsLoader : UOFileLoader
     {
         private static GumpsLoader _instance;
         private UOFile _file;
         private PixelPicker _picker = new PixelPicker();
 
-        private GumpsLoader(int count) : base(count)
+        private GumpsLoader(int count)
         {
         }
 
@@ -88,6 +90,7 @@ namespace ClassicUO.IO.Resources
                     }
 
                     _file.FillEntries(ref Entries);
+                    _spriteInfos = new SpriteInfo[Entries.Length];
 
                     string pathdef = UOFileManager.GetUOFilePath("gump.def");
 
@@ -135,67 +138,57 @@ namespace ClassicUO.IO.Resources
             );
         }
 
-        public override UOTexture GetTexture(uint g)
+
+        const int ATLAS_SIZE = 1024 * 4;
+        private TextureAtlas _atlas;
+
+        public void CreateAtlas(GraphicsDevice device)
         {
-            if (g >= Resources.Length)
-            {
-                return null;
-            }
-
-            ref UOTexture texture = ref Resources[g];
-
-            if (texture == null || texture.IsDisposed)
-            {
-                if (GetGumpPixels(ref texture, g))
-                {
-                    SaveId(g);
-                }
-            }
-            else
-            {
-                texture.Ticks = Time.Ticks;
-            }
-
-            return texture;
+            _atlas = new TextureAtlas(device, ATLAS_SIZE, ATLAS_SIZE, SurfaceFormat.Color);
         }
 
-        // MobileUO: added ClearResources method
-        public override void ClearResources()
+        struct SpriteInfo
         {
-            base.ClearResources();
-            
-            _file?.Dispose();
-            _file = null;
-            _instance = null;
+            public Texture2D Texture;
+            public Rectangle UV;
         }
 
-        public bool PixelCheck(int index, int x, int y)
+        private SpriteInfo[] _spriteInfos;
+
+        public Texture2D GetGumpTexture(uint g, out Rectangle bounds)
         {
-            return _picker.Get((ulong) index, x, y);
+            ref var spriteInfo = ref _spriteInfos[g];
+
+            if (spriteInfo.Texture == null)
+            {
+                AddSpriteToAtlas(_atlas, g);
+            }
+
+            bounds = spriteInfo.UV;
+
+            return spriteInfo.Texture;
         }
 
-        private unsafe bool GetGumpPixels(ref UOTexture texture, uint index)
+        private unsafe void AddSpriteToAtlas(TextureAtlas atlas, uint index)
         {
-            ref UOFileIndex entry = ref GetValidRefEntry((int) index);
+            ref UOFileIndex entry = ref GetValidRefEntry((int)index);
 
             if (entry.Width <= 0 && entry.Height <= 0)
             {
-                return false;
+                return;
             }
 
             ushort color = entry.Hue;
-
-            if (entry.Width == 0 || entry.Height == 0)
-            {
-                return false;
-            }
 
             _file.SetData(entry.Address, entry.FileSize);
             _file.Seek(entry.Offset);
 
             IntPtr dataStart = _file.PositionAddress;
 
-            uint[] pixels = System.Buffers.ArrayPool<uint>.Shared.Rent(entry.Width * entry.Height);
+            uint[] buffer = null;
+
+            // MobileUO: we get graphical issues with smaller art when using stackalloc uint[1024]
+            Span<uint> pixels = entry.Width * entry.Height <= 1024 ? stackalloc uint[entry.Width * entry.Height] : (buffer = System.Buffers.ArrayPool<uint>.Shared.Rent(entry.Width * entry.Height));
 
             try
             {
@@ -242,17 +235,33 @@ namespace ClassicUO.IO.Resources
                     }
                 }
 
-                texture = new UOTexture(entry.Width, entry.Height);
-                texture.SetData(pixels, 0, entry.Width * entry.Height);
+                ref var spriteInfo = ref _spriteInfos[index];
 
+                spriteInfo.Texture = atlas.AddSprite(pixels, entry.Width, entry.Height, out spriteInfo.UV);
                 _picker.Set(index, entry.Width, entry.Height, pixels);
             }
             finally
             {
-                System.Buffers.ArrayPool<uint>.Shared.Return(pixels, true);
+                if (buffer != null)
+                {
+                    System.Buffers.ArrayPool<uint>.Shared.Return(buffer, true);
+                }             
             }
+        }
 
-            return true;
+        // MobileUO: added ClearResources method
+        public override void ClearResources()
+        {
+            base.ClearResources();
+            
+            _file?.Dispose();
+            _file = null;
+            _instance = null;
+        }
+       
+        public bool PixelCheck(int index, int x, int y)
+        {
+            return _picker.Get((ulong) index, x, y);
         }
 
         [StructLayout(LayoutKind.Sequential, Pack = 1)]

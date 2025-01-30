@@ -398,34 +398,28 @@ namespace ClassicUO.Game.UI.Gumps.Login
             int htmlX = 130;
             int htmlY = 442;
 
-            //Add(new NiceButton(){ });
 
             // MobileUO: commented out
             //Add
             //(
             //    new HtmlControl
             //    (
-            //        htmlX, htmlY, 150, 15,
-            //        false, false,
+            //        htmlX,
+            //        htmlY,
+            //        150,
+            //        15,
             //        false,
-            //        "<body link=\"#ad9413\" vlink=\"#00FF00\" ><a href=\"https://www.paypal.me/muskara\">Click to donate PayPal",
-            //        0x32, true, isunicode: true, style: FontStyle.BlackBorder
+            //        false,
+            //        false,
+            //        "<body link=\"#FF00FF00\" vlink=\"#FF00FF00\" ><a href=\"https://www.classicuo.eu/support.php\">Support ClassicUO!",
+            //        0x32,
+            //        true,
+            //        isunicode: true,
+            //        style: FontStyle.BlackBorder
             //    )
             //);
 
-            //Add
-            //(
-            //    new HtmlControl
-            //    (
-            //        htmlX, htmlY + 20, 150, 15,
-            //        false, false,
-            //        false,
-            //        "<body link=\"#ad9413\" vlink=\"#00FF00\" ><a href=\"https://www.patreon.com/classicuo\">Become a Patreon!",
-            //        0x32, true, isunicode: true, style: FontStyle.BlackBorder
-            //    )
-            //);
-
-
+          
             Add
             (
                 new HtmlControl
@@ -437,7 +431,7 @@ namespace ClassicUO.Game.UI.Gumps.Login
                     false,
                     false,
                     false,
-                    "<body link=\"#ad9413\" vlink=\"#00FF00\" ><a href=\"https://www.classicuo.eu\">Website",
+                    "<body link=\"#FF00FF00\" vlink=\"#FF00FF00\" ><a href=\"https://www.classicuo.eu\">Website",
                     0x32,
                     true,
                     isunicode: true,
@@ -456,7 +450,7 @@ namespace ClassicUO.Game.UI.Gumps.Login
                     false,
                     false,
                     false,
-                    "<body link=\"#ad9413\" vlink=\"#00FF00\" ><a href=\"https://discord.gg/VdyCpjQ\">Join Discord",
+                    "<body link=\"#FF00FF00\" vlink=\"#FF00FF00\" ><a href=\"https://discord.gg/VdyCpjQ\">Join Discord",
                     0x32,
                     true,
                     isunicode: true,
@@ -503,7 +497,7 @@ namespace ClassicUO.Game.UI.Gumps.Login
             loginmusic_checkbox.ValueChanged += (sender, e) =>
             {
                 Settings.GlobalSettings.LoginMusic = loginmusic_checkbox.IsChecked;
-                scene.Audio.UpdateCurrentMusicVolume(true);
+                Client.Game.Audio.UpdateCurrentMusicVolume(true);
 
                 login_music.IsVisible = Settings.GlobalSettings.LoginMusic;
             };
@@ -511,7 +505,7 @@ namespace ClassicUO.Game.UI.Gumps.Login
             login_music.ValueChanged += (sender, e) =>
             {
                 Settings.GlobalSettings.LoginMusicVolume = login_music.Value;
-                scene.Audio.UpdateCurrentMusicVolume(true);
+                Client.Game.Audio.UpdateCurrentMusicVolume(true);
             };
 
 
@@ -557,18 +551,18 @@ namespace ClassicUO.Game.UI.Gumps.Login
             Settings.GlobalSettings.AutoLogin = _checkboxAutologin.IsChecked;
         }
 
-        public override void Update(double totalTime, double frameTime)
+        public override void Update()
         {
             if (IsDisposed)
             {
                 return;
             }
 
-            base.Update(totalTime, frameTime);
+            base.Update();
 
-            if (_time < totalTime)
+            if (_time < Time.Ticks)
             {
-                _time = (float) totalTime + 1000;
+                _time = (float)Time.Ticks + 1000;
 
                 _nextArrow0.ButtonGraphicNormal = _nextArrow0.ButtonGraphicNormal == _buttonNormal ? _buttonOver : _buttonNormal;
 
@@ -630,10 +624,10 @@ namespace ClassicUO.Game.UI.Gumps.Login
         // MobileUO: made public
         public class PasswordStbTextBox : StbTextBox
         {
-            private Point _caretScreenPosition;
-            private readonly RenderedText _rendererCaret;
+            private new Point _caretScreenPosition;
+            private new readonly RenderedText _rendererCaret;
 
-            private readonly RenderedText _rendererText;
+            private new readonly RenderedText _rendererText;
 
             public PasswordStbTextBox
             (
@@ -685,7 +679,7 @@ namespace ClassicUO.Game.UI.Gumps.Login
                 set => SetText(value);
             }
 
-            public ushort Hue
+            public new ushort Hue
             {
                 get => _rendererText.Hue;
                 set
@@ -760,33 +754,21 @@ namespace ClassicUO.Game.UI.Gumps.Login
                 UpdateCaretScreenPosition();
             }
 
-            private void UpdateCaretScreenPosition()
+            private new void UpdateCaretScreenPosition()
             {
                 _caretScreenPosition = _rendererText.GetCaretPosition(Stb.CursorIndex);
             }
 
             public override bool Draw(UltimaBatcher2D batcher, int x, int y)
             {
-                Rectangle scissor = ScissorStack.CalculateScissors
-                (
-                    Matrix.Identity,
-                    x,
-                    y,
-                    Width,
-                    Height
-                );
-
-                if (ScissorStack.PushScissors(batcher.GraphicsDevice, scissor))
+                if (batcher.ClipBegin(x, y, Width, Height))
                 {
-                    batcher.EnableScissorTest(true);
                     DrawSelection(batcher, x, y);
 
                     _rendererText.Draw(batcher, x, y);
 
                     DrawCaret(batcher, x, y);
-
-                    batcher.EnableScissorTest(false);
-                    ScissorStack.PopScissors(batcher.GraphicsDevice);
+                    batcher.ClipEnd();
                 }
 
                 return true;

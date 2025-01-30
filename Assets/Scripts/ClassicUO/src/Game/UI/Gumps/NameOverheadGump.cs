@@ -48,8 +48,8 @@ namespace ClassicUO.Game.UI.Gumps
     internal class NameOverheadGump : Gump
     {
         private AlphaBlendControl _background;
-        private Point _lockedPosition;
-        private bool _positionLocked;
+        private Point _lockedPosition, _lastLeftMousePositionDown;
+        private bool _positionLocked, _leftMouseIsDown;
         private readonly RenderedText _renderedText;
         private Texture2D _borderColor = SolidColorTextureCache.GetTexture(Color.Black);
 
@@ -201,7 +201,7 @@ namespace ClassicUO.Game.UI.Gumps
 
             Add
             (
-                _background = new AlphaBlendControl(.3f)
+                _background = new AlphaBlendControl(.7f)
                 {
                     WantUpdateSize = false,
                     Hue = entity is Mobile m ? Notoriety.GetHue(m.NotorietyFlag) : (ushort) 0x0481
@@ -219,10 +219,18 @@ namespace ClassicUO.Game.UI.Gumps
             }
 
             base.CloseWithRightClick();
-        }
+        }     
 
-        protected override void OnDragBegin(int x, int y)
+        private void DoDrag()
         {
+            var delta = Mouse.Position - _lastLeftMousePositionDown;
+
+            if (Math.Abs(delta.X) <= Constants.MIN_GUMP_DRAG_DISTANCE && Math.Abs(delta.Y) <= Constants.MIN_GUMP_DRAG_DISTANCE)
+            {
+                return;
+            }
+
+            _leftMouseIsDown = false;
             _positionLocked = false;
 
             Entity entity = World.Get(LocalSerial);
@@ -257,14 +265,14 @@ namespace ClassicUO.Game.UI.Gumps
                 }
                 else
                 {
-                    Rectangle rect = GumpsLoader.Instance.GetTexture(0x0804).Bounds;
+                    _ = GumpsLoader.Instance.GetGumpTexture(0x0804, out var bounds);
 
                     UIManager.Add
                     (
                         gump = new HealthBarGump(entity)
                         {
-                            X = Mouse.LClickPosition.X - (rect.Width >> 1),
-                            Y = Mouse.LClickPosition.Y - (rect.Height >> 1)
+                            X = Mouse.LClickPosition.X - (bounds.Width >> 1),
+                            Y = Mouse.LClickPosition.Y - (bounds.Height >> 1)
                         }
                     );
                 }
@@ -311,11 +319,24 @@ namespace ClassicUO.Game.UI.Gumps
             return false;
         }
 
+        protected override void OnMouseDown(int x, int y, MouseButtonType button)
+        {
+            if (button == MouseButtonType.Left)
+            {
+                _lastLeftMousePositionDown = Mouse.Position;
+                _leftMouseIsDown = true;
+            }
+
+            base.OnMouseDown(x, y, button);
+        }
+
         protected override void OnMouseUp(int x, int y, MouseButtonType button)
         {
             if (button == MouseButtonType.Left)
             {
-                if (!ItemHold.Enabled)
+                _leftMouseIsDown = false;
+
+                if (!Client.Game.GameCursor.ItemHold.Enabled)
                 {
                     if (UIManager.IsDragging || Math.Max(Math.Abs(Mouse.LDragOffset.X), Math.Abs(Mouse.LDragOffset.Y)) >= 1)
                     {
@@ -353,7 +374,7 @@ namespace ClassicUO.Game.UI.Gumps
                 }
                 else
                 {
-                    if (ItemHold.Enabled && !ItemHold.IsFixedPosition)
+                    if (Client.Game.GameCursor.ItemHold.Enabled && !Client.Game.GameCursor.ItemHold.IsFixedPosition)
                     {
                         uint drop_container = 0xFFFF_FFFF;
                         bool can_drop = false;
@@ -376,7 +397,7 @@ namespace ClassicUO.Game.UI.Gumps
                                     dropZ = 0;
                                     drop_container = obj.Serial;
                                 }
-                                else if (obj is Item it2 && (it2.ItemData.IsSurface || it2.ItemData.IsStackable && it2.DisplayedGraphic == ItemHold.DisplayedGraphic))
+                                else if (obj is Item it2 && (it2.ItemData.IsSurface || it2.ItemData.IsStackable && it2.DisplayedGraphic == Client.Game.GameCursor.ItemHold.DisplayedGraphic))
                                 {
                                     dropX = obj.X;
                                     dropY = obj.Y;
@@ -394,7 +415,7 @@ namespace ClassicUO.Game.UI.Gumps
                             }
                             else
                             {
-                                Client.Game.Scene.Audio.PlaySound(0x0051);
+                                Client.Game.Audio.PlaySound(0x0051);
                             }
 
                             if (can_drop)
@@ -408,7 +429,7 @@ namespace ClassicUO.Game.UI.Gumps
                                 {
                                     GameActions.DropItem
                                     (
-                                        ItemHold.Serial,
+                                        Client.Game.GameCursor.ItemHold.Serial,
                                         dropX,
                                         dropY,
                                         dropZ,
@@ -430,12 +451,12 @@ namespace ClassicUO.Game.UI.Gumps
 
         protected override void OnMouseOver(int x, int y)
         {
-            if (_positionLocked)
+            if (_leftMouseIsDown)
             {
-                return;
+                DoDrag();
             }
 
-            if (SerialHelper.IsMobile(LocalSerial))
+            if (!_positionLocked && SerialHelper.IsMobile(LocalSerial))
             {
                 Mobile m = World.Mobiles.Get(LocalSerial);
 
@@ -479,9 +500,9 @@ namespace ClassicUO.Game.UI.Gumps
             base.OnMouseExit(x, y);
         }
 
-        public override void Update(double totalTime, double frameTime)
+        public override void Update()
         {
-            base.Update(totalTime, frameTime);
+            base.Update();
 
             Entity entity = World.Get(LocalSerial);
 
@@ -512,6 +533,7 @@ namespace ClassicUO.Game.UI.Gumps
             }
 
             // MobileUO: fix position of CTRL+SHIFT name plates over mobiles/items/etc.
+            // MobileUO: TODO: can we use camera bounds below or do we have to use these variables?
             int gx = 0;// ProfileManager.CurrentProfile.GameWindowPosition.X;
             int gy = 0;// ProfileManager.CurrentProfile.GameWindowPosition.Y;
             int w = ProfileManager.CurrentProfile.GameWindowSize.X;
@@ -553,7 +575,6 @@ namespace ClassicUO.Game.UI.Gumps
                     );
 
                     x = (int) (m.RealScreenPosition.X + m.Offset.X + 22 + 5);
-
                     y = (int) (m.RealScreenPosition.Y + (m.Offset.Y - m.Offset.Z) - (height + centerY + 8) + (m.IsGargoyle && m.IsFlying ? -22 : !m.IsMounted ? 22 : 0));
                 }
             }
@@ -568,37 +589,29 @@ namespace ClassicUO.Game.UI.Gumps
                     return false;
                 }
 
-                ArtTexture texture = ArtLoader.Instance.GetTexture(item.Graphic);
+                var bounds = ArtLoader.Instance.GetRealArtBounds(item.Graphic);
 
-                if (texture != null)
-                {
-                    x = item.RealScreenPosition.X + (int) item.Offset.X + 22 + 5;
-
-                    y = item.RealScreenPosition.Y + (int) (item.Offset.Y - item.Offset.Z) + (texture.ImageRectangle.Height >> 1);
-                }
-                else
-                {
-                    x = item.RealScreenPosition.X + (int) item.Offset.X + 22 + 5;
-                    y = item.RealScreenPosition.Y + (int) (item.Offset.Y - item.Offset.Z) + 22;
-                }
+                x = item.RealScreenPosition.X + (int)item.Offset.X + 22 + 5;
+                y = item.RealScreenPosition.Y + (int)(item.Offset.Y - item.Offset.Z) + (bounds.Height >> 1);
             }
 
 
-            ResetHueVector();
+            Vector3 hueVector = ShaderHueTranslator.GetHueVector(0);
 
             Point p = Client.Game.Scene.Camera.WorldToScreen(new Point(x, y));
             x = p.X - (Width >> 1);
             y = p.Y - (Height >> 1);
 
-            x += gx;
-            y += gy;
+            var camera = Client.Game.Scene.Camera;
+            x += camera.Bounds.X;
+            y += camera.Bounds.Y;
 
-            if (x < gx || x + Width > gx + w)
+            if (x < camera.Bounds.X || x + Width > camera.Bounds.Right)
             {
                 return false;
             }
 
-            if (y < gy || y + Height > gy + h)
+            if (y < camera.Bounds.Y || y + Height > camera.Bounds.Bottom)
             {
                 return false;
             }
@@ -613,7 +626,7 @@ namespace ClassicUO.Game.UI.Gumps
                 y - 1,
                 Width + 1,
                 Height + 1,
-                ref HueVector
+                hueVector
             );
 
             base.Draw(batcher, x, y);

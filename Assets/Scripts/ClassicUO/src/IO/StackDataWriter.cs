@@ -8,6 +8,7 @@ using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
+using ClassicUO.Utility;
 
 namespace ClassicUO.IO
 {
@@ -285,14 +286,43 @@ namespace ClassicUO.IO
         [MethodImpl(IMPL_OPTION)]
         public void WriteASCII(string str)
         {
-            WriteString<byte>(Encoding.ASCII, str, -1);
+            //WriteString<byte>(StringHelper.Cp1252Encoding, str, -1);
+            //WriteUInt8(0x00);
+
+            if (!string.IsNullOrEmpty(str))
+            {
+                foreach (var b in StringHelper.StringToCp1252Bytes(str))
+                {
+                    WriteUInt8(b);
+                }
+            }
+
             WriteUInt8(0x00);
         }
 
         [MethodImpl(IMPL_OPTION)]
         public void WriteASCII(string str, int length)
         {
-            WriteString<byte>(Encoding.ASCII, str, length);
+            //WriteString<byte>(StringHelper.Cp1252Encoding, str, length);
+
+            int start = Position;
+
+            if (string.IsNullOrEmpty(str))
+            {
+                WriteZero(sizeof(byte));
+            }
+            else
+            {
+                foreach (var b in StringHelper.StringToCp1252Bytes(str, length))
+                {
+                    WriteUInt8(b);
+                }
+            }
+
+            if (length > -1 && Position > start)
+            {
+                WriteZero(length * sizeof(byte) - (Position - start));
+            }
         }
 
 

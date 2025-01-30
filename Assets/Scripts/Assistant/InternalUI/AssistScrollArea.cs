@@ -84,9 +84,9 @@ namespace ClassicUO.Game.UI.Controls
 
         public ScrollbarBehaviour ScrollbarBehaviour;
 
-        public override void Update(double totalMS, double frameMS)
+        public override void Update()
         {
-            base.Update(totalMS, frameMS);
+            base.Update();
 
             CalculateScrollBarMaxValue();
 
@@ -254,9 +254,9 @@ namespace ClassicUO.Game.UI.Controls
 
     internal class ScrollAreaItem : Control
     {
-        public override void Update(double totalMS, double frameMS)
+        public override void Update()
         {
-            base.Update(totalMS, frameMS);
+            base.Update();
 
             if (Children.Count == 0)
             {

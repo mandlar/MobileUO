@@ -278,7 +278,7 @@ namespace Assistant.Scripts
             }
             int soundid = Utility.ToInt32(args[0].AsString(), -1);
             if(soundid >= 0)
-                Client.Game.Scene.Audio.PlaySound(soundid);
+                Client.Game.Audio.PlaySound(soundid);
             else
                 ScriptManager.Error(quiet, "Invalid sound id, only numbers are supported at the moment, and the number must be greater or equal than zero");
             return true;

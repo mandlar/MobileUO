@@ -121,7 +121,7 @@ namespace ClassicUO.Game.UI.Controls
             parts[0] == "textentrylimited" ? int.Parse(parts[8]) : byte.MaxValue,
             int.Parse(parts[3]),
             style: FontStyle.BlackBorder | FontStyle.CropTexture,
-            hue: (ushort) (UInt16Converter.Parse(parts[5]) + 1)
+            hue: (ushort)(UInt16Converter.Parse(parts[5]) + 1)
         )
         {
             X = int.Parse(parts[1]);
@@ -262,7 +262,7 @@ namespace ClassicUO.Game.UI.Controls
                         value = value.Substring(0, _maxCharCount);
                     }
                 }
-                
+
                 //Sanitize(ref value);
 
                 _rendererText.Text = value;
@@ -313,7 +313,7 @@ namespace ClassicUO.Game.UI.Controls
                     text,
                     text.Length,
                     _rendererText.Align,
-                    (ushort) _rendererText.FontStyle,
+                    (ushort)_rendererText.FontStyle,
                     _rendererText.MaxWidth,
                     countret
                 );
@@ -325,7 +325,7 @@ namespace ClassicUO.Game.UI.Controls
                 text,
                 text.Length,
                 _rendererText.Align,
-                (ushort) _rendererText.FontStyle,
+                (ushort)_rendererText.FontStyle,
                 _rendererText.MaxWidth,
                 countret
             );
@@ -894,7 +894,7 @@ namespace ClassicUO.Game.UI.Controls
 
                 batcher.ClipEnd();
             }
-            
+
             return true;
         }
 
@@ -905,12 +905,10 @@ namespace ClassicUO.Game.UI.Controls
                 return;
             }
 
-            ResetHueVector();
+            Vector3 hueVector = ShaderHueTranslator.GetHueVector(0, false, 0.5f);
 
             int selectStart = Math.Min(Stb.SelectStart, Stb.SelectEnd);
             int selectEnd = Math.Max(Stb.SelectStart, Stb.SelectEnd);
-
-            HueVector.Z = 0.5f;
 
             if (selectStart < selectEnd)
             {
@@ -948,14 +946,17 @@ namespace ClassicUO.Game.UI.Controls
                                 endX += _rendererText.GetCharWidth(info.Data[startSelectionIndex + k].Item);
                             }
 
-                            batcher.Draw2D
+                            batcher.Draw
                             (
                                 SolidColorTextureCache.GetTexture(SELECTION_COLOR),
-                                x + drawX + diffX,
-                                y + drawY,
-                                endX,
-                                info.MaxHeight + 1,
-                                ref HueVector
+                                new Rectangle
+                                (
+                                    x + drawX + diffX,
+                                    y + drawY,
+                                    endX,
+                                    info.MaxHeight + 1
+                                ),
+                                hueVector
                             );
 
                             break;
@@ -963,14 +964,17 @@ namespace ClassicUO.Game.UI.Controls
 
 
                         // do the whole line
-                        batcher.Draw2D
+                        batcher.Draw
                         (
                             SolidColorTextureCache.GetTexture(SELECTION_COLOR),
-                            x + drawX + diffX,
-                            y + drawY,
-                            info.Width - drawX,
-                            info.MaxHeight + 1,
-                            ref HueVector
+                            new Rectangle
+                            (
+                                x + drawX + diffX,
+                                y + drawY,
+                                info.Width - drawX,
+                                info.MaxHeight + 1
+                            ),
+                            hueVector
                         );
 
                         // first selection is gone. M
@@ -982,9 +986,6 @@ namespace ClassicUO.Game.UI.Controls
                     info = info.Next;
                 }
             }
-
-
-            ResetHueVector();
         }
 
         protected virtual void DrawCaret(UltimaBatcher2D batcher, int x, int y)
@@ -1009,7 +1010,7 @@ namespace ClassicUO.Game.UI.Controls
             }
 
             if (UnityEngine.Application.isMobilePlatform && IsEditable &&
-                UserPreferences.DisableTouchscreenKeyboardOnMobile.CurrentValue == (int) PreferenceEnums.DisableTouchscreenKeyboardOnMobile.Off)
+                UserPreferences.DisableTouchscreenKeyboardOnMobile.CurrentValue == (int)PreferenceEnums.DisableTouchscreenKeyboardOnMobile.Off)
             {
                 // MobileUO: NOTE: Show touchscreen keyboard when abstract text box is selected
                 GameController.TouchScreenKeyboard = UnityEngine.TouchScreenKeyboard.Open(Stb.text,

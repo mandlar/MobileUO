@@ -853,6 +853,9 @@ namespace SDL2
         public static void SDL_AddEventWatch(SDL.SDL_EventFilter filter, IntPtr userdata)
         {}
 
+        public static void SDL_SetEventFilter(SDL.SDL_EventFilter filter, IntPtr userdata)
+        {}
+
         public struct SDL_Keysym
         {
             public SDL_Keycode sym;

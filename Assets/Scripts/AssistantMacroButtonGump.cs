@@ -103,13 +103,15 @@ namespace ClassicUO.Game.UI.Gumps
 
         public override bool Draw(UltimaBatcher2D batcher, int x, int y)
         {
-            ResetHueVector();
-            HueVector.Z = 0.1f;
+            // MobileUO: CUO 0.1.11.0 drops ResetHueVector()
+            var hueVector = ShaderHueTranslator.GetHueVector(0);
+            //ResetHueVector();
+            hueVector.Z = 0.9f;
 
-            batcher.Draw2D(backgroundTexture, x, y, Width, Height, ref HueVector);
+            batcher.Draw2D(backgroundTexture, x, y, Width, Height, ref hueVector);
 
-            HueVector.Z = 0;
-            batcher.DrawRectangle(SolidColorTextureCache.GetTexture(Color.Gray), x, y, Width, Height, ref HueVector);
+            hueVector.Z = 1;
+            batcher.DrawRectangle(SolidColorTextureCache.GetTexture(Color.Gray), x, y, Width, Height, hueVector);
 
             base.Draw(batcher, x, y);
             return true;

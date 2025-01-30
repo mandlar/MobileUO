@@ -321,5 +321,12 @@ namespace Microsoft.Xna.Framework.Graphics
 
             handle.Free();
         }
+
+        // MobileUO: TODO: add SaveAsPng implementation
+        // MobileUO: not used so no need to implement at the moment
+        public void SaveAsPng(Stream stream, int width, int height)
+		{
+
+		}
     }
 }

@@ -52,7 +52,7 @@ public static class UoTextureExplorerHelper
     public static void TriggerFirstTexture()
     {
         ArtLoader.Instance.ClearResources();
-        ArtLoader.Instance.GetLandTexture(0);
+        ArtLoader.Instance.GetLandTexture(0, out _);
     }
 
     public static void CreateLandTileTextureAtlas()
@@ -108,13 +108,13 @@ public static class UoTextureExplorerHelper
 
     public static Texture2D GetLandTexture(uint g)
     {
-        var uoTexture = ArtLoader.Instance.GetLandTexture(g);
+        var uoTexture = ArtLoader.Instance.GetLandTexture(g, out _);
         return uoTexture != null && uoTexture.UnityTexture != null ? uoTexture : null;
     }
 
     public static Texture2D GetGumpTexture(ushort g)
     {
-        var uoTexture = GumpsLoader.Instance.GetTexture(g);
+        var uoTexture = GumpsLoader.Instance.GetGumpTexture(g, out _);
         return uoTexture != null && uoTexture.UnityTexture != null ? uoTexture : null;
     }
 

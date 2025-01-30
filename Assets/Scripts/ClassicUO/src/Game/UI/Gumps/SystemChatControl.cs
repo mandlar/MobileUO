@@ -38,7 +38,6 @@ using ClassicUO.Game.Managers;
 using ClassicUO.Game.Scenes;
 using ClassicUO.Game.UI.Controls;
 using ClassicUO.Input;
-using ClassicUO.Interfaces;
 using ClassicUO.Network;
 using ClassicUO.Renderer;
 using ClassicUO.Resources;
@@ -108,7 +107,7 @@ namespace ClassicUO.Game.UI.Gumps
                 Height = CHAT_HEIGHT
             };
 
-            float gradientTransparency = ProfileManager.CurrentProfile != null && ProfileManager.CurrentProfile.HideChatGradient ? 1.0f : 0.5f;
+            float gradientTransparency = ProfileManager.CurrentProfile != null && ProfileManager.CurrentProfile.HideChatGradient ? 0.0f : 0.5f;
 
             Add
             (
@@ -375,7 +374,7 @@ namespace ClassicUO.Game.UI.Gumps
             }
         }
 
-        public override void Update(double totalTime, double frameTime)
+        public override void Update()
         {
             LinkedListNode<ChatLineTime> first = _textEntries.First;
 
@@ -383,7 +382,7 @@ namespace ClassicUO.Game.UI.Gumps
             {
                 LinkedListNode<ChatLineTime> next = first.Next;
 
-                first.Value.Update(totalTime, frameTime);
+                first.Value.Update();
 
                 if (first.Value.IsDisposed)
                 {
@@ -479,9 +478,9 @@ namespace ClassicUO.Game.UI.Gumps
                 TextBoxControl.Hue = ProfileManager.CurrentProfile.SpeechHue;
             }
 
-            _trans.Alpha = ProfileManager.CurrentProfile != null && ProfileManager.CurrentProfile.HideChatGradient ? 1.0f : 0.5f;
+            _trans.Alpha = ProfileManager.CurrentProfile != null && ProfileManager.CurrentProfile.HideChatGradient ? 0.0f : 0.5f;
 
-            base.Update(totalTime, frameTime);
+            base.Update();
         }
 
         public override bool Draw(UltimaBatcher2D batcher, int x, int y)
@@ -886,7 +885,7 @@ namespace ClassicUO.Game.UI.Gumps
             DisposeChatModePrefix();
         }
 
-        private class ChatLineTime : IUpdateable
+        private class ChatLineTime
         {
             private uint _createdTime;
             private RenderedText _renderedText;
@@ -911,7 +910,7 @@ namespace ClassicUO.Game.UI.Gumps
 
             public int TextHeight => _renderedText?.Height ?? 0;
 
-            public void Update(double totalTime, double frameTime)
+            public void Update()
             {
                 if (Time.Ticks > _createdTime)
                 {

@@ -46,15 +46,14 @@ namespace ClassicUO.Game.UI.Gumps
 {
     internal class WorldViewportGump : Gump
     {
-        private const int BORDER_WIDTH = 5;
+        public const int BORDER_WIDTH = 5;
         private readonly BorderControl _borderControl;
         private readonly Button _button;
         private bool _clicked;
         private Point _lastSize, _savedSize;
         private readonly GameScene _scene;
         private readonly SystemChatControl _systemChatControl;
-        private int _worldHeight;
-        private int _worldWidth;
+
 
         public WorldViewportGump(GameScene scene) : base(0, 0)
         {
@@ -64,11 +63,10 @@ namespace ClassicUO.Game.UI.Gumps
             CanCloseWithEsc = false;
             CanCloseWithRightClick = false;
             LayerOrder = UILayer.Under;
-            X = ProfileManager.CurrentProfile.GameWindowPosition.X;
-            Y = ProfileManager.CurrentProfile.GameWindowPosition.Y;
-            _worldWidth = ProfileManager.CurrentProfile.GameWindowSize.X;
-            _worldHeight = ProfileManager.CurrentProfile.GameWindowSize.Y;
-            _savedSize = _lastSize = ProfileManager.CurrentProfile.GameWindowSize;
+            // MobileUO: TODO: verify
+            X = scene.Camera.Bounds.X - BORDER_WIDTH;
+            Y = scene.Camera.Bounds.Y - BORDER_WIDTH;
+            _savedSize = _lastSize = new Point(scene.Camera.Bounds.Width, scene.Camera.Bounds.Height);
 
             _button = new Button(0, 0x837, 0x838, 0x838);
             
@@ -106,8 +104,9 @@ namespace ClassicUO.Game.UI.Gumps
             };
 
             _button.SetTooltip(ResGumps.ResizeGameWindow);
-            Width = _worldWidth + BORDER_WIDTH * 2;
-            Height = _worldHeight + BORDER_WIDTH * 2;
+            // MobileUO: TODO: verify
+            Width = scene.Camera.Bounds.Width + BORDER_WIDTH * 2;
+            Height = scene.Camera.Bounds.Height + BORDER_WIDTH * 2;
 
             _borderControl = new BorderControl
             (
@@ -120,7 +119,7 @@ namespace ClassicUO.Game.UI.Gumps
 
             _borderControl.DragEnd += (sender, e) => { UIManager.GetGump<OptionsGump>()?.UpdateVideo(); };
 
-            UIManager.SystemChat = _systemChatControl = new SystemChatControl(BORDER_WIDTH, BORDER_WIDTH, _worldWidth, _worldHeight);
+            UIManager.SystemChat = _systemChatControl = new SystemChatControl(BORDER_WIDTH, BORDER_WIDTH, scene.Camera.Bounds.Width, scene.Camera.Bounds.Height);
 
             Add(_borderControl);
             Add(_button);
@@ -129,9 +128,9 @@ namespace ClassicUO.Game.UI.Gumps
         }
 
 
-        public override void Update(double totalTime, double frameTime)
+        public override void Update()
         {
-            base.Update(totalTime, frameTime);
+            base.Update();
 
             if (IsDisposed)
             {
@@ -141,6 +140,7 @@ namespace ClassicUO.Game.UI.Gumps
             if (Mouse.IsDragging)
             {
                 // MobileUO: fix issue with resizing the world viewport window
+                // MobileUO: TODO: can we use new version?
                 Point offset = Mouse.Position - _scene.Camera.Bounds.Location;
 
                 _lastSize = _savedSize;
@@ -171,13 +171,14 @@ namespace ClassicUO.Game.UI.Gumps
                     _lastSize.Y = h;
                 }
 
-                if (_worldWidth != _lastSize.X || _worldHeight != _lastSize.Y)
+                // MobileUO: TODO: verify
+                if (_scene.Camera.Bounds.Width != _lastSize.X || _scene.Camera.Bounds.Height != _lastSize.Y)
                 {
-                    _worldWidth = _lastSize.X;
-                    _worldHeight = _lastSize.Y;
-                    Width = _worldWidth + BORDER_WIDTH * 2;
-                    Height = _worldHeight + BORDER_WIDTH * 2;
-                    ProfileManager.CurrentProfile.GameWindowSize = _lastSize;
+                    Width = _lastSize.X + BORDER_WIDTH * 2;
+                    Height = _lastSize.Y + BORDER_WIDTH * 2;
+                    _scene.Camera.Bounds.Width = _lastSize.X;
+                    _scene.Camera.Bounds.Height = _lastSize.Y;
+
                     Resize();
                 }
             }
@@ -210,11 +211,12 @@ namespace ClassicUO.Game.UI.Gumps
             }
 
             Location = position;
+            // MobileUO: TODO: verify
+            _scene.Camera.Bounds.X = position.X + BORDER_WIDTH;
+            _scene.Camera.Bounds.Y = position.Y + BORDER_WIDTH;
 
-            ProfileManager.CurrentProfile.GameWindowPosition = position;
 
             UIManager.GetGump<OptionsGump>()?.UpdateVideo();
-
             UpdateGameWindowPos();
         }
 
@@ -222,7 +224,9 @@ namespace ClassicUO.Game.UI.Gumps
         {
             base.OnMove(x, y);
 
-            ProfileManager.CurrentProfile.GameWindowPosition = new Point(ScreenCoordinateX, ScreenCoordinateY);
+            // MobileUO: TODO: verify
+            _scene.Camera.Bounds.X = ScreenCoordinateX + BORDER_WIDTH;
+            _scene.Camera.Bounds.Y = ScreenCoordinateY + BORDER_WIDTH;
 
             UpdateGameWindowPos();
         }
@@ -242,12 +246,22 @@ namespace ClassicUO.Game.UI.Gumps
             _borderControl.Height = Height;
             _button.X = Width - (_button.Width >> 1);
             _button.Y = Height - (_button.Height >> 1);
-            _worldWidth = Width - BORDER_WIDTH * 2;
-            _worldHeight = Height - BORDER_WIDTH * 2;
-            _systemChatControl.Width = _worldWidth;
-            _systemChatControl.Height = _worldHeight;
+            // MobileUO: TODO: verify
+            _scene.Camera.Bounds.Width = _systemChatControl.Width = Width - BORDER_WIDTH * 2;
+            _scene.Camera.Bounds.Height = _systemChatControl.Height = Height - BORDER_WIDTH * 2;
             _systemChatControl.Resize();
             WantUpdateSize = true;
+
+            UpdateGameWindowPos();
+        }
+
+        public void SetGameWindowPosition(Point pos)
+        {
+            Location = pos;
+
+            // MobileUO: TODO: verify
+            _scene.Camera.Bounds.X = ScreenCoordinateX + BORDER_WIDTH;
+            _scene.Camera.Bounds.Y = ScreenCoordinateY + BORDER_WIDTH;
 
             UpdateGameWindowPos();
         }
@@ -262,15 +276,16 @@ namespace ClassicUO.Game.UI.Gumps
                 newSize.Y = GameScene.MinimumViewportHeight;
 
             //Resize();
-            _lastSize = _savedSize = ProfileManager.CurrentProfile.GameWindowSize = newSize;
+            // MobileUO: TODO: verify
+            _lastSize = _savedSize = newSize;
 
-            if (_worldWidth != _lastSize.X || _worldHeight != _lastSize.Y)
+            if (_scene.Camera.Bounds.Width != _lastSize.X || _scene.Camera.Bounds.Height != _lastSize.Y)
             {
-                _worldWidth = _lastSize.X;
-                _worldHeight = _lastSize.Y;
-                Width = _worldWidth + BORDER_WIDTH * 2;
-                Height = _worldHeight + BORDER_WIDTH * 2;
-                ProfileManager.CurrentProfile.GameWindowSize = _lastSize;
+                _scene.Camera.Bounds.Width = _lastSize.X;
+                _scene.Camera.Bounds.Height = _lastSize.Y;
+                Width = _scene.Camera.Bounds.Width + BORDER_WIDTH * 2;
+                Height = _scene.Camera.Bounds.Height + BORDER_WIDTH * 2;
+
                 Resize();
             }
 
@@ -290,8 +305,10 @@ namespace ClassicUO.Game.UI.Gumps
 
     internal class BorderControl : Control
     {
-        private readonly UOTexture[] _borders = new UOTexture[2];
         private readonly int _borderSize;
+
+        const ushort H_BORDER = 0x0A8C;
+        const ushort V_BORDER = 0x0A8D;
 
         public BorderControl(int x, int y, int w, int h, int borderSize)
         {
@@ -299,8 +316,6 @@ namespace ClassicUO.Game.UI.Gumps
             Y = y;
             Width = w;
             Height = h;
-            _borders[0] = GumpsLoader.Instance.GetTexture(0x0A8C);
-            _borders[1] = GumpsLoader.Instance.GetTexture(0x0A8D);
             _borderSize = borderSize;
             CanMove = true;
             AcceptMouseInput = true;
@@ -308,68 +323,79 @@ namespace ClassicUO.Game.UI.Gumps
 
         public ushort Hue { get; set; }
 
-        public override void Update(double totalTime, double frameTime)
-        {
-            base.Update(totalTime, frameTime);
-
-            foreach (UOTexture t in _borders)
-            {
-                t.Ticks = (long) totalTime;
-            }
-        }
-
+     
         public override bool Draw(UltimaBatcher2D batcher, int x, int y)
         {
-            ResetHueVector();
+            Vector3 hueVector = ShaderHueTranslator.GetHueVector(0);
 
             if (Hue != 0)
             {
-                HueVector.X = Hue;
-                HueVector.Y = 1;
+                hueVector.X = Hue;
+                hueVector.Y = 1;
             }
 
+            var texture = GumpsLoader.Instance.GetGumpTexture(H_BORDER, out var bounds);
+
             // sopra
-            batcher.Draw2DTiled
+            batcher.DrawTiled
             (
-                _borders[0],
-                x,
-                y,
-                Width,
-                _borderSize,
-                ref HueVector
+                texture,
+                new Rectangle
+                (
+                    x,
+                    y,
+                    Width,
+                    _borderSize
+                ),
+                bounds,
+                hueVector
             );
 
             // sotto
-            batcher.Draw2DTiled
+            batcher.DrawTiled
             (
-                _borders[0],
-                x,
-                y + Height - _borderSize,
-                Width,
-                _borderSize,
-                ref HueVector
+                texture,
+                new Rectangle
+                (
+                    x,
+                    y + Height - _borderSize,
+                    Width,
+                    _borderSize
+                ),
+                bounds,
+                hueVector
             );
 
+            texture = GumpsLoader.Instance.GetGumpTexture(V_BORDER, out bounds);
+
             //sx
-            batcher.Draw2DTiled
+            batcher.DrawTiled
             (
-                _borders[1],
-                x,
-                y,
-                _borderSize,
-                Height,
-                ref HueVector
+                texture,
+                new Rectangle
+                (
+                    x,
+                    y,
+                    _borderSize,
+                    Height
+                ),
+                bounds,
+                hueVector
             );
 
             //dx
-            batcher.Draw2DTiled
+            batcher.DrawTiled
             (
-                _borders[1],
-                x + Width - _borderSize,
-                y + (_borders[1].Width >> 1),
-                _borderSize,
-                Height - _borderSize,
-                ref HueVector
+                texture,
+                new Rectangle
+                (
+                    x + Width - _borderSize,
+                    y + (bounds.Width >> 1),
+                    _borderSize,
+                    Height - _borderSize
+                ),
+                bounds,
+                hueVector
             );
 
             return base.Draw(batcher, x, y);

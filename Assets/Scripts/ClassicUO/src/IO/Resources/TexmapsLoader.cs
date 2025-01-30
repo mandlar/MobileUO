@@ -36,15 +36,17 @@ using System.Threading.Tasks;
 using ClassicUO.Game;
 using ClassicUO.Renderer;
 using ClassicUO.Utility;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace ClassicUO.IO.Resources
 {
-    internal class TexmapsLoader : UOFileLoader<UOTexture>
+    internal class TexmapsLoader : UOFileLoader
     {
         private static TexmapsLoader _instance;
         private UOFile _file;
 
-        private TexmapsLoader(int count) : base(count)
+        private TexmapsLoader(int count)
         {
         }
 
@@ -67,111 +69,71 @@ namespace ClassicUO.IO.Resources
                     _file.FillEntries(ref Entries);
                     string pathdef = UOFileManager.GetUOFilePath("TexTerr.def");
 
-                    if (!File.Exists(pathdef))
+                    if (File.Exists(pathdef))
                     {
-                        return;
-                    }
-
-                    using (DefReader defReader = new DefReader(pathdef))
-                    {
-                        while (defReader.Next())
+                        using (DefReader defReader = new DefReader(pathdef))
                         {
-                            int index = defReader.ReadInt();
-
-                            if (index < 0 || index >= Entries.Length)
+                            while (defReader.Next())
                             {
-                                continue;
-                            }
+                                int index = defReader.ReadInt();
 
-                            int[] group = defReader.ReadGroup();
-
-                            if (group == null)
-                            {
-                                continue;
-                            }
-
-                            for (int i = 0; i < group.Length; i++)
-                            {
-                                int checkindex = group[i];
-
-                                if (checkindex < 0 || checkindex >= Entries.Length)
+                                if (index < 0 || index >= Entries.Length)
                                 {
                                     continue;
                                 }
 
-                                Entries[index] = Entries[checkindex];
+                                int[] group = defReader.ReadGroup();
+
+                                if (group == null)
+                                {
+                                    continue;
+                                }
+
+                                for (int i = 0; i < group.Length; i++)
+                                {
+                                    int checkindex = group[i];
+
+                                    if (checkindex < 0 || checkindex >= Entries.Length)
+                                    {
+                                        continue;
+                                    }
+
+                                    Entries[index] = Entries[checkindex];
+                                }
                             }
                         }
                     }
-
-                    //using (StreamReader reader = new StreamReader(File.OpenRead(pathdef)))
-                    //{
-                    //    string line;
-
-                    //    while ((line = reader.ReadLine()) != null)
-                    //    {
-                    //        line = line.Trim();
-
-                    //        if (line.Length <= 0 || line[0] == '#')
-                    //            continue;
-
-                    //        string[] defs = line.Split(new[]
-                    //        {
-                    //            '\t', ' ', '#'
-                    //        }, StringSplitOptions.RemoveEmptyEntries);
-
-                    //        if (defs.Length < 2)
-                    //            continue;
-                    //        int index = int.Parse(defs[0]);
-
-                    //        if (index < 0 || index >= TEXTMAP_COUNT)
-                    //            continue;
-                    //        int first = defs[1].IndexOf("{");
-                    //        int last = defs[1].IndexOf("}");
-
-                    //        string[] newdef = defs[1].Substring(first + 1, last - 1).Split(new[]
-                    //        {
-                    //            ' ', ','
-                    //        }, StringSplitOptions.RemoveEmptyEntries);
-
-                    //        foreach (string s in newdef)
-                    //        {
-                    //            int checkindex = int.Parse(s);
-
-                    //            if (checkindex < 0 || checkindex >= TEXTMAP_COUNT)
-                    //                continue;
-                    //            _file.Entries[index] = _file.Entries[checkindex];
-                    //        }
-                    //    }
-                    //}
+                    _spriteInfos = new SpriteInfo[Entries.Length];
                 }
             );
         }
+      
 
-        public override UOTexture GetTexture(uint g)
+        struct SpriteInfo
         {
-            if (g >= Resources.Length)
+            public Texture2D Texture;
+            public Rectangle UV;
+        }
+
+        private SpriteInfo[] _spriteInfos;
+
+        public Texture2D GetLandTexture(uint g, out Rectangle bounds)
+        {
+            // avoid to mix land with statics
+            //g += ushort.MaxValue;
+
+            var atlas = TextureAtlas.Shared;
+
+            ref var spriteInfo = ref _spriteInfos[g];
+
+            if (spriteInfo.Texture == null)
             {
-                return null;
+                AddSpriteToAtlas(atlas, g);
             }
 
-            ref UOTexture texture = ref Resources[g];
+            bounds = spriteInfo.UV;
 
-            if (texture == null || texture.IsDisposed)
-            {
-                ReadTexmapTexture(ref texture, (ushort) g);
-
-                if (texture != null)
-                {
-                    SaveId(g);
-                }
-            }
-            else
-            {
-                texture.Ticks = Time.Ticks;
-            }
-
-            return texture;
+            return spriteInfo.Texture;  //atlas.GetTexture(g, out bounds);
         }
 
         // MobileUO: added override method
@@ -184,24 +146,20 @@ namespace ClassicUO.IO.Resources
             _instance = null;
         }
 
-        private unsafe void ReadTexmapTexture(ref UOTexture texture, ushort index)
+        private unsafe void AddSpriteToAtlas(TextureAtlas atlas, uint index)
         {
-            ref UOFileIndex entry = ref GetValidRefEntry(index);
+            ref UOFileIndex entry = ref GetValidRefEntry((int) (index));
 
             if (entry.Length <= 0)
             {
-                texture = null;
-
                 return;
             }
 
-            int size = entry.Width == 0 && entry.Height == 0 ? 64 : 128;
-            int size_pot = size * size;
-
-            uint* data = stackalloc uint[size_pot];
-
             _file.SetData(entry.Address, entry.FileSize);
             _file.Seek(entry.Offset);
+
+            int size = entry.Length == 0x2000 ? 64 : 128;
+            Span<uint> data = stackalloc uint[size * size];
 
             for (int i = 0; i < size; ++i)
             {
@@ -213,10 +171,9 @@ namespace ClassicUO.IO.Resources
                 }
             }
 
-            texture = new UOTexture(size, size);
-            // we don't need to store the data[] pointer because
-            // land is always hoverable
-            texture.SetDataPointerEXT(0, null, (IntPtr) data, size_pot * sizeof(uint));
+            ref var spriteInfo = ref _spriteInfos[index];
+
+            spriteInfo.Texture = atlas.AddSprite(data, size, size, out spriteInfo.UV);
         }
     }
 }

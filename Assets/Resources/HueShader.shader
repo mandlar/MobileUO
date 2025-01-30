@@ -1,4 +1,6 @@
-﻿Shader "Unlit/HueShader"
+﻿// MobileUO: TODO: verify
+
+Shader "Unlit/HueShader"
 {
     Properties
     {
@@ -63,6 +65,7 @@
             float _Debug;
             float _Scissor;
             float4 _ScissorRect;
+            float2 Viewport;
             float _Brightlight;
 
             sampler2D _HueTex1;
@@ -105,6 +108,8 @@
             {
                 v2f o;
                 o.pos = UnityObjectToClipPos(v.vertex);
+                //o.pos.x -= 0.5 / Viewport.x;
+                //o.pos.y += 0.5 / Viewport.y;
                 o.uv = TRANSFORM_TEX(v.uv, _MainTex);
 				o.Normal = v.normal;
                 o.Hue = v.Hue;
@@ -130,12 +135,13 @@
                 }
 
                 float4 color = tex2D(_MainTex, IN.uv);
+                //float4 color = tex2D(_MainTex, IN.uv.xy);
 
                 if (color.a == 0.0f)
                     discard;
 
                 int mode = int(_Hue.y);
-                float alpha = 1 - _Hue.z;
+                float alpha = _Hue.z;
 
                 if (mode == NONE)
                 {
@@ -187,7 +193,7 @@
 	            }
 	            else if (mode == SPECTRAL)
 	            {
-		            alpha = 1 - (color.r * 1.5f);
+		            alpha = 1.0f - (color.r * 1.5f);
 		            color.r = 0;
 		            color.g = 0;
 		            color.b = 0;
@@ -201,10 +207,12 @@
 	            }
 	            else if (mode == LIGHTS)
 	            {
-		            if (IN.Hue.x > 1.0f)
-		            {
-			            color.rgb = get_colored_light(IN.Hue.x - 1, color.r);
-		            }
+			        // if (IN.Hue.x > 1.0f)
+		         //    {
+			        //     color.rgb = get_colored_light(IN.Hue.x - 1, color.r);
+		         //    }
+                    
+                    color.rgb = get_colored_light(IN.Hue.x - 1, color.r);
 	            }
 	            else if (mode == EFFECT_HUED)
 	            {

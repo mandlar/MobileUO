@@ -263,6 +263,7 @@ namespace Microsoft.Xna.Framework.Graphics
             Parameters.Add("MatrixTransform", new EffectParameter());
             Parameters.Add("WorldMatrix", new EffectParameter());
             Parameters.Add("Viewport", new EffectParameter());
+            Parameters.Add("textureSize", new EffectParameter());
             Techniques.Add("HueTechnique", new EffectTechnique());
 
         }

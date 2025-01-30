@@ -923,9 +923,9 @@ namespace ClassicUO.Game.UI.Gumps
         }
 
         private static bool _updated = false;
-        public override void Update(double totalMS, double frameMS)
+        public override void Update()
         {
-            base.Update(totalMS, frameMS);
+            base.Update();
             if(!_updated)
             {
                 _updated = true;
@@ -3700,7 +3700,7 @@ namespace ClassicUO.Game.UI.Gumps
                 _edge.SetData(new Color[] { Color.Gray });
             }
             Vector3 vec = Vector3.Zero;
-            batcher.DrawRectangle(_edge, x, y, Width, Height, ref vec);
+            batcher.DrawRectangle(_edge, x, y, Width, Height, vec);
             return base.Draw(batcher, x, y);
         }
 

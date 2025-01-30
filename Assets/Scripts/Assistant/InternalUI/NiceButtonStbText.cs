@@ -174,12 +174,14 @@ namespace ClassicUO.Game.UI.Controls
         {
             if (IsSelected)
             {
-                ResetHueVector();
-                ShaderHueTranslator.GetHueVector(ref HueVector, 0, false, Alpha);
+                // MobileUO: CUO 0.1.11.0 drops ResetHueVector()
+                var hueVector = ShaderHueTranslator.GetHueVector(0);
+                //ResetHueVector();
+                hueVector = ShaderHueTranslator.GetHueVector(0, false, Alpha);
                 if (_SelectedArea > 0)
-                    batcher.Draw2D(_texture, x + TextBoxes[_SelectedArea - 1].X, y, 0, 0, TextBoxes[_SelectedArea - 1].Width, Height, ref HueVector);
+                    batcher.Draw2D(_texture, x + TextBoxes[_SelectedArea - 1].X, y, 0, 0, TextBoxes[_SelectedArea - 1].Width, Height, ref hueVector);
                 else
-                    batcher.Draw2D(_texture, x + TextLabel.X, y, 0, 0, TextLabel.Width, Height, ref HueVector);
+                    batcher.Draw2D(_texture, x + TextLabel.X, y, 0, 0, TextLabel.Width, Height, ref hueVector);
             }
 
             return base.Draw(batcher, x, y);

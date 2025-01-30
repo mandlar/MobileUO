@@ -1,0 +1,1 @@
+../../../../../../external/ClassicUO/src/Utility/StbRectPack/CRuntime.cs

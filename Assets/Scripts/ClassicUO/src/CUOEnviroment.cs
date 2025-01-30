@@ -56,7 +56,7 @@ namespace ClassicUO
         public static readonly bool IsUnix = Environment.OSVersion.Platform != PlatformID.Win32NT && Environment.OSVersion.Platform != PlatformID.Win32Windows && Environment.OSVersion.Platform != PlatformID.Win32S && Environment.OSVersion.Platform != PlatformID.WinCE;
 
         // MobileUO: hard coded CUO version MobileUO is based on
-        public static readonly Version Version = new Version(0, 1, 10, 0);//Assembly.GetExecutingAssembly().GetName().Version;
+        public static readonly Version Version = new Version(0, 1, 11, 0);//Assembly.GetExecutingAssembly().GetName().Version;
         // MobileUO: removed readonly
         public static string ExecutablePath = 
 #if NETFRAMEWORK

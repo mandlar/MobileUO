@@ -162,7 +162,8 @@ public class ClientRunner : MonoBehaviour
 
 	private void OnContainerItemSelectionChanged(int currentValue)
 	{
-		ItemGump.PixelCheck = currentValue == (int) PreferenceEnums.ContainerItemSelection.Fine;
+		// MobileUO: TODO: might need to add this back to toggle between fine/coarse selection?
+		//ItemGump.PixelCheck = currentValue == (int) PreferenceEnums.ContainerItemSelection.Fine;
 	}
 
 	private void OnJoystickRunThresholdChanged(int currentValue)
