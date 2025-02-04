@@ -394,27 +394,55 @@ namespace ClassicUO.Renderer
         }
 
         [MethodImpl(256)]
-        public bool DrawSpriteLand(Texture2D texture, int x, int y, ref YOffsets yOffsets, ref XnaVector3 normalTop, ref XnaVector3 normalRight, ref XnaVector3 normalLeft, ref XnaVector3 normalBottom, ref XnaVector3 hue)
+        public bool DrawSpriteLand
+        (
+            Texture2D texture, 
+            int x, 
+            int y, 
+            int sx,
+            int sy,
+            float swidth,
+            float sheight,
+            ref YOffsets yOffsets, 
+            ref XnaVector3 normalTop, 
+            ref XnaVector3 normalRight, 
+            ref XnaVector3 normalLeft, 
+            ref XnaVector3 normalBottom, 
+            ref XnaVector3 hue
+        )
         {
             if (texture.UnityTexture == null)
             {
                 return false;
             }
+
+            float minX = sx / (float)texture.Width;
+            float maxX = (sx + swidth) / texture.Width;
+            float minY = sy / (float)texture.Height;
+            float maxY = (sy + sheight) / texture.Height;
             
             var vertex = new PositionTextureColor4();
 
-            vertex.TextureCoordinate0.x = 0;
-            vertex.TextureCoordinate0.y = 0;
+            vertex.TextureCoordinate0.x = minX;
+            vertex.TextureCoordinate0.y = minY;
             vertex.TextureCoordinate0.z = 0;
 
-            vertex.TextureCoordinate1.x = 1;
-            vertex.TextureCoordinate1.y = vertex.TextureCoordinate1.z = 0;
+            vertex.TextureCoordinate1.x = maxX;
+            vertex.TextureCoordinate1.y = minY;
+            vertex.TextureCoordinate1.z = 0;
 
-            vertex.TextureCoordinate2.x = vertex.TextureCoordinate2.z = 0;
-            vertex.TextureCoordinate2.y = 1;
+            vertex.TextureCoordinate2.x = minX;
+            vertex.TextureCoordinate2.y = maxY;
+            vertex.TextureCoordinate2.z = 0;
 
-            vertex.TextureCoordinate3.x = vertex.TextureCoordinate3.y = 1;
+            vertex.TextureCoordinate3.x = maxX;
+            vertex.TextureCoordinate3.y = maxY;
             vertex.TextureCoordinate3.z = 0;
+
+            vertex.Normal0 = normalTop;
+            vertex.Normal1 = normalRight;
+            vertex.Normal2 = normalLeft;
+            vertex.Normal3 = normalBottom;
 
             // Top
             vertex.Position0.x = x + 22;
@@ -437,11 +465,6 @@ namespace ClassicUO.Renderer
             vertex.Position3.z = 0;
 
             vertex.Hue0 = vertex.Hue1 = vertex.Hue2 = vertex.Hue3 = hue;
-
-            vertex.Normal0 = normalTop;
-            vertex.Normal1 = normalRight;
-            vertex.Normal2 = normalLeft;
-            vertex.Normal3 = normalBottom;
 
             RenderVertex(vertex, texture, hue);
 

@@ -171,6 +171,7 @@ namespace ClassicUO
 
             ArtLoader.Instance.CreateAtlas(GraphicsDevice);
             GumpsLoader.Instance.CreateAtlas(GraphicsDevice);
+            TexmapsLoader.Instance.CreateAtlas(GraphicsDevice);
 
             // MobileUO: filter mode
             GraphicsDevice.Textures[1].UnityTexture.filterMode = UnityEngine.FilterMode.Point;
