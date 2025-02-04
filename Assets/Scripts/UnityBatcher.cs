@@ -416,27 +416,32 @@ namespace ClassicUO.Renderer
                 return false;
             }
 
-            float minX = sx / (float)texture.Width;
-            float maxX = (sx + swidth) / texture.Width;
-            float minY = sy / (float)texture.Height;
-            float maxY = (sy + sheight) / texture.Height;
+            float sourceX = ((sx + 0.5f) / (float)texture.Width);
+            float sourceY = ((sy + 0.5f) / (float)texture.Height);
+            float sourcwW = ((swidth - 1f) / (float)texture.Width);
+            float sourceH = ((sheight - 1f) / (float)texture.Height);
+
+            //float sourceX = ((sx) / (float)texture.Width);
+            //float sourceY = ((sy) / (float)texture.Height);
+            //float sourcwW = ((swidth) / (float)texture.Width);
+            //float sourceH = ((sheight) / (float)texture.Height);
             
             var vertex = new PositionTextureColor4();
 
-            vertex.TextureCoordinate0.x = minX;
-            vertex.TextureCoordinate0.y = minY;
+            vertex.TextureCoordinate0.x = (_cornerOffsetX[0] * sourcwW) + sourceX;
+            vertex.TextureCoordinate0.y = (_cornerOffsetY[0] * sourceH) + sourceY;
             vertex.TextureCoordinate0.z = 0;
 
-            vertex.TextureCoordinate1.x = maxX;
-            vertex.TextureCoordinate1.y = minY;
+            vertex.TextureCoordinate1.x = (_cornerOffsetX[1] * sourcwW) + sourceX;
+            vertex.TextureCoordinate1.y = (_cornerOffsetY[1] * sourceH) + sourceY;
             vertex.TextureCoordinate1.z = 0;
 
-            vertex.TextureCoordinate2.x = minX;
-            vertex.TextureCoordinate2.y = maxY;
+            vertex.TextureCoordinate2.x = (_cornerOffsetX[2] * sourcwW) + sourceX;
+            vertex.TextureCoordinate2.y = (_cornerOffsetY[2] * sourceH) + sourceY;
             vertex.TextureCoordinate2.z = 0;
 
-            vertex.TextureCoordinate3.x = maxX;
-            vertex.TextureCoordinate3.y = maxY;
+            vertex.TextureCoordinate3.x = (_cornerOffsetX[3] * sourcwW) + sourceX;
+            vertex.TextureCoordinate3.y = (_cornerOffsetY[3] * sourceH) + sourceY;
             vertex.TextureCoordinate3.z = 0;
 
             vertex.Normal0 = normalTop;
@@ -908,9 +913,14 @@ namespace ClassicUO.Renderer
                 return false;
             }
             
-            float minX = sx / (float) texture.Width;
+            //float minX = ((sx + 0.5f) / (float)texture.Width);
+            //float minY = ((sy + 0.5f) / (float)texture.Height);
+            //float maxX = (((sx + swidth) - 1f) / (float)texture.Width);
+            //float maxY = (((sy + sheight) - 1f) / (float)texture.Height);
+
+            float minX = sx / (float)texture.Width;
             float maxX = (sx + swidth) / texture.Width;
-            float minY = sy / (float) texture.Height;
+            float minY = sy / (float)texture.Height;
             float maxY = (sy + sheight) / texture.Height;
 
             if (UseGraphicsDrawTexture)
@@ -1443,6 +1453,9 @@ namespace ClassicUO.Renderer
             Matrix.Multiply(ref _transformMatrix,
                             ref _projectionMatrix,
                             out Matrix matrix);
+
+            //Matrix halfPixelOffset = Matrix.CreateTranslation(-0.5f, -0.5f, 0);
+            //Matrix.Multiply(ref halfPixelOffset, ref matrix, out matrix);
 
             effect.ApplyStates(matrix);
         }

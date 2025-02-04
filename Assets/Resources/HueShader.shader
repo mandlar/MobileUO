@@ -6,6 +6,7 @@
 		[Enum(UnityEngine.Rendering.BlendMode)] _SrcBlend ("SrcBlend", Float) = 1.0
         [Enum(UnityEngine.Rendering.BlendMode)] _DstBlend ("DstBlend", Float) = 10
         _Brightlight ("Brightness", Float) = 0.0
+        _Viewport ("Viewport", Vector) = (1, 1, 0, 0)
     }
     SubShader
     {
@@ -63,6 +64,7 @@
             float _Debug;
             float _Scissor;
             float4 _ScissorRect;
+            float4 _Viewport;
             float _Brightlight;
 
             sampler2D _HueTex1;
@@ -104,7 +106,15 @@
             v2f vert (appdata v)
             {
                 v2f o;
-                o.pos = UnityObjectToClipPos(v.vertex);
+                float4 pos = UnityObjectToClipPos(v.vertex);
+                
+                // Adjust the position based on the viewport dimensions
+                // MobileUO: TODO: this does "work" but it moves the rendering way off. I'm not sure why it is needed or if it is even needed for Unity ~mandlar
+                // pos.x -= 0.5 / _Viewport.x;
+                // pos.y += 0.5 / _Viewport.y;
+                
+                o.pos = pos;
+
                 o.uv = TRANSFORM_TEX(v.uv, _MainTex);
 				o.Normal = v.normal;
                 o.Hue = v.Hue;

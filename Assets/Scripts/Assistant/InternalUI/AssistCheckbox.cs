@@ -26,6 +26,7 @@ using ClassicUO.Input;
 using ClassicUO.IO.Resources;
 using ClassicUO.Renderer;
 using ClassicUO.Utility;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace ClassicUO.Game.UI.Controls
 {
@@ -34,13 +35,13 @@ namespace ClassicUO.Game.UI.Controls
         private const int INACTIVE = 0;
         private const int ACTIVE = 1;
         private readonly RenderedText _text;
-        private readonly UOTexture[] _textures = new UOTexture[2];
+        private readonly Texture2D[] _textures = new Texture2D[2];
         private bool _isChecked;
 
         public AssistCheckbox(ushort inactive, ushort active, string text = "", byte font = 0, ushort color = 0, bool isunicode = true, int maxWidth = 0)
         {
-            _textures[INACTIVE] = GumpsLoader.Instance.GetTexture(inactive);
-            _textures[ACTIVE] = GumpsLoader.Instance.GetTexture(active);
+            _textures[INACTIVE] = GumpsLoader.Instance.GetGumpTexture(inactive, out _);
+            _textures[ACTIVE] = GumpsLoader.Instance.GetGumpTexture(active, out _);
 
             if (_textures[0] == null || _textures[1] == null)
             {
@@ -49,7 +50,7 @@ namespace ClassicUO.Game.UI.Controls
                 return;
             }
 
-            UOTexture t = _textures[INACTIVE];
+            Texture2D t = _textures[INACTIVE];
             Width = t.Width;
 
             _text = RenderedText.Create(text, color, font, isunicode, maxWidth: maxWidth);
@@ -103,13 +104,14 @@ namespace ClassicUO.Game.UI.Controls
 
         public override void Update(double totalMS, double frameMS)
         {
-            for (int i = 0; i < _textures.Length; i++)
-            {
-                UOTexture t = _textures[i];
+            //for (int i = 0; i < _textures.Length; i++)
+            //{
+            //    Texture2D t = _textures[i];
 
-                if (t != null)
-                    t.Ticks = (long) totalMS;
-            }
+            // MobileUO: CUO 0.1.11.0 removed totalMS from Update method
+            //    if (t != null)
+            //        t.Ticks = (long) totalMS;
+            //}
 
             base.Update(totalMS, frameMS);
         }

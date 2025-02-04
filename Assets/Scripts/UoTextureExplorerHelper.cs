@@ -117,7 +117,7 @@ public static class UoTextureExplorerHelper
 
     public static Texture2D GetGumpTexture(ushort g)
     {
-        var uoTexture = GumpsLoader.Instance.GetTexture(g);
+        var uoTexture = GumpsLoader.Instance.GetGumpTexture(g, out _);
         return uoTexture != null && uoTexture.UnityTexture != null ? uoTexture : null;
     }
 
