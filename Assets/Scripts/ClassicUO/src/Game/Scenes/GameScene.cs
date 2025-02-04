@@ -706,7 +706,6 @@ namespace ClassicUO.Game.Scenes
                 return;
             }
 
-            _healthLinesManager.Update();
             World.Update(totalTime, frameTime);
             AnimatedStaticsManager.Process();
             BoatMovingManager.Update();

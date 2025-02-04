@@ -745,7 +745,7 @@ namespace ClassicUO.IO.Resources
             UOFileIndex[] animseqEntries = new UOFileIndex[Math.Max(animSeq.TotalEntriesCount, Constants.MAX_ANIMATIONS_DATA_INDEX_COUNT)];
             animSeq.FillEntries(ref animseqEntries);
 
-            Span<byte> spanAlloc = stackalloc byte[1024];
+            //Span<byte> spanAlloc = stackalloc byte[1024];
 
             for (int i = 0; i < animseqEntries.Length; i++)
             {
@@ -761,7 +761,8 @@ namespace ClassicUO.IO.Resources
 
                 byte[] buffer = null;
 
-                Span<byte> span = entry.DecompressedLength <= 1024 ? spanAlloc : (buffer = System.Buffers.ArrayPool<byte>.Shared.Rent(entry.DecompressedLength));
+                // MobileUO: we get graphical issues with smaller art when using stackalloc byte[1024]
+                Span<byte> span = entry.DecompressedLength <= 1024 ? stackalloc byte[entry.DecompressedLength] : (buffer = System.Buffers.ArrayPool<byte>.Shared.Rent(entry.DecompressedLength));
                 
                 try
                 {

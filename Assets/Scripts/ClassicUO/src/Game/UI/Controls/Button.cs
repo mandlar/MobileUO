@@ -36,6 +36,8 @@ using ClassicUO.Input;
 using ClassicUO.IO.Resources;
 using ClassicUO.Renderer;
 using ClassicUO.Utility;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace ClassicUO.Game.UI.Controls
 {
@@ -48,15 +50,10 @@ namespace ClassicUO.Game.UI.Controls
 
     internal class Button : Control
     {
-        private const int NORMAL = 0;
-        private const int PRESSED = 1;
-        private const int OVER = 2;
         private readonly string _caption;
-
         private bool _entered;
         private readonly RenderedText[] _fontTexture;
-        private readonly ushort[] _gumpGraphics = new ushort[3];
-        private readonly UOTexture[] _textures = new UOTexture[3];
+        private ushort _normal, _pressed, _over;
 
         // MobileUO: NOTE: Added for enlarging small buttons in MobileUO
         private bool enlarged;
@@ -102,28 +99,19 @@ namespace ClassicUO.Game.UI.Controls
         )
         {
             ButtonID = buttonID;
-            _gumpGraphics[NORMAL] = normal;
-            _gumpGraphics[PRESSED] = pressed;
-            _gumpGraphics[OVER] = over;
-            _textures[NORMAL] = GumpsLoader.Instance.GetTexture(normal);
-            _textures[PRESSED] = GumpsLoader.Instance.GetTexture(pressed);
+            _normal = normal;
+            _pressed = pressed;
+            _over = over;
 
-            if (over > 0)
-            {
-                _textures[OVER] = GumpsLoader.Instance.GetTexture(over);
-            }
-
-            UOTexture t = _textures[NORMAL];
-
-            if (t == null)
+            if (GumpsLoader.Instance.GetGumpTexture(normal, out var bounds) == null)
             {
                 Dispose();
 
                 return;
             }
-
-            Width = t.Width;
-            Height = t.Height;
+          
+            Width = bounds.Width;
+            Height = bounds.Height;
             FontHue = normalHue == ushort.MaxValue ? (ushort) 0 : normalHue;
             HueHover = hoverHue == ushort.MaxValue ? normalHue : hoverHue;
 
@@ -177,48 +165,52 @@ namespace ClassicUO.Game.UI.Controls
 
         public ushort ButtonGraphicNormal
         {
-            get => _gumpGraphics[NORMAL];
+            get => _normal;
             set
             {
-                _textures[NORMAL] = GumpsLoader.Instance.GetTexture(value);
-                _gumpGraphics[NORMAL] = value;
+                _normal = value;
+
+                _ = GumpsLoader.Instance.GetGumpTexture(value, out var bounds);
                 // MobileUO: added if
-                if (_textures[NORMAL] == null) return;
+                // MobileUO: TODO: do we need to re-add this? it's the above GetGumpTexture
+                //if (_textures[NORMAL] == null) return;
 
-                Width = _textures[NORMAL].Width;
-
-                Height = _textures[NORMAL].Height;
+                Width = bounds.Width;
+                Height = bounds.Height;
             }
         }
 
         public ushort ButtonGraphicPressed
         {
-            get => _gumpGraphics[PRESSED];
+            get => _pressed;
             set
             {
-                _textures[PRESSED] = GumpsLoader.Instance.GetTexture(value);
-                _gumpGraphics[PRESSED] = value;
+                _pressed = value;
+
+                _ = GumpsLoader.Instance.GetGumpTexture(value, out var bounds);
                 // MobileUO: added if
-                if (_textures[PRESSED] == null) return;
+                // MobileUO: TODO: do we need to re-add this? it's the above GetGumpTexture
+                //if (_textures[PRESSED] == null) return;
 
-                Width = _textures[PRESSED].Width;
-
-                Height = _textures[PRESSED].Height;
+                Width = bounds.Width;
+                Height = bounds.Height;
             }
         }
 
         public ushort ButtonGraphicOver
         {
-            get => _gumpGraphics[OVER];
+            get => _over;
             set
             {
-                _textures[OVER] = GumpsLoader.Instance.GetTexture(value);
-                _gumpGraphics[OVER] = value;
-                // MobileUO: added if
-                if (_textures[OVER] == null) return;
-                Width = _textures[OVER].Width;
+                _over = value;
 
-                Height = _textures[OVER].Height;
+                _ = GumpsLoader.Instance.GetGumpTexture(value, out var bounds);
+                // MobileUO: added if
+                // MobileUO: TODO: do we need to re-add this? it's the above GetGumpTexture
+                //if (_textures[OVER] == null) return;
+
+                Width = bounds.Width;
+                Height = bounds.Height;
             }
         }
 
@@ -231,23 +223,15 @@ namespace ClassicUO.Game.UI.Controls
 
         public bool ContainsByBounds { get; set; }
 
+        // MobileUO: keep this override so we can enlarge buttons for MobileUO
+        // MobileUO: TODO: totaleTime/frameTime will be removed in a later commit
         public override void Update(double totalTime, double frameTime)
         {
-            base.Update(totalTime, frameTime);
+             base.Update(totalTime, frameTime);
 
             if (IsDisposed)
             {
                 return;
-            }
-
-            for (int i = 0; i < _textures.Length; i++)
-            {
-                UOTexture t = _textures[i];
-
-                if (t != null)
-                {
-                    t.Ticks = Time.Ticks;
-                }
             }
             
             // MobileUO: NOTE: Added for enlarging small buttons in MobileUO
@@ -266,7 +250,26 @@ namespace ClassicUO.Game.UI.Controls
 
         public override bool Draw(UltimaBatcher2D batcher, int x, int y)
         {
-            UOTexture texture = GetTextureByState();
+            Texture2D texture = null;
+            Rectangle bounds = Rectangle.Empty;
+
+            if (_entered || IsClicked)
+            {
+                if (IsClicked && _pressed > 0)
+                {
+                    texture = GumpsLoader.Instance.GetGumpTexture(_pressed, out bounds);
+                }
+
+                if (texture == null && _over > 0)
+                {
+                    texture = GumpsLoader.Instance.GetGumpTexture(_over, out bounds);
+                }
+            }
+
+            if (texture == null)
+            {
+                texture = GumpsLoader.Instance.GetGumpTexture(_normal, out bounds);
+            }
 
             ShaderHueTranslator.GetHueVector
             (
@@ -284,6 +287,8 @@ namespace ClassicUO.Game.UI.Controls
                 texture,
                 x,
                 y,
+                bounds.X,
+                bounds.Y,
                 Width,
                 Height,
                 ref HueVector
@@ -348,24 +353,7 @@ namespace ClassicUO.Game.UI.Controls
             }
         }
 
-        private UOTexture GetTextureByState()
-        {
-            if (_entered || IsClicked)
-            {
-                if (IsClicked && _textures[PRESSED] != null)
-                {
-                    return _textures[PRESSED];
-                }
-
-                if (_textures[OVER] != null)
-                {
-                    return _textures[OVER];
-                }
-            }
-
-            return _textures[NORMAL];
-        }
-        
+   
         public override bool Contains(int x, int y)
         {
             if (IsDisposed)
@@ -373,7 +361,7 @@ namespace ClassicUO.Game.UI.Controls
                 return false;
             }
 
-            return ContainsByBounds ? base.Contains(x, y) : GumpsLoader.Instance.PixelCheck(_gumpGraphics[NORMAL], x - Offset.X, y - Offset.Y);
+            return ContainsByBounds ? base.Contains(x, y) : GumpsLoader.Instance.PixelCheck(_normal, x - Offset.X, y - Offset.Y);
         }
 
         public sealed override void Dispose()

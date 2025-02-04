@@ -1151,7 +1151,19 @@ namespace ClassicUO.Renderer
             return true;
         }
 
-        public bool Draw2DTiled(Texture2D texture, int dx, int dy, float dwidth, float dheight, ref XnaVector3 hue)
+        public bool Draw2DTiled
+        (
+            Texture2D texture,
+            int dx,
+            int dy,
+            float dwidth,
+            float dheight,
+            int sx,
+            int sy,
+            int sw,
+            int sh,
+            ref XnaVector3 hue
+        )
         {
             if (texture.UnityTexture == null)
             {
@@ -1159,30 +1171,55 @@ namespace ClassicUO.Renderer
             }
             
             int y = dy;
-            int h = (int) dheight;
+            int h = (int)dheight;
 
             while (h > 0)
             {
                 int x = dx;
-                int w = (int) dwidth;
+                int w = (int)dwidth;
 
-                int rw = texture.Width;
-                int rh = h < texture.Height ? h : texture.Height;
+                int rw = sw;
+                int rh = h < sh ? h : sh;
 
                 while (w > 0)
                 {
-                    if (w < texture.Width)
+                    if (w < sw)
                         rw = w;
-                    Draw2D(texture, x, y, 0, 0, rw, rh, ref hue);
-                    w -= texture.Width;
-                    x += texture.Width;
+
+                    Draw2D
+                    (
+                        texture,
+                        x,
+                        y,
+                        sx,
+                        sy,
+                        rw,
+                        rh,
+                        ref hue
+                    );
+
+                    w -= sw;
+                    x += sw;
                 }
 
-                h -= texture.Height;
-                y += texture.Height;
+                h -= sh;
+                y += sh;
             }
 
             return true;
+        }
+
+        public bool Draw2DTiled
+        (
+            Texture2D texture,
+            int dx,
+            int dy,
+            float dwidth,
+            float dheight,
+            ref XnaVector3 hue
+        )
+        {
+            return Draw2DTiled(texture, dx, dy, dwidth, dheight, 0, 0, texture.Width, texture.Height, ref hue);
         }
 
         public bool DrawRectangle(Texture2D texture, int x, int y, int width, int height, ref XnaVector3 hue)
