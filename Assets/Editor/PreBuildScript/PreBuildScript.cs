@@ -20,8 +20,12 @@ public class PreBuildScript : IPreprocessBuildWithReport
 
     public void OnPreprocessBuild(BuildReport report)
     {
+        // Check if the build process is coming from GitHub Actions
+        bool isGitHubActions = !string.IsNullOrEmpty(Environment.GetEnvironmentVariable("GITHUB_ACTIONS"));
+        Debug.Log($"Is GitHub Actions build: {isGitHubActions}");
+
         // Apply settings at build time
-        ApplySettingsFromFile(report.summary.platform);
+        ApplySettingsFromFile(report.summary.platform, isGitHubActions);
     }
 
     private static void OnPlayModeStateChanged(PlayModeStateChange state)
@@ -33,11 +37,11 @@ public class PreBuildScript : IPreprocessBuildWithReport
         }
     }
 
-    private static void ApplySettingsFromFile(BuildTarget platform)
+    private static void ApplySettingsFromFile(BuildTarget platform, bool isGitHubActionsBuild = false)
     {
         if (platform == BuildTarget.Android)
         {
-            string environment = EditorUserBuildSettings.development ? "Development" : "Production";
+            string environment = (EditorUserBuildSettings.development || isGitHubActionsBuild) ? "Development" : "Production";
             string jsonFileName = $"appsettings.{environment}.json";
 
             Debug.Log($"Environment: {environment}");
