@@ -21,7 +21,7 @@ public class PreBuildScript : IPreprocessBuildWithReport
     public void OnPreprocessBuild(BuildReport report)
     {
         // Check if the build process is coming from GitHub Actions
-        bool isGitHubActions = !string.IsNullOrEmpty(Environment.GetEnvironmentVariable("GITHUB_ACTIONS"));
+        bool isGitHubActions = !string.IsNullOrEmpty(Environment.GetEnvironmentVariable("GITHUB_ACTION"));
         Debug.Log($"Is GitHub Actions build: {isGitHubActions}");
 
         // Apply settings at build time
