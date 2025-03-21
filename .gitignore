@@ -6,8 +6,6 @@
 /Library/
 /Logs/
 /Builds/
-/*.sln
-/*.csproj
 /UserSettings/
 *.DS_Store
 /ClassicUO.Resources/.vs/ClassicUO.Resources

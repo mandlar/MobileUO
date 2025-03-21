@@ -1,0 +1,1784 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <!-- Generated file, do not modify, your changes will be overwritten (use AssetPostprocessor.OnGeneratedCSProject) -->
+  <PropertyGroup>
+    <LangVersion>9.0</LangVersion>
+  </PropertyGroup>
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>10.0.20506</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <RootNamespace></RootNamespace>
+    <ProjectGuid>{960574EF-FC41-084C-03C2-E44684C296E8}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <AssemblyName>Assembly-CSharp</AssemblyName>
+    <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <BaseDirectory>.</BaseDirectory>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>Temp\bin\Debug\</OutputPath>
+    <DefineConstants>UNITY_6000_0_26;UNITY_6000_0;UNITY_6000;UNITY_5_3_OR_NEWER;UNITY_5_4_OR_NEWER;UNITY_5_5_OR_NEWER;UNITY_5_6_OR_NEWER;UNITY_2017_1_OR_NEWER;UNITY_2017_2_OR_NEWER;UNITY_2017_3_OR_NEWER;UNITY_2017_4_OR_NEWER;UNITY_2018_1_OR_NEWER;UNITY_2018_2_OR_NEWER;UNITY_2018_3_OR_NEWER;UNITY_2018_4_OR_NEWER;UNITY_2019_1_OR_NEWER;UNITY_2019_2_OR_NEWER;UNITY_2019_3_OR_NEWER;UNITY_2019_4_OR_NEWER;UNITY_2020_1_OR_NEWER;UNITY_2020_2_OR_NEWER;UNITY_2020_3_OR_NEWER;UNITY_2021_1_OR_NEWER;UNITY_2021_2_OR_NEWER;UNITY_2021_3_OR_NEWER;UNITY_2022_1_OR_NEWER;UNITY_2022_2_OR_NEWER;UNITY_2022_3_OR_NEWER;UNITY_2023_1_OR_NEWER;UNITY_2023_2_OR_NEWER;UNITY_2023_3_OR_NEWER;UNITY_6000_0_OR_NEWER;UNITY_INCLUDE_TESTS;ENABLE_AR;ENABLE_AUDIO;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_EVENT_QUEUE;ENABLE_MICROPHONE;ENABLE_MULTIPLE_DISPLAYS;ENABLE_PHYSICS;ENABLE_TEXTURE_STREAMING;ENABLE_LZMA;ENABLE_UNITYEVENTS;ENABLE_VR;ENABLE_WEBCAM;ENABLE_UNITYWEBREQUEST;ENABLE_WWW;ENABLE_CLOUD_SERVICES;ENABLE_CLOUD_SERVICES_ADS;ENABLE_CLOUD_SERVICES_USE_WEBREQUEST;ENABLE_CLOUD_SERVICES_CRASH_REPORTING;ENABLE_CLOUD_SERVICES_NATIVE_CRASH_REPORTING;ENABLE_CLOUD_SERVICES_PURCHASING;ENABLE_CLOUD_SERVICES_ANALYTICS;ENABLE_CLOUD_SERVICES_BUILD;ENABLE_EDITOR_GAME_SERVICES;ENABLE_UNITY_GAME_SERVICES_ANALYTICS_SUPPORT;ENABLE_CLOUD_LICENSE;ENABLE_EDITOR_HUB_LICENSE;ENABLE_WEBSOCKET_CLIENT;ENABLE_GENERATE_NATIVE_PLUGINS_FOR_ASSEMBLIES_API;ENABLE_DIRECTOR_AUDIO;ENABLE_DIRECTOR_TEXTURE;ENABLE_MANAGED_JOBS;ENABLE_MANAGED_TRANSFORM_JOBS;ENABLE_MANAGED_ANIMATION_JOBS;ENABLE_MANAGED_AUDIO_JOBS;ENABLE_ENGINE_CODE_STRIPPING;ENABLE_ONSCREEN_KEYBOARD;ENABLE_MANAGED_UNITYTLS;INCLUDE_DYNAMIC_GI;ENABLE_SCRIPTING_GC_WBARRIERS;PLATFORM_SUPPORTS_MONO;ENABLE_MARSHALLING_TESTS;ENABLE_VIDEO;ENABLE_NAVIGATION_OFFMESHLINK_TO_NAVMESHLINK;ENABLE_ACCELERATOR_CLIENT_DEBUGGING;ENABLE_ACCESSIBILITY;TEXTCORE_1_0_OR_NEWER;EDITOR_ONLY_NAVMESH_BUILDER_DEPRECATED;PLATFORM_ANDROID;UNITY_ANDROID;UNITY_ANDROID_API;ENABLE_EGL;ENABLE_NETWORK;ENABLE_RUNTIME_GI;ENABLE_CRUNCH_TEXTURE_COMPRESSION;UNITY_CAN_SHOW_SPLASH_SCREEN;UNITY_HAS_GOOGLEVR;UNITY_HAS_TANGO;ENABLE_SPATIALTRACKING;ENABLE_ETC_COMPRESSION;PLATFORM_EXTENDS_VULKAN_DEVICE;PLATFORM_HAS_MULTIPLE_SWAPCHAINS;UNITY_ANDROID_SUPPORTS_SHADOWFILES;PLATFORM_UPDATES_TIME_OUTSIDE_OF_PLAYER_LOOP;PLATFORM_EXTENDS_VULKAN_PIPELINE_CACHE;PLATFORM_SUPPORTS_SPLIT_GRAPHICS_JOBS;PLATFORM_HAS_ADDITIONAL_API_CHECKS;ENABLE_UNITYADS_RUNTIME;UNITY_UNITYADS_API;ENABLE_MONO;NET_STANDARD_2_0;NET_STANDARD;NET_STANDARD_2_1;NETSTANDARD;NETSTANDARD2_1;ENABLE_PROFILER;DEBUG;TRACE;UNITY_ASSERTIONS;UNITY_EDITOR;UNITY_EDITOR_64;UNITY_EDITOR_WIN;ENABLE_UNITY_COLLECTIONS_CHECKS;ENABLE_BURST_AOT;UNITY_TEAM_LICENSE;ENABLE_CUSTOM_RENDER_TEXTURE;ENABLE_DIRECTOR;ENABLE_LOCALIZATION;ENABLE_SPRITES;ENABLE_TERRAIN;ENABLE_TILEMAP;ENABLE_TIMELINE;ENABLE_LEGACY_INPUT_MANAGER;TEXTCORE_FONT_ENGINE_1_5_OR_NEWER;TEXTCORE_TEXT_ENGINE_1_5_OR_NEWER;ENABLE_INTERNAL_ASSISTANT;CSHARP_7_OR_LATER;CSHARP_7_3_OR_NEWER</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <NoWarn>0169;USG0001</NoWarn>
+    <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>Temp\bin\Release\</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <NoWarn>0169;USG0001</NoWarn>
+    <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup>
+    <NoConfig>true</NoConfig>
+    <NoStdLib>true</NoStdLib>
+    <AddAdditionalExplicitAssemblyReferences>false</AddAdditionalExplicitAssemblyReferences>
+    <ImplicitlyExpandNETStandardFacades>false</ImplicitlyExpandNETStandardFacades>
+    <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ProjectTypeGuids>{E097FAD1-6243-4DAD-9C02-E9B9EFC3FFC1};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <UnityProjectGenerator>Package</UnityProjectGenerator>
+    <UnityProjectGeneratorVersion>2.0.22</UnityProjectGeneratorVersion>
+    <UnityProjectGeneratorStyle>Legacy</UnityProjectGeneratorStyle>
+    <UnityProjectType>Game:1</UnityProjectType>
+    <UnityBuildTarget>Android:13</UnityBuildTarget>
+    <UnityVersion>6000.0.26f1</UnityVersion>
+  </PropertyGroup>
+  <ItemGroup>
+    <Analyzer Include="C:\Program Files\Microsoft Visual Studio\2022\Professional\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
+    <Analyzer Include="C:\mobileuo\Assets\Packages\System.Text.Json.9.0.2\analyzers\dotnet\roslyn4.0\cs\it\System.Text.Json.SourceGeneration.resources.dll" />
+    <Analyzer Include="C:\mobileuo\Assets\Packages\System.Text.Json.9.0.2\analyzers\dotnet\roslyn4.0\cs\pt-BR\System.Text.Json.SourceGeneration.resources.dll" />
+    <Analyzer Include="C:\mobileuo\Assets\Packages\System.Text.Json.9.0.2\analyzers\dotnet\roslyn4.0\cs\cs\System.Text.Json.SourceGeneration.resources.dll" />
+    <Analyzer Include="C:\mobileuo\Assets\Packages\System.Text.Json.9.0.2\analyzers\dotnet\roslyn4.0\cs\ko\System.Text.Json.SourceGeneration.resources.dll" />
+    <Analyzer Include="C:\mobileuo\Assets\Packages\System.Text.Json.9.0.2\analyzers\dotnet\roslyn4.0\cs\es\System.Text.Json.SourceGeneration.resources.dll" />
+    <Analyzer Include="C:\mobileuo\Assets\Packages\System.Text.Json.9.0.2\analyzers\dotnet\roslyn4.0\cs\ru\System.Text.Json.SourceGeneration.resources.dll" />
+    <Analyzer Include="C:\mobileuo\Assets\Packages\System.Text.Json.9.0.2\analyzers\dotnet\roslyn4.0\cs\zh-Hant\System.Text.Json.SourceGeneration.resources.dll" />
+    <Analyzer Include="C:\mobileuo\Assets\Packages\System.Text.Json.9.0.2\analyzers\dotnet\roslyn4.0\cs\pl\System.Text.Json.SourceGeneration.resources.dll" />
+    <Analyzer Include="C:\mobileuo\Assets\Packages\System.Text.Json.9.0.2\analyzers\dotnet\roslyn4.0\cs\ja\System.Text.Json.SourceGeneration.resources.dll" />
+    <Analyzer Include="C:\mobileuo\Assets\Packages\System.Text.Json.9.0.2\analyzers\dotnet\roslyn4.0\cs\de\System.Text.Json.SourceGeneration.resources.dll" />
+    <Analyzer Include="C:\mobileuo\Assets\Packages\System.Text.Json.9.0.2\analyzers\dotnet\roslyn4.0\cs\tr\System.Text.Json.SourceGeneration.resources.dll" />
+    <Analyzer Include="C:\mobileuo\Assets\Packages\System.Text.Json.9.0.2\analyzers\dotnet\roslyn4.0\cs\fr\System.Text.Json.SourceGeneration.resources.dll" />
+    <Analyzer Include="C:\mobileuo\Assets\Packages\System.Text.Json.9.0.2\analyzers\dotnet\roslyn4.0\cs\zh-Hans\System.Text.Json.SourceGeneration.resources.dll" />
+    <Analyzer Include="C:\mobileuo\Assets\Packages\System.Text.Json.9.0.2\analyzers\dotnet\roslyn4.0\cs\System.Text.Json.SourceGeneration.dll" />
+    <Analyzer Include="C:\Program Files\Unity\Hub\Editor\6000.0.26f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.SourceGenerators.dll" />
+    <Analyzer Include="C:\Program Files\Unity\Hub\Editor\6000.0.26f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.Properties.SourceGenerator.dll" />
+    <Analyzer Include="C:\Program Files\Unity\Hub\Editor\6000.0.26f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.UIToolkit.SourceGenerator.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\UI\Controls\CheckerTrans.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Renderer\Lights\Light.cs" />
+    <Compile Include="Assets\Scripts\XNAEmulator\Graphics\Color.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\Data\SpellsSpellweaving.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\UI\Controls\ClickPriority.cs" />
+    <Compile Include="Assets\Scripts\States\IState.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Utility\Collections\FastList.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Utility\StbTextedit\ITextEditHandler.cs" />
+    <Compile Include="Assets\Scripts\Assistant\Network\Ping.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Network\Encryption\TwofishBehaviour.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\Data\Skill.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Renderer\Batching\CreateStencilStateCommand.cs" />
+    <Compile Include="Assets\Scripts\MP3Sharp\MP3Sharp\Decoding\OutputChannels.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Utility\StbTextedit\Enums.cs" />
+    <Compile Include="Assets\Scripts\XNAEmulator\Game\GameWindow.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\Managers\ChatChannel.cs" />
+    <Compile Include="Assets\Scripts\XNAEmulator\Graphics\SamplerStateCollection.cs" />
+    <Compile Include="Assets\Scripts\Assistant\Scripts\ScriptTextBox.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Renderer\Batching\SetIndexDataCommand.cs" />
+    <Compile Include="Assets\Scripts\RenaissanceDownloader.cs" />
+    <Compile Include="Assets\Scripts\MP3Sharp\MP3Sharp\Decoding\OutputChannelsEnum.cs" />
+    <Compile Include="Assets\Scripts\XNAEmulator\Framework\Quaternion.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\Managers\CorpseManager.cs" />
+    <Compile Include="Assets\Scripts\MP3Sharp\MP3Sharp\Decoding\Decoders\LayerIII\ChannelData.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Renderer\Batching\CreateIndexBufferCommand.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\Managers\AudioManager.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\Data\ServerErrorMessages.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Renderer\Batching\CreateBlendStateCommand.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\UI\Gumps\NetworkStatsGump.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\UI\Gumps\TopBarGump.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\UI\Controls\ScrollFlag.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Network\OutgoingPackets.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\UI\Gumps\MapGump.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Assets\HuesLoader.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\GameObjects\Views\StaticView.cs" />
+    <Compile Include="Assets\Scripts\XNAEmulator\Audio\SoundState.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\Managers\InfoBarManager.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\UI\Gumps\PartyGump.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Utility\UnsafeMemoryManager.cs" />
+    <Compile Include="Assets\Scripts\MP3Sharp\MP3Sharp\Decoding\Decoders\LayerIDecoder.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\Constants.cs" />
+    <Compile Include="Assets\Scripts\States\BootState.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\UI\Gumps\CharCreation\CreateCharTradeGump.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\Managers\IgnoreManager.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Network\PacketLogger.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Renderer\Batching\ScissorCommand.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\UI\Gumps\LocationGoGump.cs" />
+    <Compile Include="Assets\Scripts\Assistant\UOEntity.cs" />
+    <Compile Include="Assets\Scripts\MP3Sharp\MP3Sharp\MP3SharpException.cs" />
+    <Compile Include="Assets\Demigiant\DOTween\Modules\DOTweenModuleUtils.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Network\OldPacketBase.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\UI\Controls\ColorBox.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Network\Socket\SocketWrapper.cs" />
+    <Compile Include="Assets\Scripts\XNAEmulator\Graphics\Effect\Effect.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\Data\EntityFlags.cs" />
+    <Compile Include="Assets\Scripts\JoystickOpacityController.cs" />
+    <Compile Include="Assets\Scripts\MP3Sharp\MP3Sharp\Decoding\PushbackStream.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\Managers\AnimatedStaticsManager.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Assets\UOFileLoader.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\GameObjects\EntityCollection.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\GameObjects\GameEffect.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\UI\Gumps\SpellbookGump.cs" />
+    <Compile Include="Assets\Scripts\MP3Sharp\MP3Sharp\Decoding\BitReserve.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\Managers\WorldMapEntityManager.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Renderer\Sounds\Sound.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Assets\TexmapsLoader.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Renderer\MultiMaps\MultiMap.cs" />
+    <Compile Include="Assets\Scripts\MP3Sharp\MP3Sharp\Decoding\Bitstream.cs" />
+    <Compile Include="Assets\Scripts\XNAEmulator\Framework\Matrix.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Utility\Logging\Log.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\UI\Controls\ResizePic.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Utility\ZLib.cs" />
+    <Compile Include="Assets\Scripts\MP3Sharp\MP3Sharp\Decoding\Decoders\LayerIII\GranuleInfo.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\Data\GraphicEffectType.cs" />
+    <Compile Include="Assets\Scripts\MP3Sharp\MP3Sharp\Decoding\Decoders\LayerI\SubbandLayer1.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\GameObjects\RenderedText.cs" />
+    <Compile Include="Assets\Scripts\XNAEmulator\Graphics\PackedVector\IPackedVector.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\UI\Controls\StbTextBox.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\UI\Controls\HotkeyBox.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Renderer\Camera.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Utility\Platforms\PlatformHelper.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Utility\Logging\LogFile.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\UI\Controls\ScrollBar.cs" />
+    <Compile Include="Assets\Scripts\Assistant\InternalUI\AssistCheckbox.cs" />
+    <Compile Include="Assets\Demigiant\DOTween\Modules\DOTweenModulePhysics.cs" />
+    <Compile Include="Assets\Scripts\Assistant\InternalUI\AssistScrollArea.cs" />
+    <Compile Include="Assets\Scripts\XNAEmulator\Audio\DynamicSoundEffectInstance.cs" />
+    <Compile Include="Assets\Scripts\XNAEmulator\Input\SDL.cs" />
+    <Compile Include="Assets\Scripts\MP3Sharp\MP3Sharp\Decoding\Decoders\LayerI\SubbandLayer1Stereo.cs" />
+    <Compile Include="Assets\Scripts\ZipDownloader.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\UI\Gumps\ShopGump.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Utility\StbRectPack\StbRectPack.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Renderer\Batching\SetSamplerStateCommand.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\Scenes\GameSceneInputHandler.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\GameCursor.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Assets\LightsLoader.cs" />
+    <Compile Include="Assets\Scripts\CustomizeJoystickButtonPresenter.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\GameObjects\Entity.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Assets\SoundsLoader.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\Data\LockedFeatures.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\GameObjects\Views\ItemView.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\Scenes\GameScene.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\Managers\SeasonManager.cs" />
+    <Compile Include="Assets\Scripts\Assistant\Vendors.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Utility\StbRectPack\Packer.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\Data\Sextant.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\UI\Gumps\RaceChangeGump.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Network\OldPacket.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\Managers\ChatManager.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\Data\SpellsNinjitsu.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Utility\Platforms\Native.cs" />
+    <Compile Include="Assets\Scripts\MP3Sharp\MP3Sharp\Decoding\Decoders\LayerIII\ScaleFactorTable.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.IO\Audio\UOSound.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Renderer\Batching\BatchCommand.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\UI\Gumps\WorldMapGump.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\Managers\UIManager.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Utility\Collections\Deque.cs" />
+    <Compile Include="Assets\Scripts\NonDrawingGraphic.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\Data\PopupMenuData.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\UI\Gumps\Login\LoginGump.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Utility\Collections\ReadOnlyArrayView.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\Map\Map.cs" />
+    <Compile Include="Assets\Scripts\Assistant\ObjectPropertyList.cs" />
+    <Compile Include="Assets\Scripts\XNAEmulator\Graphics\RenderTarget2D.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\UI\Tooltip.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\Managers\PartyManager.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Utility\ClientVersion.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\UI\Gumps\Login\ServerSelectionGump.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Configuration\Settings.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\ItemHold.cs" />
+    <Compile Include="Assets\Scripts\VersionTextPresenter.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Configuration\ConfigurationResolver.cs" />
+    <Compile Include="Assets\Scripts\Assistant\Scripts\ScriptVariables.cs" />
+    <Compile Include="Assets\Scripts\XNAEmulator\Graphics\IndexBuffer.cs" />
+    <Compile Include="Assets\Scripts\JoystickScaler.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\UI\Controls\ContextMenuControl.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\Data\CharacterCreationValues.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\UI\Gumps\MarkersManagerGump.cs" />
+    <Compile Include="Assets\Scripts\Assistant\Scripts\Aliases.cs" />
+    <Compile Include="Assets\Demigiant\DOTween\Modules\DOTweenModulePhysics2D.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Configuration\ProfileManager.cs" />
+    <Compile Include="Assets\Scripts\UnityMainThreadDispatcher.cs" />
+    <Compile Include="Assets\Scripts\LoginButtonPresenter.cs" />
+    <Compile Include="Assets\Scripts\MP3Sharp\MP3Sharp\Decoding\Decoders\IFrameDecoder.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\UI\Controls\ArrowNumbersTextBox.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Assets\SpeechesLoader.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Assets\AnimationsLoader.cs" />
+    <Compile Include="Assets\Scripts\AssistantHotkeyButtonGump.cs" />
+    <Compile Include="Assets\Scripts\Assistant\Scripts\Commands.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\Data\ClientProtocol.cs" />
+    <Compile Include="Assets\Scripts\ServerConfiguration\ServerConfiguration.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\UI\Gumps\StatusGump.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Renderer\Effects\BasicUOEffect.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\Managers\TextRenderer.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Assets\ClilocLoader.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.IO\UOFile.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\Managers\ContainerManager.cs" />
+    <Compile Include="Assets\Scripts\XNAEmulator\Framework\EnumsFramework.cs" />
+    <Compile Include="Assets\Scripts\Assistant\UOItem.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\Managers\ActiveIconsManager.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Renderer\ShaderHueTranslator.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\UI\Gumps\UseSpellButtonGump.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Utility\AverageOverTime.cs" />
+    <Compile Include="Assets\Scripts\XNAEmulator\Graphics\VertexElement.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Input\KeyboardEventType.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Network\CircularBuffer.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\GameObjects\Views\MultiView.cs" />
+    <Compile Include="Assets\Scripts\XNAEmulator\Graphics\States\SamplerState.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Renderer\SolidColorTextureCache.cs" />
+    <Compile Include="Assets\Scripts\States\ServerConfigurationState.cs" />
+    <Compile Include="Assets\Scripts\Assistant\Hotkeys.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Renderer\Batching\SetBasicEffectCommand.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.IO\Audio\UOMusic.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Renderer\Batching\BlendFactorCommand.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\Managers\DelayedObjectClickManager.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\UI\Gumps\CharCreation\CreateCharAppearanceGump.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\UI\Gumps\GridLootGump.cs" />
+    <Compile Include="Assets\Scripts\SupportedServerConfigurations.cs" />
+    <Compile Include="Assets\Scripts\ServerConfiguration\ServerConfigurationModel.cs" />
+    <Compile Include="Assets\Scripts\MP3Sharp\MP3Sharp\Decoding\Decoders\LayerIII\ScaleFactorData.cs" />
+    <Compile Include="Assets\Scripts\FileNameView.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\SerialHelper.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Renderer\Batching\IndexedPrimitiveDataCommand.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Utility\UInt16Converter.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Utility\FileSystemHelper.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Renderer\TextureAtlas.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Renderer\Texmaps\Texmap.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Utility\StbTextedit\FindState.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Input\InputEventArgs.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Network\OldPackets.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Renderer\Animations\Animation.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.IO\UOFileUop.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\UI\Gumps\CharCreation\CharCreationGump.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\PluginHost.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\UI\Gumps\ResizableJournal.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\Data\SpellsChivalry.cs" />
+    <Compile Include="Assets\Scripts\XNAEmulator\Graphics\Texture2D.cs" />
+    <Compile Include="Assets\Scripts\Assistant\Dress.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\Managers\SkillsGroupManager.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Renderer\Batching\SetVertexBufferCommand.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\Data\ChairTable.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\Managers\HouseManager.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Input\Mouse.cs" />
+    <Compile Include="Assets\Scripts\MenuPresenter.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\Data\Layers.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Network\Plugin.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\UI\Controls\ButtonTileArt.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\UI\Gumps\ProfileGump.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\UI\Gumps\TextEntryDialogGump.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\UI\Gumps\MiniMapGump.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\UI\Gumps\CreditsGump.cs" />
+    <Compile Include="Assets\Demigiant\DOTween\Modules\DOTweenModuleUnityVersion.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Utility\MathHelper.cs" />
+    <Compile Include="Assets\Scripts\Init.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\Managers\BoatMovingManager.cs" />
+    <Compile Include="Assets\Scripts\Assistant\SkillTimer.cs" />
+    <Compile Include="Assets\Scripts\XNAEmulator\Graphics\VertexDeclaration.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\UI\Controls\HitBox.cs" />
+    <Compile Include="Assets\Scripts\XNAEmulator\Game\GameTime.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Network\Socket\TcpSocketWrapper.cs" />
+    <Compile Include="Assets\Scripts\Assistant\UOMobile.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Assets\ArtLoader.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\Data\Mounts.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.IO\FileReader.cs" />
+    <Compile Include="Assets\Scripts\LeanTouchFingerVisualization.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\UI\Controls\ScrollBarBase.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\Data\LayerOrder.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Input\MouseButtons.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Assets\StringDictionary.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\Managers\ChatStatus.cs" />
+    <Compile Include="Assets\Scripts\ColumnRectPack.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Network\Encryption\MD5Behaviour.cs" />
+    <Compile Include="Assets\Scripts\MP3Sharp\MP3Sharp\Decoding\Decoders\LayerIIDecoder.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\GameObjects\GameObject.cs" />
+    <Compile Include="Assets\Scripts\XNAEmulator\Input\EnumsInput.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\UI\Gumps\PartyInviteGump.cs" />
+    <Compile Include="Assets\Scripts\ConsoleRedirect.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Renderer\Batching\CreateSamplerStateCommand.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Utility\RandomHelper.cs" />
+    <Compile Include="Assets\Scripts\XNAEmulator\Graphics\States\BlendState.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\UI\Controls\RadioButton.cs" />
+    <Compile Include="Assets\Scripts\XNAEmulator\Framework\Point.cs" />
+    <Compile Include="Assets\Scripts\States\GameState.cs" />
+    <Compile Include="Assets\Scripts\MobileJoystick.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Utility\Collections\OrderedDictionary.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\Managers\WorldTextManager.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Assets\MultiLoader.cs" />
+    <Compile Include="Assets\Scripts\XNAEmulator\Framework\Vector3.cs" />
+    <Compile Include="Assets\Scripts\MP3Sharp\MP3Sharp\IO\WaveFileBuffer.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\UI\Gumps\MacroButtonGump.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.IO\UOFilesOverrideMap.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Renderer\Animations\AnimationDirection.cs" />
+    <Compile Include="Assets\Scripts\Assistant\InternalUI\AssistMultiSelectionShrinkBox.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Renderer\Batching\SetStencilStateCommand.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\UI\Controls\HSliderBar.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\UI\Gumps\Login\LoginBackground.cs" />
+    <Compile Include="Assets\Scripts\XNAEmulator\Framework\BoundingBox.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\UltimaLive.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\UI\Controls\Line.cs" />
+    <Compile Include="Assets\Scripts\Assistant\InternalUI\SelectableReadOnlyBox.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\UI\Controls\HoveredLabel.cs" />
+    <Compile Include="Assets\Scripts\XNAEmulator\Graphics\SpriteEffects.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\UI\Controls\GumpPic.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\Managers\AuraManager.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\Data\SpellsMysticism.cs" />
+    <Compile Include="Assets\Scripts\MP3Sharp\MP3Sharp\Decoding\Decoders\LayerII\SubbandLayer2Stereo.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Utility\ColorQuantizer.cs" />
+    <Compile Include="Assets\Scripts\Assistant\Scripts\ScriptManager.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Renderer\Batching\SetBlendStateCommand.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\UI\Gumps\ContainerGump.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Assets\SkillsLoader.cs" />
+    <Compile Include="Assets\Scripts\MP3Sharp\MP3Sharp\Decoding\ABuffer.cs" />
+    <Compile Include="Assets\Scripts\UnityBatcher.cs" />
+    <Compile Include="Assets\Scripts\MP3Sharp\MP3Sharp\Decoding\BitstreamErrors.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Assets\TileArt.cs" />
+    <Compile Include="Assets\Scripts\ServerConfiguration\ServerConfigurationEditPresenter.cs" />
+    <Compile Include="Assets\Scripts\OpenUrlButtonView.cs" />
+    <Compile Include="Assets\Scripts\XNAEmulator\Graphics\GraphicsDevice.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\Managers\HouseCustomizationManager.cs" />
+    <Compile Include="Assets\Scripts\PreferenceEnums.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\GameObjects\Mobile.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\GameObjects\Views\LightningEffectView.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Renderer\Batching\VertexDeclarationCommand.cs" />
+    <Compile Include="Assets\Scripts\Assistant\Network\PacketHandlers.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Assets\VerdataLoader.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Utility\StringHelper.cs" />
+    <Compile Include="Assets\Scripts\XNAEmulator\Game\UnityGameWindow.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.IO\StackDataWriter.cs" />
+    <Compile Include="Assets\Scripts\MP3Sharp\MP3Sharp\Decoding\Decoders\ASubband.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Renderer\ScissorStack.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Utility\StbRectPack\CRuntime.cs" />
+    <Compile Include="Assets\Demigiant\DOTween\Modules\DOTweenModuleAudio.cs" />
+    <Compile Include="Assets\Scripts\Assistant\InternalUI\AssistArrowNumbersTextBox.cs" />
+    <Compile Include="Assets\Scripts\DownloaderBase.cs" />
+    <Compile Include="Assets\Scripts\Assistant\Spell.cs" />
+    <Compile Include="Assets\Scripts\Assistant\FriendsManager.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\UI\Gumps\NameOverHeadHandlerGump.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Time.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Utility\ZLib\ZLibManaged.cs" />
+    <Compile Include="Assets\Scripts\MP3Sharp\MP3Sharp\MP3Stream.cs" />
+    <Compile Include="Assets\Scripts\MP3Sharp\MP3Sharp\SoundFormat.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\UI\Controls\MacroControl.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Renderer\Fonts.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Renderer\SpriteFont.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Utility\StbTextedit\UndoRecord.cs" />
+    <Compile Include="Assets\Scripts\MP3Sharp\MP3Sharp\Decoding\Equalizer.cs" />
+    <Compile Include="Assets\Scripts\DownloadPresenter.cs" />
+    <Compile Include="Assets\Scripts\MP3Sharp\MP3Sharp\Decoding\SampleBuffer.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\UI\Gumps\Login\LoadingGump.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\Scenes\GameSceneDrawingSorting.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\GameObjects\Views\View.cs" />
+    <Compile Include="Assets\Scripts\XNAEmulator\Graphics\VertexPositionColorTexture.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Assets\AnimDataLoader.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Renderer\PixelPicker.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Renderer\SpriteInfo.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\Managers\MacroManager.cs" />
+    <Compile Include="Assets\Scripts\MP3Sharp\MP3Sharp\IO\RiffFile.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Utility\ZLib\Adler32.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\UI\Controls\NiceButton.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Network\NetStatistics.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Network\Encryption\Encryption.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\Data\Waypoints.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\Data\Direction.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\UI\Controls\ScrollArea.cs" />
+    <Compile Include="Assets\Scripts\XNAEmulator\Audio\AudioChannels.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\Managers\NameOverHeadManager.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\ClientException.cs" />
+    <Compile Include="Assets\Scripts\XNAEmulator\Game\GraphicsDeviceManager.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\Data\SpellsNecromancy.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\World.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Configuration\Profile.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\UI\Gumps\QuestionGump.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\GameActions.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\UI\Gumps\CounterBarGump.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\UI\Controls\ScissorControl.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\UI\Gumps\IgnoreManagerGump.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\GameObjects\FixedEffect.cs" />
+    <Compile Include="Assets\Scripts\Assistant\Organizer.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\GameObjects\Item.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\UI\Gumps\ColorPickerGump.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Utility\StbRectPack\StbRectPack.Generated.cs" />
+    <Compile Include="Assets\Scripts\ToggleButtonPresenter.cs" />
+    <Compile Include="Assets\Scripts\Assistant\BuffIcons.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\UI\Controls\ClickableColorBox.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\UI\Gumps\MessageBoxGump.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\UI\Gumps\CharCreation\CreateCharProfessionGump.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\UI\Gumps\TextContainerGump.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\Data\SpellDefinition.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\Managers\MessageManager.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\Managers\MessageEventArgs.cs" />
+    <Compile Include="Assets\Scripts\MP3Sharp\MP3Sharp\IO\RandomAccessFileStream.cs" />
+    <Compile Include="Assets\Scripts\Assistant\BodCapture.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\UI\Gumps\TradingGump.cs" />
+    <Compile Include="Assets\Scripts\CustomDynamicAtlas.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Network\Encryption\LoginCryptBehaviour.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\Scenes\Scene.cs" />
+    <Compile Include="Assets\Scripts\ScissorStateOverride.cs" />
+    <Compile Include="Assets\Scripts\Assistant\InternalUI\AssistHotkeyBox.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Configuration\Json\FNAPointJsonConverter.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\UI\Gumps\ChatGump.cs" />
+    <Compile Include="Assets\Scripts\Assistant\Assistant.cs" />
+    <Compile Include="Assets\Scripts\UtilityMethods.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\UI\Controls\Label.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\GameObjects\Multi.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\UI\Controls\ItemGump.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\Data\Ability.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\Scenes\LoginScene.cs" />
+    <Compile Include="Assets\Scripts\AssistantMacroButtonGump.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.IO\Audio\Sound.cs" />
+    <Compile Include="Assets\Scripts\MP3Sharp\MP3Sharp\Decoding\SynthesisFilter.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.IO\StackDataReader.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Utility\QueuedPool.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\GameObjects\Views\GameEffectView.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\GameObjects\Views\MobileView.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\Weather.cs" />
+    <Compile Include="Assets\Scripts\MP3Sharp\MP3Sharp\Decoding\Header.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Renderer\Gumps\Gump.cs" />
+    <Compile Include="Assets\Scripts\Assistant\Scripts\Lexer.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\Managers\HealthLinesManager.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\GameObjects\Land.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\UI\Gumps\PopupMenuGump.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Renderer\Batching\CreateVertexBufferCommand.cs" />
+    <Compile Include="Assets\Scripts\Assistant\SpecialMoves.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Assets\MultiMapLoader.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\Data\SpellbookTypes.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\UI\Gumps\ResizableGump.cs" />
+    <Compile Include="Assets\Scripts\Assistant\Network\Packets.cs" />
+    <Compile Include="Assets\Scripts\OutlandsDownloader.cs" />
+    <Compile Include="Assets\Scripts\XNAEmulator\Graphics\Viewport.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\Data\MapMessageType.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\UI\Controls\AlphaBlendControl.cs" />
+    <Compile Include="Assets\Scripts\XNAEmulator\Graphics\MeshHolder.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\Data\LightShaderData.cs" />
+    <Compile Include="Assets\Scripts\MP3Sharp\MP3Sharp\Decoding\Decoders\LayerIIIDecoder.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.IO\UOFileIndex.cs" />
+    <Compile Include="Assets\Scripts\Assistant\Resources.Designer.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\SelectedObject.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\Managers\JournalManager.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\UI\Gumps\PaperdollGump.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\UI\Controls\Control.cs" />
+    <Compile Include="Assets\Scripts\XNAEmulator\Framework\MathHelper.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\UI\Controls\HtmlControl.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\Data\SpellsBushido.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\Data\SpellsMagery.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\Data\LightColors.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\UI\Gumps\MenuGump.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\UI\Controls\ExpandableScroll.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\Data\GraphicEffectBlendMode.cs" />
+    <Compile Include="Assets\Scripts\Assistant\XmlFileParser.cs" />
+    <Compile Include="Assets\Scripts\Assistant\Scripts\AgentCommands.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Utility\ValueStringBuilder.cs" />
+    <Compile Include="Assets\Scripts\CUO_API.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Utility\StbTextedit\TextEdit.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Utility\BwtDecompress.cs" />
+    <Compile Include="Assets\Scripts\MP3Sharp\MP3Sharp\Decoding\DecoderErrors.cs" />
+    <Compile Include="Assets\Scripts\ServerConfiguration\ServerConfigurationPresenter.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Renderer\Effects\XBREffect.cs" />
+    <Compile Include="Assets\Scripts\XNAEmulator\Graphics\EnumsGraphics.cs" />
+    <Compile Include="Assets\Scripts\XNAEmulator\Framework\Plane.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\Managers\TargetManager.cs" />
+    <Compile Include="Assets\Scripts\MP3Sharp\MP3Sharp\Decoding\Decoders\LayerIII\Layer3SideInfo.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Utility\ZLib\ZLIBStream.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\UI\Gumps\BuffGump.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\UI\Gumps\UserMarkerGump.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Network\PacketsTable.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\Data\SpellsMastery.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\Managers\Season.cs" />
+    <Compile Include="Assets\Scripts\Assistant\Utility.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\Data\MessageType.cs" />
+    <Compile Include="Assets\Scripts\Assistant\Network\Handlers.cs" />
+    <Compile Include="Assets\Scripts\Assistant\Player.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Renderer\Batching\CreateEffectCommand.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\Data\PopupMenuItem.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\Data\BuffIcon.cs" />
+    <Compile Include="Assets\Scripts\Assistant\Engine.cs" />
+    <Compile Include="Assets\Scripts\Assistant\Journal.cs" />
+    <Compile Include="Assets\Scripts\Assistant\Foods.cs" />
+    <Compile Include="Assets\Scripts\ServerConfiguration\ServerConfigurationListPresenter.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\Data\CharacterSpeedType.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.IO\MMFileReader.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Renderer\Primitives2D.cs" />
+    <Compile Include="Assets\Scripts\OptionEnumView.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\Managers\UseItemQueue.cs" />
+    <Compile Include="Assets\Scripts\Assistant\ActionQueue.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Utility\Easings.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\Data\TextType.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Network\Encryption\BlowfishBehaviour.cs" />
+    <Compile Include="Assets\Scripts\XNAEmulator\Audio\NoAudioHardwareExceptions.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Input\KeysTranslator.cs" />
+    <Compile Include="Assets\Scripts\Assistant\Scripts\Interpreter.cs" />
+    <Compile Include="Assets\Scripts\MP3Sharp\MP3Sharp\Decoding\Decoders\LayerIII\SBI.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\UI\Gumps\GumpType.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\UI\Gumps\MacroGump.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Assets\GumpsLoader.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\UI\Gumps\CharCreation\CreateCharCityGump.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Utility\Crypter.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\GameObjects\Views\LandView.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\ScanTypeObject.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Renderer\Animations\AnimationGroup.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\UI\Gumps\JournalGump.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Renderer\Batcher2D.cs" />
+    <Compile Include="Assets\Scripts\XNAEmulator\Graphics\VertexBuffer.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\Managers\CommandManager.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\GameObjects\MovingEffect.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Utility\StbTextedit\TextEditRow.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Renderer\Batching\CreateBasicEffectCommand.cs" />
+    <Compile Include="Assets\Scripts\ErrorPresenter.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\UoAssist.cs" />
+    <Compile Include="Assets\Scripts\MP3Sharp\MP3Sharp\Decoding\Decoder.cs" />
+    <Compile Include="Assets\Scripts\MP3Sharp\MP3Sharp\Decoding\Huffman.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Renderer\Batching\CreateTexture2DCommand.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\UI\Gumps\HealthBarGump.cs" />
+    <Compile Include="Assets\Scripts\Assistant\Timer.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\UI\Gumps\HouseCustomizationGump.cs" />
+    <Compile Include="Assets\Scripts\States\StateManager.cs" />
+    <Compile Include="Assets\Scripts\XNAEmulator\Graphics\States\DepthStencilState.cs" />
+    <Compile Include="Assets\Scripts\XNAEmulator\Graphics\PresentationParameters.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Renderer\Batching\ViewportCommand.cs" />
+    <Compile Include="Assets\Scripts\XNAEmulator\Game\Game.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\Managers\WalkerManager.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\UI\Gumps\QuestArrowGump.cs" />
+    <Compile Include="Assets\Scripts\Assistant\SkillsHotkeys.cs" />
+    <Compile Include="Assets\Scripts\ServerConfiguration\ServerConfigurationListItemView.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\Data\NotorietyFlag.cs" />
+    <Compile Include="Assets\Demigiant\DOTween\Modules\DOTweenModuleUI.cs" />
+    <Compile Include="Assets\Scripts\Assistant\GateTimer.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Renderer\Arts\Art.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Utility\Collections\CollectionHelper.cs" />
+    <Compile Include="Assets\Scripts\Assistant\Map.cs" />
+    <Compile Include="Assets\Scripts\Assistant\Filters.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Renderer\Batching\SetVertexDataCommand.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Input\MouseEventType.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Utility\ZLib\ZLibHeader.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Assets\TileDataLoader.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\UI\Gumps\Login\CharacterSelectionGump.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\LinkedObject.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Renderer\Batching\SetIndexBufferCommand.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\GameObjects\TextObject.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\UI\Gumps\DebugGump.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\UI\Controls\CroppedText.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\UI\Gumps\OptionsGump.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Utility\Extensions.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\UI\Controls\Combobox.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\UI\Gumps\SystemChatControl.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Utility\TextFileParser.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.IO\DefReader.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Assets\FontsLoader.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\UI\Gumps\ModernBookGump.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\UI\Gumps\RacialAbilitiesBookGump.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\GameObjects\DragEffect.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\GameObjects\IsometricLight.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\Pathfinder.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\Data\CustomHouse.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\UI\Gumps\RacialAbilityButton.cs" />
+    <Compile Include="Assets\Scripts\JoystickScalerCorner.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\Data\StaticFilters.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Renderer\Batching\SetRasterizerStateCommand.cs" />
+    <Compile Include="Assets\Scripts\States\DownloadState.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\UI\Gumps\TipNoticeGump.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Network\Socket\WebSocketWrapper.cs" />
+    <Compile Include="Assets\Scripts\XNAEmulator\Graphics\States\RasterizerState.cs" />
+    <Compile Include="Assets\Scripts\MP3Sharp\MP3Sharp\Decoding\Crc16.cs" />
+    <Compile Include="Assets\Scripts\XNAEmulator\Audio\SoundEffect.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\Data\Reagents.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\UI\Gumps\InfoBarGump.cs" />
+    <Compile Include="Assets\Scripts\XNAEmulator\Graphics\GraphicsResource.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\Managers\HotkeysManager.cs" />
+    <Compile Include="Assets\Scripts\XNAEmulator\Framework\Rectangle.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\GameObjects\MobileAnimation.cs" />
+    <Compile Include="Assets\Scripts\ServerDiscoveryButtonPresenter.cs" />
+    <Compile Include="Assets\Scripts\Assistant\Targeting.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\UI\Gumps\NameOverheadGump.cs" />
+    <Compile Include="Assets\Scripts\UoTextureExplorerHelper.cs" />
+    <Compile Include="Assets\Scripts\Assistant\Scripts\Expressions.cs" />
+    <Compile Include="Assets\Scripts\Assistant\InternalUI\NiceButtonStbText.cs" />
+    <Compile Include="Assets\Scripts\MP3Sharp\MP3Sharp\Decoding\DecoderException.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\GameObjects\EntityTextContainer.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\UI\Gumps\ChatGumpChooseName.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Client.cs" />
+    <Compile Include="Assets\Scripts\DirectoryDownloader.cs" />
+    <Compile Include="Assets\Scripts\MP3Sharp\MP3Sharp\IO\WaveFile.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Renderer\Batching\SetTexture2DDataCommand.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Input\Keyboard.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Network\OldPacketWriter.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Network\NetClient.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\UI\Gumps\CombatBookGump.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\Managers\Stitchin.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\UI\Controls\GumpPicWithWidth.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\GameObjects\LightningEffect.cs" />
+    <Compile Include="Assets\Scripts\ModifierKeyButtonPresenter.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\UI\Gumps\UseAbilityButtonGump.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\Scenes\SceneType.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\UI\Gumps\StandardSkillsGump.cs" />
+    <Compile Include="Assets\Scripts\Assistant\BandageTimer.cs" />
+    <Compile Include="Assets\Scripts\Assistant\Geometry.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\UI\Controls\Checkbox.cs" />
+    <Compile Include="Assets\Scripts\UserPreferences.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\ScanModeObject.cs" />
+    <Compile Include="Assets\Scripts\Assistant\StealthSteps.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Utility\StbTextedit\UndoState.cs" />
+    <Compile Include="Assets\Scripts\MP3Sharp\MP3Sharp\Decoding\Decoders\LayerI\SubbandLayer1IntensityStereo.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Utility\Profiler.cs" />
+    <Compile Include="Assets\Scripts\MP3Sharp\MP3Sharp\Decoding\Decoders\LayerII\SubbandLayer2IntensityStereo.cs" />
+    <Compile Include="Assets\Scripts\MP3Sharp\MP3Sharp\Decoding\BitstreamException.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\UI\Gumps\BulletinBoardGump.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\Managers\EffectManager.cs" />
+    <Compile Include="Assets\Demigiant\DOTween\Modules\DOTweenModuleSprite.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Network\Huffman.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Network\PacketHandlers.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\UI\Controls\DataBox.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\UI\Controls\InfoBarBuilderControl.cs" />
+    <Compile Include="Assets\Scripts\MP3Sharp\MP3Sharp\Buffer16BitStereo.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\UI\Controls\ColorPickerBox.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Utility\Collections\Bag.cs" />
+    <Compile Include="Assets\Scripts\ClientRunner.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\GameObjects\Static.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Renderer\Batching\DestroyResourceCommand.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\Data\RaceType.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\UI\Gumps\WorldViewportGump.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\Data\ContainerData.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\Data\BuffTable.cs" />
+    <Compile Include="Assets\Scripts\JoystickScalerMoveArea.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\Managers\AnchorManager.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Utility\Logging\LogTypes.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\UI\Gumps\SkillGumpAdvanced.cs" />
+    <Compile Include="Assets\Scripts\XNAEmulator\Content\ContentLoadException.cs" />
+    <Compile Include="Assets\Scripts\XNAEmulator\Framework\Vector4.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Utility\Logging\Logger.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\UI\Gumps\AnchorableGump.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\UI\Controls\Button.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\UI\Gumps\SplitMenuGump.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\CUOEnviroment.cs" />
+    <Compile Include="Assets\Scripts\MP3Sharp\MP3Sharp\Decoding\Decoders\LayerII\SubbandLayer2.cs" />
+    <Compile Include="Assets\Scripts\MP3Sharp\MP3Sharp\Support\SupportClass.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\Managers\LastCharacterManager.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\Map\Chunk.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Utility\HuesHelper.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\UI\Gumps\InspectorGump.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\UI\Controls\GumpControlInfo.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\UI\Gumps\SkillButtonGump.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\UI\Controls\StaticPic.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Assets\MapLoader.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\UI\Controls\PaperDollInteractable.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\GameController.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\GameObjects\House.cs" />
+    <Compile Include="Assets\Scripts\Assistant\Scavenger.cs" />
+    <Compile Include="Assets\Scripts\MP3Sharp\MP3Sharp\Decoding\CircularByteBuffer.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Assets\ProfessionLoader.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\Data\ClientFeatures.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\Data\PromptData.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\Data\MovementSpeed.cs" />
+    <Compile Include="Assets\Scripts\Assistant\DressList.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\Managers\ObjectPropertiesListManager.cs" />
+    <Compile Include="Assets\Scripts\XNAEmulator\Framework\Vector2.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Resources\Loader.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Renderer\Batching\CreateRasterizerStateCommand.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.IO\UOFileMul.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\GameObjects\PlayerMobile.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Assets\UOFileManager.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\UI\Gumps\Gump.cs" />
+    <Compile Include="Assets\Scripts\ClassicUO\src\ClassicUO.Client\Game\UI\Controls\GumpPicTiled.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\Packages\System.Text.Encoding.CodePages.5.0.0\version.txt" />
+    <None Include="Assets\Resources\HueShader.shader" />
+    <None Include="Assets\Packages\System.Text.Json.9.0.2\analyzers\dotnet\roslyn4.4\cs\cs\System.Text.Json.SourceGeneration.resources.dll" />
+    <None Include="Assets\Packages\System.IO.Pipelines.9.0.2\LICENSE.TXT" />
+    <None Include="Assets\Resources\Assistant\bufficons.xml" />
+    <None Include="Assets\Packages\System.Text.Json.9.0.2\LICENSE.TXT" />
+    <None Include="Assets\Resources\Assistant\spells.xml" />
+    <None Include="Assets\Packages\System.Text.Encodings.Web.9.0.2\useSharedDesignerContext.txt" />
+    <None Include="Assets\Packages\System.Text.Json.9.0.2\analyzers\dotnet\roslyn3.11\cs\tr\System.Text.Json.SourceGeneration.resources.dll" />
+    <None Include="Assets\Packages\Microsoft.Bcl.AsyncInterfaces.9.0.2\lib\netstandard2.1\Microsoft.Bcl.AsyncInterfaces.xml" />
+    <None Include="Assets\Resources\Assistant\regions.xml" />
+    <None Include="Assets\Packages\System.Text.Json.9.0.2\analyzers\dotnet\roslyn4.4\cs\ko\System.Text.Json.SourceGeneration.resources.dll" />
+    <None Include="Assets\Packages\System.Text.Json.9.0.2\analyzers\dotnet\roslyn4.0\cs\pt-BR\System.Text.Json.SourceGeneration.resources.dll" />
+    <None Include="Assets\Packages\Microsoft.Bcl.AsyncInterfaces.9.0.2\THIRD-PARTY-NOTICES.TXT" />
+    <None Include="Assets\Packages\System.Text.Encoding.CodePages.5.0.0\LICENSE.TXT" />
+    <None Include="Assets\Packages\Microsoft.Bcl.AsyncInterfaces.9.0.2\useSharedDesignerContext.txt" />
+    <None Include="Assets\Packages\System.Text.Json.9.0.2\analyzers\dotnet\roslyn4.0\cs\fr\System.Text.Json.SourceGeneration.resources.dll" />
+    <None Include="Assets\Resources\Assistant\weapons.xml" />
+    <None Include="Assets\Packages\System.Text.Json.9.0.2\analyzers\dotnet\roslyn3.11\cs\ru\System.Text.Json.SourceGeneration.resources.dll" />
+    <None Include="Assets\Resources\Assistant\counters.xml" />
+    <None Include="Assets\Packages\System.Text.Json.9.0.2\analyzers\dotnet\roslyn3.11\cs\ko\System.Text.Json.SourceGeneration.resources.dll" />
+    <None Include="Assets\Packages\System.Text.Json.9.0.2\analyzers\dotnet\roslyn4.4\cs\zh-Hans\System.Text.Json.SourceGeneration.resources.dll" />
+    <None Include="Assets\Demigiant\DOTween\DOTween.XML" />
+    <None Include="Assets\Packages\System.Text.Json.9.0.2\analyzers\dotnet\roslyn3.11\cs\de\System.Text.Json.SourceGeneration.resources.dll" />
+    <None Include="Assets\Resources\Assistant\doors.xml" />
+    <None Include="Assets\Resources\Assistant\abilities.xml" />
+    <None Include="Assets\ClassicUO.Resources.dll" />
+    <None Include="Assets\Packages\System.Text.Json.9.0.2\analyzers\dotnet\roslyn4.0\cs\es\System.Text.Json.SourceGeneration.resources.dll" />
+    <None Include="Assets\Packages\System.Text.Json.9.0.2\analyzers\dotnet\roslyn3.11\cs\cs\System.Text.Json.SourceGeneration.resources.dll" />
+    <None Include="Assets\Packages\System.Text.Json.9.0.2\analyzers\dotnet\roslyn4.0\cs\zh-Hant\System.Text.Json.SourceGeneration.resources.dll" />
+    <None Include="Assets\Packages\System.Text.Json.9.0.2\analyzers\dotnet\roslyn4.0\cs\de\System.Text.Json.SourceGeneration.resources.dll" />
+    <None Include="Assets\Packages\SixLabors.ImageSharp.2.1.4\lib\netstandard2.1\SixLabors.ImageSharp.xml" />
+    <None Include="Assets\Packages\System.Text.Json.9.0.2\analyzers\dotnet\roslyn4.4\cs\ru\System.Text.Json.SourceGeneration.resources.dll" />
+    <None Include="Assets\Packages\System.Text.Json.9.0.2\analyzers\dotnet\roslyn3.11\cs\zh-Hans\System.Text.Json.SourceGeneration.resources.dll" />
+    <None Include="Assets\Packages\System.Text.Json.9.0.2\lib\netstandard2.0\System.Text.Json.xml" />
+    <None Include="Assets\Packages\System.Text.Json.9.0.2\analyzers\dotnet\roslyn3.11\cs\ja\System.Text.Json.SourceGeneration.resources.dll" />
+    <None Include="Assets\Packages\System.Text.Json.9.0.2\analyzers\dotnet\roslyn4.0\cs\zh-Hans\System.Text.Json.SourceGeneration.resources.dll" />
+    <None Include="Assets\Packages\System.Text.Json.9.0.2\lib\netstandard2.0\System.Text.Json.dll" />
+    <None Include="Assets\Resources\XbrShader.shader" />
+    <None Include="Assets\Resources\Assistant\Profile.xml" />
+    <None Include="Assets\Packages\System.Text.Json.9.0.2\analyzers\dotnet\roslyn3.11\cs\zh-Hant\System.Text.Json.SourceGeneration.resources.dll" />
+    <None Include="Assets\Packages\System.Text.Encodings.Web.9.0.2\lib\netstandard2.0\System.Text.Encodings.Web.dll" />
+    <None Include="Assets\Packages\System.Text.Json.9.0.2\analyzers\dotnet\roslyn4.4\cs\fr\System.Text.Json.SourceGeneration.resources.dll" />
+    <None Include="Assets\Resources\Assistant\Config.xml" />
+    <None Include="Assets\Scripts\MP3Sharp\MP3Sharp\ReadMe.txt" />
+    <None Include="Assets\Packages\System.Text.Json.9.0.2\analyzers\dotnet\roslyn4.0\cs\pl\System.Text.Json.SourceGeneration.resources.dll" />
+    <None Include="Assets\Packages\System.IO.Pipelines.9.0.2\lib\netstandard2.0\System.IO.Pipelines.dll" />
+    <None Include="Assets\Demigiant\DOTween\DOTween.dll" />
+    <None Include="Assets\Packages\System.IO.Pipelines.9.0.2\lib\netstandard2.0\System.IO.Pipelines.xml" />
+    <None Include="Assets\Packages\SixLabors.ImageSharp.2.1.4\lib\netstandard2.1\SixLabors.ImageSharp.dll" />
+    <None Include="Assets\Packages\System.Text.Json.9.0.2\analyzers\dotnet\roslyn4.4\cs\it\System.Text.Json.SourceGeneration.resources.dll" />
+    <None Include="Assets\Packages\System.Runtime.CompilerServices.Unsafe.6.1.0\lib\netstandard2.0\System.Runtime.CompilerServices.Unsafe.dll" />
+    <None Include="Assets\Packages\System.Text.Json.9.0.2\analyzers\dotnet\roslyn4.4\cs\pt-BR\System.Text.Json.SourceGeneration.resources.dll" />
+    <None Include="Assets\Resources\Assistant\properties.xml" />
+    <None Include="Assets\Resources\Assistant\bodies.xml" />
+    <None Include="Assets\Packages\System.Text.Json.9.0.2\analyzers\dotnet\roslyn4.0\cs\cs\System.Text.Json.SourceGeneration.resources.dll" />
+    <None Include="Assets\Packages\System.Text.Encoding.CodePages.5.0.0\THIRD-PARTY-NOTICES.TXT" />
+    <None Include="Assets\Packages\System.IO.Pipelines.9.0.2\THIRD-PARTY-NOTICES.TXT" />
+    <None Include="Assets\Packages\System.Text.Json.9.0.2\analyzers\dotnet\roslyn4.4\cs\pl\System.Text.Json.SourceGeneration.resources.dll" />
+    <None Include="Assets\Packages\System.Text.Json.9.0.2\analyzers\dotnet\roslyn4.4\cs\tr\System.Text.Json.SourceGeneration.resources.dll" />
+    <None Include="Assets\Packages\System.Text.Json.9.0.2\analyzers\dotnet\roslyn4.4\cs\de\System.Text.Json.SourceGeneration.resources.dll" />
+    <None Include="Assets\Packages\System.Text.Json.9.0.2\analyzers\dotnet\roslyn4.0\cs\ru\System.Text.Json.SourceGeneration.resources.dll" />
+    <None Include="Assets\Packages\System.Text.Json.9.0.2\THIRD-PARTY-NOTICES.TXT" />
+    <None Include="Assets\Resources\Assistant\foods.xml" />
+    <None Include="Assets\Packages\System.Text.Json.9.0.2\useSharedDesignerContext.txt" />
+    <None Include="Assets\link.xml" />
+    <None Include="Assets\Packages\Microsoft.Bcl.AsyncInterfaces.9.0.2\LICENSE.TXT" />
+    <None Include="Assets\Packages\System.Text.Json.9.0.2\analyzers\dotnet\roslyn4.4\cs\zh-Hant\System.Text.Json.SourceGeneration.resources.dll" />
+    <None Include="Assets\Packages\System.Text.Encoding.CodePages.5.0.0\lib\netstandard2.0\System.Text.Encoding.CodePages.xml" />
+    <None Include="Assets\Packages\System.Text.Json.9.0.2\analyzers\dotnet\roslyn4.4\cs\System.Text.Json.SourceGeneration.dll" />
+    <None Include="Assets\Packages\System.Text.Json.9.0.2\analyzers\dotnet\roslyn3.11\cs\it\System.Text.Json.SourceGeneration.resources.dll" />
+    <None Include="Assets\Demigiant\DOTween\readme.txt" />
+    <None Include="Assets\Packages\System.Text.Encodings.Web.9.0.2\lib\netstandard2.0\System.Text.Encodings.Web.xml" />
+    <None Include="Assets\Packages\System.Text.Json.9.0.2\analyzers\dotnet\roslyn3.11\cs\fr\System.Text.Json.SourceGeneration.resources.dll" />
+    <None Include="Assets\Packages\System.Text.Json.9.0.2\analyzers\dotnet\roslyn4.0\cs\ko\System.Text.Json.SourceGeneration.resources.dll" />
+    <None Include="Assets\Packages\System.Runtime.CompilerServices.Unsafe.6.1.0\lib\netstandard2.0\System.Runtime.CompilerServices.Unsafe.xml" />
+    <None Include="Assets\Packages\System.Text.Json.9.0.2\analyzers\dotnet\roslyn3.11\cs\pl\System.Text.Json.SourceGeneration.resources.dll" />
+    <None Include="Assets\Packages\System.Text.Json.9.0.2\analyzers\dotnet\roslyn3.11\cs\System.Text.Json.SourceGeneration.dll" />
+    <None Include="Assets\Packages\System.Text.Json.9.0.2\analyzers\dotnet\roslyn4.4\cs\es\System.Text.Json.SourceGeneration.resources.dll" />
+    <None Include="Assets\Packages\System.Text.Json.9.0.2\analyzers\dotnet\roslyn4.0\cs\ja\System.Text.Json.SourceGeneration.resources.dll" />
+    <None Include="Assets\Packages\System.Text.Json.9.0.2\analyzers\dotnet\roslyn4.0\cs\tr\System.Text.Json.SourceGeneration.resources.dll" />
+    <None Include="Assets\Packages\System.Text.Json.9.0.2\analyzers\dotnet\roslyn4.0\cs\System.Text.Json.SourceGeneration.dll" />
+    <None Include="Assets\Packages\System.Text.Encoding.CodePages.5.0.0\useSharedDesignerContext.txt" />
+    <None Include="Assets\Packages\System.Text.Json.9.0.2\analyzers\dotnet\roslyn3.11\cs\es\System.Text.Json.SourceGeneration.resources.dll" />
+    <None Include="Assets\Packages\System.Text.Encodings.Web.9.0.2\LICENSE.TXT" />
+    <None Include="Assets\Packages\System.Text.Encoding.CodePages.5.0.0\lib\netstandard2.0\System.Text.Encoding.CodePages.dll" />
+    <None Include="Assets\Resources\Assistant\skills.xml" />
+    <None Include="Assets\Packages\System.IO.Pipelines.9.0.2\useSharedDesignerContext.txt" />
+    <None Include="Assets\Packages\System.Text.Encodings.Web.9.0.2\THIRD-PARTY-NOTICES.TXT" />
+    <None Include="Assets\Packages\System.Text.Json.9.0.2\analyzers\dotnet\roslyn3.11\cs\pt-BR\System.Text.Json.SourceGeneration.resources.dll" />
+    <None Include="Assets\Packages\System.Text.Json.9.0.2\analyzers\dotnet\roslyn4.4\cs\ja\System.Text.Json.SourceGeneration.resources.dll" />
+    <None Include="Assets\Packages\System.Text.Json.9.0.2\analyzers\dotnet\roslyn4.0\cs\it\System.Text.Json.SourceGeneration.resources.dll" />
+    <None Include="Assets\Packages\Microsoft.Bcl.AsyncInterfaces.9.0.2\lib\netstandard2.1\Microsoft.Bcl.AsyncInterfaces.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="UnityEngine">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.0.26f1\Editor\Data\Managed\UnityEngine\UnityEngine.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.ARModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.0.26f1\Editor\Data\Managed\UnityEngine\UnityEngine.ARModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.AccessibilityModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.0.26f1\Editor\Data\Managed\UnityEngine\UnityEngine.AccessibilityModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.AndroidJNIModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.0.26f1\Editor\Data\Managed\UnityEngine\UnityEngine.AndroidJNIModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.AssetBundleModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.0.26f1\Editor\Data\Managed\UnityEngine\UnityEngine.AssetBundleModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.AudioModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.0.26f1\Editor\Data\Managed\UnityEngine\UnityEngine.AudioModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.ContentLoadModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.0.26f1\Editor\Data\Managed\UnityEngine\UnityEngine.ContentLoadModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.CoreModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.0.26f1\Editor\Data\Managed\UnityEngine\UnityEngine.CoreModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.CrashReportingModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.0.26f1\Editor\Data\Managed\UnityEngine\UnityEngine.CrashReportingModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.DSPGraphModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.0.26f1\Editor\Data\Managed\UnityEngine\UnityEngine.DSPGraphModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.GIModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.0.26f1\Editor\Data\Managed\UnityEngine\UnityEngine.GIModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.GameCenterModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.0.26f1\Editor\Data\Managed\UnityEngine\UnityEngine.GameCenterModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.GraphicsStateCollectionSerializerModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.0.26f1\Editor\Data\Managed\UnityEngine\UnityEngine.GraphicsStateCollectionSerializerModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.GridModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.0.26f1\Editor\Data\Managed\UnityEngine\UnityEngine.GridModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.HierarchyCoreModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.0.26f1\Editor\Data\Managed\UnityEngine\UnityEngine.HierarchyCoreModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.HotReloadModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.0.26f1\Editor\Data\Managed\UnityEngine\UnityEngine.HotReloadModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.IMGUIModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.0.26f1\Editor\Data\Managed\UnityEngine\UnityEngine.IMGUIModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.ImageConversionModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.0.26f1\Editor\Data\Managed\UnityEngine\UnityEngine.ImageConversionModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.InputModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.0.26f1\Editor\Data\Managed\UnityEngine\UnityEngine.InputModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.InputForUIModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.0.26f1\Editor\Data\Managed\UnityEngine\UnityEngine.InputForUIModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.InputLegacyModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.0.26f1\Editor\Data\Managed\UnityEngine\UnityEngine.InputLegacyModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.JSONSerializeModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.0.26f1\Editor\Data\Managed\UnityEngine\UnityEngine.JSONSerializeModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.LocalizationModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.0.26f1\Editor\Data\Managed\UnityEngine\UnityEngine.LocalizationModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.MarshallingModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.0.26f1\Editor\Data\Managed\UnityEngine\UnityEngine.MarshallingModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.MultiplayerModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.0.26f1\Editor\Data\Managed\UnityEngine\UnityEngine.MultiplayerModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.PerformanceReportingModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.0.26f1\Editor\Data\Managed\UnityEngine\UnityEngine.PerformanceReportingModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.PropertiesModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.0.26f1\Editor\Data\Managed\UnityEngine\UnityEngine.PropertiesModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.RuntimeInitializeOnLoadManagerInitializerModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.0.26f1\Editor\Data\Managed\UnityEngine\UnityEngine.RuntimeInitializeOnLoadManagerInitializerModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.ShaderVariantAnalyticsModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.0.26f1\Editor\Data\Managed\UnityEngine\UnityEngine.ShaderVariantAnalyticsModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.SharedInternalsModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.0.26f1\Editor\Data\Managed\UnityEngine\UnityEngine.SharedInternalsModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.SpriteMaskModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.0.26f1\Editor\Data\Managed\UnityEngine\UnityEngine.SpriteMaskModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.SpriteShapeModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.0.26f1\Editor\Data\Managed\UnityEngine\UnityEngine.SpriteShapeModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.StreamingModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.0.26f1\Editor\Data\Managed\UnityEngine\UnityEngine.StreamingModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.SubstanceModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.0.26f1\Editor\Data\Managed\UnityEngine\UnityEngine.SubstanceModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.TLSModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.0.26f1\Editor\Data\Managed\UnityEngine\UnityEngine.TLSModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.TextCoreFontEngineModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.0.26f1\Editor\Data\Managed\UnityEngine\UnityEngine.TextCoreFontEngineModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.TextCoreTextEngineModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.0.26f1\Editor\Data\Managed\UnityEngine\UnityEngine.TextCoreTextEngineModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.TextRenderingModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.0.26f1\Editor\Data\Managed\UnityEngine\UnityEngine.TextRenderingModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.UIModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.0.26f1\Editor\Data\Managed\UnityEngine\UnityEngine.UIModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.UIElementsModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.0.26f1\Editor\Data\Managed\UnityEngine\UnityEngine.UIElementsModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.UnityAnalyticsModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.0.26f1\Editor\Data\Managed\UnityEngine\UnityEngine.UnityAnalyticsModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.UnityAnalyticsCommonModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.0.26f1\Editor\Data\Managed\UnityEngine\UnityEngine.UnityAnalyticsCommonModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.UnityConnectModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.0.26f1\Editor\Data\Managed\UnityEngine\UnityEngine.UnityConnectModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.UnityCurlModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.0.26f1\Editor\Data\Managed\UnityEngine\UnityEngine.UnityCurlModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.UnityTestProtocolModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.0.26f1\Editor\Data\Managed\UnityEngine\UnityEngine.UnityTestProtocolModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.UnityWebRequestModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.0.26f1\Editor\Data\Managed\UnityEngine\UnityEngine.UnityWebRequestModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.UnityWebRequestAssetBundleModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.0.26f1\Editor\Data\Managed\UnityEngine\UnityEngine.UnityWebRequestAssetBundleModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.UnityWebRequestAudioModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.0.26f1\Editor\Data\Managed\UnityEngine\UnityEngine.UnityWebRequestAudioModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.UnityWebRequestTextureModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.0.26f1\Editor\Data\Managed\UnityEngine\UnityEngine.UnityWebRequestTextureModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.UnityWebRequestWWWModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.0.26f1\Editor\Data\Managed\UnityEngine\UnityEngine.UnityWebRequestWWWModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.VFXModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.0.26f1\Editor\Data\Managed\UnityEngine\UnityEngine.VFXModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEditor">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.0.26f1\Editor\Data\Managed\UnityEngine\UnityEditor.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEditor.AccessibilityModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.0.26f1\Editor\Data\Managed\UnityEngine\UnityEditor.AccessibilityModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEditor.AdaptivePerformanceModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.0.26f1\Editor\Data\Managed\UnityEngine\UnityEditor.AdaptivePerformanceModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEditor.BuildProfileModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.0.26f1\Editor\Data\Managed\UnityEngine\UnityEditor.BuildProfileModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEditor.CoreBusinessMetricsModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.0.26f1\Editor\Data\Managed\UnityEngine\UnityEditor.CoreBusinessMetricsModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEditor.CoreModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.0.26f1\Editor\Data\Managed\UnityEngine\UnityEditor.CoreModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEditor.DeviceSimulatorModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.0.26f1\Editor\Data\Managed\UnityEngine\UnityEditor.DeviceSimulatorModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEditor.DiagnosticsModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.0.26f1\Editor\Data\Managed\UnityEngine\UnityEditor.DiagnosticsModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEditor.EditorToolbarModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.0.26f1\Editor\Data\Managed\UnityEngine\UnityEditor.EditorToolbarModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEditor.EmbreeModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.0.26f1\Editor\Data\Managed\UnityEngine\UnityEditor.EmbreeModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEditor.GIModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.0.26f1\Editor\Data\Managed\UnityEngine\UnityEditor.GIModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEditor.GraphViewModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.0.26f1\Editor\Data\Managed\UnityEngine\UnityEditor.GraphViewModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEditor.GraphicsStateCollectionSerializerModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.0.26f1\Editor\Data\Managed\UnityEngine\UnityEditor.GraphicsStateCollectionSerializerModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEditor.GridAndSnapModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.0.26f1\Editor\Data\Managed\UnityEngine\UnityEditor.GridAndSnapModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEditor.GridModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.0.26f1\Editor\Data\Managed\UnityEngine\UnityEditor.GridModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEditor.MultiplayerModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.0.26f1\Editor\Data\Managed\UnityEngine\UnityEditor.MultiplayerModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEditor.Physics2DModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.0.26f1\Editor\Data\Managed\UnityEngine\UnityEditor.Physics2DModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEditor.PhysicsModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.0.26f1\Editor\Data\Managed\UnityEngine\UnityEditor.PhysicsModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEditor.PresetsUIModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.0.26f1\Editor\Data\Managed\UnityEngine\UnityEditor.PresetsUIModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEditor.PropertiesModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.0.26f1\Editor\Data\Managed\UnityEngine\UnityEditor.PropertiesModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEditor.QuickSearchModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.0.26f1\Editor\Data\Managed\UnityEngine\UnityEditor.QuickSearchModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEditor.SafeModeModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.0.26f1\Editor\Data\Managed\UnityEngine\UnityEditor.SafeModeModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEditor.SceneTemplateModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.0.26f1\Editor\Data\Managed\UnityEngine\UnityEditor.SceneTemplateModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEditor.SceneViewModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.0.26f1\Editor\Data\Managed\UnityEngine\UnityEditor.SceneViewModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEditor.ShaderFoundryModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.0.26f1\Editor\Data\Managed\UnityEngine\UnityEditor.ShaderFoundryModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEditor.SketchUpModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.0.26f1\Editor\Data\Managed\UnityEngine\UnityEditor.SketchUpModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEditor.SpriteMaskModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.0.26f1\Editor\Data\Managed\UnityEngine\UnityEditor.SpriteMaskModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEditor.SpriteShapeModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.0.26f1\Editor\Data\Managed\UnityEngine\UnityEditor.SpriteShapeModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEditor.SubstanceModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.0.26f1\Editor\Data\Managed\UnityEngine\UnityEditor.SubstanceModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEditor.TerrainModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.0.26f1\Editor\Data\Managed\UnityEngine\UnityEditor.TerrainModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEditor.TextCoreFontEngineModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.0.26f1\Editor\Data\Managed\UnityEngine\UnityEditor.TextCoreFontEngineModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEditor.TextCoreTextEngineModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.0.26f1\Editor\Data\Managed\UnityEngine\UnityEditor.TextCoreTextEngineModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEditor.TextRenderingModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.0.26f1\Editor\Data\Managed\UnityEngine\UnityEditor.TextRenderingModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEditor.TilemapModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.0.26f1\Editor\Data\Managed\UnityEngine\UnityEditor.TilemapModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEditor.TreeModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.0.26f1\Editor\Data\Managed\UnityEngine\UnityEditor.TreeModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEditor.UIAutomationModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.0.26f1\Editor\Data\Managed\UnityEngine\UnityEditor.UIAutomationModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEditor.UIBuilderModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.0.26f1\Editor\Data\Managed\UnityEngine\UnityEditor.UIBuilderModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEditor.UIElementsModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.0.26f1\Editor\Data\Managed\UnityEngine\UnityEditor.UIElementsModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEditor.UIElementsSamplesModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.0.26f1\Editor\Data\Managed\UnityEngine\UnityEditor.UIElementsSamplesModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEditor.UmbraModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.0.26f1\Editor\Data\Managed\UnityEngine\UnityEditor.UmbraModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEditor.UnityConnectModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.0.26f1\Editor\Data\Managed\UnityEngine\UnityEditor.UnityConnectModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEditor.VFXModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.0.26f1\Editor\Data\Managed\UnityEngine\UnityEditor.VFXModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEditor.VideoModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.0.26f1\Editor\Data\Managed\UnityEngine\UnityEditor.VideoModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEditor.XRModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.0.26f1\Editor\Data\Managed\UnityEngine\UnityEditor.XRModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="nunit.framework">
+      <HintPath>Library\PackageCache\com.unity.ext.nunit\net40\unity-custom\nunit.framework.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="ClassicUO.Resources">
+      <HintPath>Assets\ClassicUO.Resources.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Text.Json">
+      <HintPath>Assets\Packages\System.Text.Json.9.0.2\lib\netstandard2.0\System.Text.Json.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Text.Encodings.Web">
+      <HintPath>Assets\Packages\System.Text.Encodings.Web.9.0.2\lib\netstandard2.0\System.Text.Encodings.Web.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.IO.Pipelines">
+      <HintPath>Assets\Packages\System.IO.Pipelines.9.0.2\lib\netstandard2.0\System.IO.Pipelines.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="DOTween">
+      <HintPath>Assets\Demigiant\DOTween\DOTween.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="SixLabors.ImageSharp">
+      <HintPath>Assets\Packages\SixLabors.ImageSharp.2.1.4\lib\netstandard2.1\SixLabors.ImageSharp.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe">
+      <HintPath>Assets\Packages\System.Runtime.CompilerServices.Unsafe.6.1.0\lib\netstandard2.0\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>Assets\Plugins\Newtonsoft.Json.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Text.Encoding.CodePages">
+      <HintPath>Assets\Packages\System.Text.Encoding.CodePages.5.0.0\lib\netstandard2.0\System.Text.Encoding.CodePages.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Microsoft.Bcl.AsyncInterfaces">
+      <HintPath>Assets\Packages\Microsoft.Bcl.AsyncInterfaces.9.0.2\lib\netstandard2.1\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEditor.iOS.Extensions.Xcode">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.0.26f1\Editor\Data\PlaybackEngines\iOSSupport\UnityEditor.iOS.Extensions.Xcode.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEditor.iOS.Extensions.Common">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.0.26f1\Editor\Data\PlaybackEngines\iOSSupport\UnityEditor.iOS.Extensions.Common.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEditor.Apple.Extensions.Common">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.0.26f1\Editor\Data\PlaybackEngines\iOSSupport\UnityEditor.Apple.Extensions.Common.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.Android.Types">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.0.26f1\Editor\Data\PlaybackEngines\AndroidPlayer\Unity.Android.Types.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.Android.Gradle">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.0.26f1\Editor\Data\PlaybackEngines\AndroidPlayer\Unity.Android.Gradle.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="netstandard">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.0.26f1\Editor\Data\NetStandard\ref\2.1.0\netstandard.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Microsoft.Win32.Primitives">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.0.26f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\Microsoft.Win32.Primitives.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.AppContext">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.0.26f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.AppContext.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Buffers">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.0.26f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Buffers.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Collections.Concurrent">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.0.26f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Collections.Concurrent.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Collections">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.0.26f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Collections.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Collections.NonGeneric">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.0.26f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Collections.NonGeneric.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Collections.Specialized">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.0.26f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Collections.Specialized.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.ComponentModel">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.0.26f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.ComponentModel.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.ComponentModel.EventBasedAsync">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.0.26f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.ComponentModel.EventBasedAsync.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.ComponentModel.Primitives">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.0.26f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.ComponentModel.Primitives.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.ComponentModel.TypeConverter">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.0.26f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.ComponentModel.TypeConverter.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Console">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.0.26f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Console.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Data.Common">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.0.26f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Data.Common.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Diagnostics.Contracts">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.0.26f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Diagnostics.Contracts.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Diagnostics.Debug">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.0.26f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Diagnostics.Debug.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Diagnostics.FileVersionInfo">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.0.26f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Diagnostics.FileVersionInfo.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Diagnostics.Process">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.0.26f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Diagnostics.Process.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Diagnostics.StackTrace">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.0.26f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Diagnostics.StackTrace.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Diagnostics.TextWriterTraceListener">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.0.26f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Diagnostics.TextWriterTraceListener.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Diagnostics.Tools">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.0.26f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Diagnostics.Tools.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Diagnostics.TraceSource">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.0.26f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Diagnostics.TraceSource.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Diagnostics.Tracing">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.0.26f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Diagnostics.Tracing.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Drawing.Primitives">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.0.26f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Drawing.Primitives.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Dynamic.Runtime">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.0.26f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Dynamic.Runtime.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Globalization.Calendars">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.0.26f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Globalization.Calendars.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Globalization">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.0.26f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Globalization.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Globalization.Extensions">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.0.26f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Globalization.Extensions.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.IO.Compression">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.0.26f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.IO.Compression.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.IO.Compression.ZipFile">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.0.26f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.IO.Compression.ZipFile.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.IO">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.0.26f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.IO.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.IO.FileSystem">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.0.26f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.IO.FileSystem.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.IO.FileSystem.DriveInfo">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.0.26f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.IO.FileSystem.DriveInfo.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.IO.FileSystem.Primitives">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.0.26f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.IO.FileSystem.Primitives.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.IO.FileSystem.Watcher">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.0.26f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.IO.FileSystem.Watcher.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.IO.IsolatedStorage">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.0.26f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.IO.IsolatedStorage.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.IO.MemoryMappedFiles">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.0.26f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.IO.MemoryMappedFiles.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.IO.Pipes">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.0.26f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.IO.Pipes.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.IO.UnmanagedMemoryStream">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.0.26f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.IO.UnmanagedMemoryStream.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Linq">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.0.26f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Linq.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Linq.Expressions">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.0.26f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Linq.Expressions.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Linq.Parallel">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.0.26f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Linq.Parallel.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Linq.Queryable">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.0.26f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Linq.Queryable.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Memory">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.0.26f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Memory.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Net.Http">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.0.26f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Net.Http.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Net.NameResolution">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.0.26f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Net.NameResolution.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Net.NetworkInformation">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.0.26f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Net.NetworkInformation.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Net.Ping">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.0.26f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Net.Ping.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Net.Primitives">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.0.26f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Net.Primitives.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Net.Requests">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.0.26f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Net.Requests.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Net.Security">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.0.26f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Net.Security.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Net.Sockets">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.0.26f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Net.Sockets.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Net.WebHeaderCollection">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.0.26f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Net.WebHeaderCollection.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Net.WebSockets.Client">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.0.26f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Net.WebSockets.Client.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Net.WebSockets">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.0.26f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Net.WebSockets.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Numerics.Vectors">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.0.26f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Numerics.Vectors.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.ObjectModel">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.0.26f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.ObjectModel.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Reflection.DispatchProxy">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.0.26f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Reflection.DispatchProxy.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Reflection">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.0.26f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Reflection.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Reflection.Emit">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.0.26f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Reflection.Emit.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Reflection.Emit.ILGeneration">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.0.26f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Reflection.Emit.ILGeneration.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Reflection.Emit.Lightweight">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.0.26f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Reflection.Emit.Lightweight.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Reflection.Extensions">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.0.26f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Reflection.Extensions.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Reflection.Primitives">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.0.26f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Reflection.Primitives.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Resources.Reader">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.0.26f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Resources.Reader.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Resources.ResourceManager">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.0.26f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Resources.ResourceManager.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Resources.Writer">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.0.26f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Resources.Writer.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.VisualC">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.0.26f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Runtime.CompilerServices.VisualC.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Runtime">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.0.26f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Runtime.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Runtime.Extensions">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.0.26f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Runtime.Extensions.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Runtime.Handles">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.0.26f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Runtime.Handles.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Runtime.InteropServices">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.0.26f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Runtime.InteropServices.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Runtime.InteropServices.RuntimeInformation">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.0.26f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Runtime.InteropServices.RuntimeInformation.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Runtime.Numerics">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.0.26f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Runtime.Numerics.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization.Formatters">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.0.26f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Runtime.Serialization.Formatters.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization.Json">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.0.26f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Runtime.Serialization.Json.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization.Primitives">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.0.26f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Runtime.Serialization.Primitives.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization.Xml">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.0.26f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Runtime.Serialization.Xml.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Security.Claims">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.0.26f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Security.Claims.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.Algorithms">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.0.26f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Security.Cryptography.Algorithms.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.Csp">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.0.26f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Security.Cryptography.Csp.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.Encoding">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.0.26f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Security.Cryptography.Encoding.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.Primitives">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.0.26f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Security.Cryptography.Primitives.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.X509Certificates">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.0.26f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Security.Cryptography.X509Certificates.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Security.Principal">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.0.26f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Security.Principal.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Security.SecureString">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.0.26f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Security.SecureString.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Text.Encoding">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.0.26f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Text.Encoding.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Text.Encoding.Extensions">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.0.26f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Text.Encoding.Extensions.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Text.RegularExpressions">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.0.26f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Text.RegularExpressions.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Threading">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.0.26f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Threading.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Threading.Overlapped">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.0.26f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Threading.Overlapped.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Threading.Tasks">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.0.26f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Threading.Tasks.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Threading.Tasks.Extensions">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.0.26f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Threading.Tasks.Extensions.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Threading.Tasks.Parallel">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.0.26f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Threading.Tasks.Parallel.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Threading.Thread">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.0.26f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Threading.Thread.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Threading.ThreadPool">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.0.26f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Threading.ThreadPool.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Threading.Timer">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.0.26f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Threading.Timer.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.ValueTuple">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.0.26f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.ValueTuple.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Xml.ReaderWriter">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.0.26f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Xml.ReaderWriter.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Xml.XDocument">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.0.26f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Xml.XDocument.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Xml.XmlDocument">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.0.26f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Xml.XmlDocument.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Xml.XmlSerializer">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.0.26f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Xml.XmlSerializer.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Xml.XPath">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.0.26f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Xml.XPath.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Xml.XPath.XDocument">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.0.26f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Xml.XPath.XDocument.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Runtime.InteropServices.WindowsRuntime">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.0.26f1\Editor\Data\NetStandard\Extensions\2.0.0\System.Runtime.InteropServices.WindowsRuntime.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="mscorlib">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.0.26f1\Editor\Data\NetStandard\compat\2.1.0\shims\netfx\mscorlib.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.ComponentModel.Composition">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.0.26f1\Editor\Data\NetStandard\compat\2.1.0\shims\netfx\System.ComponentModel.Composition.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Core">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.0.26f1\Editor\Data\NetStandard\compat\2.1.0\shims\netfx\System.Core.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Data">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.0.26f1\Editor\Data\NetStandard\compat\2.1.0\shims\netfx\System.Data.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.0.26f1\Editor\Data\NetStandard\compat\2.1.0\shims\netfx\System.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Drawing">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.0.26f1\Editor\Data\NetStandard\compat\2.1.0\shims\netfx\System.Drawing.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.IO.Compression.FileSystem">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.0.26f1\Editor\Data\NetStandard\compat\2.1.0\shims\netfx\System.IO.Compression.FileSystem.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Net">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.0.26f1\Editor\Data\NetStandard\compat\2.1.0\shims\netfx\System.Net.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Numerics">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.0.26f1\Editor\Data\NetStandard\compat\2.1.0\shims\netfx\System.Numerics.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.0.26f1\Editor\Data\NetStandard\compat\2.1.0\shims\netfx\System.Runtime.Serialization.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.ServiceModel.Web">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.0.26f1\Editor\Data\NetStandard\compat\2.1.0\shims\netfx\System.ServiceModel.Web.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Transactions">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.0.26f1\Editor\Data\NetStandard\compat\2.1.0\shims\netfx\System.Transactions.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Web">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.0.26f1\Editor\Data\NetStandard\compat\2.1.0\shims\netfx\System.Web.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Windows">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.0.26f1\Editor\Data\NetStandard\compat\2.1.0\shims\netfx\System.Windows.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Xml">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.0.26f1\Editor\Data\NetStandard\compat\2.1.0\shims\netfx\System.Xml.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Xml.Linq">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.0.26f1\Editor\Data\NetStandard\compat\2.1.0\shims\netfx\System.Xml.Linq.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Xml.Serialization">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.0.26f1\Editor\Data\NetStandard\compat\2.1.0\shims\netfx\System.Xml.Serialization.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.Multiplayer.Center.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.Multiplayer.Center.Editor.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEditor.UI">
+      <HintPath>Library\ScriptAssemblies\UnityEditor.UI.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.Rider.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.Rider.Editor.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.Multiplayer.Center.Common">
+      <HintPath>Library\ScriptAssemblies\Unity.Multiplayer.Center.Common.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.Mobile.AndroidLogcat.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.Mobile.AndroidLogcat.Editor.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.TextMeshPro.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.TextMeshPro.Editor.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.VisualStudio.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.VisualStudio.Editor.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.TextMeshPro">
+      <HintPath>Library\ScriptAssemblies\Unity.TextMeshPro.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="NuGetForUnity">
+      <HintPath>Library\ScriptAssemblies\NuGetForUnity.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.UI">
+      <HintPath>Library\ScriptAssemblies\UnityEngine.UI.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="Assembly-CSharp-firstpass.csproj">
+      <Project>{EBFD8065-EF87-4235-5D65-DF6E9A09D940}</Project>
+      <Name>Assembly-CSharp-firstpass</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="GenerateTargetFrameworkMonikerAttribute" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
