@@ -1,20 +1,20 @@
-name: Quick Build
+# name: Quick Build
 
-on: [push, pull_request]
+# on: [push, pull_request]
 
-jobs:
-  build:
-    name: Build for ${{ matrix.targetPlatform }}
-    runs-on: windows-latest
-    steps:
-      - uses: actions/checkout@v4
-      - name: Setup .NET SDK 5.x
-        uses: actions/setup-dotnet@v4
-        with:
-          dotnet-version: '5.x'
-      - name: Setup MSBuild
-        uses: microsoft/setup-msbuild@v1
-      - name: Install dependencies
-        run: nuget restore mobileuo.sln
-      - name: Build
-        run: msbuild mobileuo.sln /p:Configuration=Release
+# jobs:
+  # build:
+    # name: Build for ${{ matrix.targetPlatform }}
+    # runs-on: windows-latest
+    # steps:
+      # - uses: actions/checkout@v4
+      # - name: Setup .NET SDK 5.x
+        # uses: actions/setup-dotnet@v4
+        # with:
+          # dotnet-version: '5.x'
+      # - name: Setup MSBuild
+        # uses: microsoft/setup-msbuild@v1
+      # - name: Install dependencies
+        # run: nuget restore mobileuo.sln
+      # - name: Build
+        # run: msbuild mobileuo.sln /p:Configuration=Release

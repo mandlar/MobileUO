@@ -1,8 +1,6 @@
-name: Android Build (manual)
+name: Android Build
 
-on: #[push, pull_request]
-    workflow_dispatch:
-
+on: [push, pull_request]
 
 jobs:
   buildForAllSupportedPlatforms:
