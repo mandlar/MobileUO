@@ -5,16 +5,17 @@ on: [push, pull_request]
 jobs:
   build:
     name: Build for ${{ matrix.targetPlatform }}
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Setup .NET 6.x
+      - name: Setup .NET SDK 5.x
         uses: actions/setup-dotnet@v4
         with:
-        # Semantic version range syntax or exact version of a dotnet version
-            dotnet-version: '8.x'
-            #cache: true
+          dotnet-version: '5.x'
+          cache: true
+      - name: Setup MSBuild
+        uses: microsoft/setup-msbuild@v1
       - name: Install dependencies
-        run: dotnet restore mobileuo.sln
+        run: nuget restore mobileuo.sln
       - name: Build
-        run: dotnet build mobileuo.sln --no-restore
+        run: msbuild mobileuo.sln /p:Configuration=Release
