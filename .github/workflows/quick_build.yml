@@ -15,6 +15,6 @@ jobs:
             dotnet-version: '8.x'
             #cache: true
       - name: Install dependencies
-        run: dotnet restore
+        run: dotnet restore mobileuo.sln
       - name: Build
-        run: dotnet build --no-restore
+        run: dotnet build mobileuo.sln --no-restore
