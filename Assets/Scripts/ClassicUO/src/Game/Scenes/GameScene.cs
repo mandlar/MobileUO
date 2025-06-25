@@ -253,8 +253,7 @@ namespace ClassicUO.Game.Scenes
                     break;
 
                 case MessageType.System:
-                    name = string.IsNullOrEmpty(e.Name) || e.Name.ToLowerInvariant() == "system" ? ResGeneral.System : e.Name;
-
+                    name = string.IsNullOrEmpty(e.Name) || string.Equals(e.Name, "system", StringComparison.InvariantCultureIgnoreCase) ? ResGeneral.System : e.Name;
                     text = e.Text;
 
                     break;
@@ -271,7 +270,19 @@ namespace ClassicUO.Game.Scenes
                     break;
 
                 case MessageType.Label:
-                    name = ResGeneral.YouSee;
+                    if (e.Parent == null || !SerialHelper.IsValid(e.Parent.Serial))
+                    {
+                        name = string.Empty;
+                    }
+                    else if (string.IsNullOrEmpty(e.Name))
+                    {
+                        name = ResGeneral.YouSee;
+                    }
+                    else
+                    {
+                        name = e.Name;
+                    }
+
                     text = e.Text;
 
                     break;
