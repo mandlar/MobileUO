@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Buffers.Binary;
 using System.Collections.Generic;
+using System.Data;
 using System.IO;
 using System.Linq;
 using System.Runtime.CompilerServices;
@@ -105,7 +106,7 @@ namespace ClassicUO.IO
         {
             EnsureSize(1);
 
-            _buffer[Position] = (byte) b;
+            _buffer[Position] = (byte)b;
 
             Position += 1;
         }
@@ -113,7 +114,7 @@ namespace ClassicUO.IO
         [MethodImpl(IMPL_OPTION)]
         public void WriteBool(bool b)
         {
-            WriteUInt8(b ? (byte) 0x01 : (byte) 0x00);
+            WriteUInt8(b ? (byte)0x01 : (byte)0x00);
         }
 
 
@@ -183,13 +184,14 @@ namespace ClassicUO.IO
         [MethodImpl(IMPL_OPTION)]
         public void WriteUnicodeLE(string str)
         {
-            WriteString(Encoding.Unicode, str, str.Length + 1);
+            WriteString<char>(Encoding.Unicode, str, -1);
+            WriteUInt16LE(0x0000);
         }
 
         [MethodImpl(IMPL_OPTION)]
         public void WriteUnicodeLE(string str, int length)
         {
-            WriteString(Encoding.Unicode, str, length);
+            WriteString<char>(Encoding.Unicode, str, length);
         }
 
 
@@ -260,35 +262,37 @@ namespace ClassicUO.IO
         [MethodImpl(IMPL_OPTION)]
         public void WriteUnicodeBE(string str)
         {
-            WriteString(Encoding.BigEndianUnicode, str, str.Length + 1);
+            WriteString<char>(Encoding.BigEndianUnicode, str, -1);
+            WriteUInt16BE(0x0000);
         }
 
         [MethodImpl(IMPL_OPTION)]
         public void WriteUnicodeBE(string str, int length)
         {
-            WriteString(Encoding.BigEndianUnicode, str, length);
+            WriteString<char>(Encoding.BigEndianUnicode, str, length);
         }
 
-        
+
 
 
 
         [MethodImpl(IMPL_OPTION)]
         public void WriteUTF8(string str, int len)
         {
-            WriteString(Encoding.UTF8, str, len);
+            WriteString<byte>(Encoding.UTF8, str, len);
         }
 
         [MethodImpl(IMPL_OPTION)]
         public void WriteASCII(string str)
         {
-            WriteString(Encoding.ASCII, str, str.Length + 1);
+            WriteString<byte>(Encoding.ASCII, str, -1);
+            WriteUInt8(0x00);
         }
 
         [MethodImpl(IMPL_OPTION)]
         public void WriteASCII(string str, int length)
         {
-            WriteString(Encoding.ASCII, str, length);
+            WriteString<byte>(Encoding.ASCII, str, length);
         }
 
 
@@ -315,29 +319,47 @@ namespace ClassicUO.IO
             Position += span.Length;
         }
 
-        private void WriteString(Encoding encoding, string str, int length)
+        // Thanks MUO :)
+        private void WriteString<T>(Encoding encoding, string str, int length) where T : struct, IEquatable<T>
         {
+            int sizeT = Unsafe.SizeOf<T>();
+
+            if (sizeT > 2)
+            {
+                throw new InvalidConstraintException("WriteString only accepts byte, sbyte, char, short, and ushort as a constraint");
+            }
+
             if (str == null)
             {
                 str = string.Empty;
             }
 
-            EnsureSize(encoding.GetByteCount(str));
+            int byteCount = length > -1 ? length * sizeT : encoding.GetByteCount(str);
 
-            int size = Math.Min(length, str.Length);
+            if (byteCount == 0)
+            {
+                return;
+            }
+
+            EnsureSize(byteCount);
+
+            int charLength = Math.Min(length > -1 ? length : str.Length, str.Length);
 
             int processed = encoding.GetBytes
             (
                 str,
                 0,
-                size,
+                charLength,
                 _allocatedBuffer,
                 Position
             );
 
             Position += processed;
 
-            WriteZero(length - processed);
+            if (length > -1)
+            {
+                WriteZero(length * sizeT - processed);
+            }
         }
 
         [MethodImpl(IMPL_OPTION)]
