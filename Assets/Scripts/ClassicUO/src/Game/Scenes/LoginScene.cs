@@ -79,8 +79,7 @@ namespace ClassicUO.Game.Scenes
         private int _reconnectTryCounter = 1;
         private bool _autoLogin;
 
-
-        public LoginScene() : base((int) SceneType.Login, false, false, true)
+        public LoginScene() : base((int)SceneType.Login, false, false, true)
         {
         }
 
@@ -204,7 +203,7 @@ namespace ClassicUO.Game.Scenes
                         timeT = 1000;
                     }
 
-                    _reconnectTime = (long) totalTime + timeT;
+                    _reconnectTime = (long)totalTime + timeT;
                     _reconnectTryCounter++;
                 }
             }
@@ -321,7 +320,7 @@ namespace ClassicUO.Game.Scenes
 
         private void OnLoadingGumpButtonClick(int buttonId)
         {
-            LoginButtons butt = (LoginButtons) buttonId;
+            LoginButtons butt = (LoginButtons)buttonId;
 
             if (butt == LoginButtons.OK || butt == LoginButtons.Cancel)
             {
@@ -354,7 +353,7 @@ namespace ClassicUO.Game.Scenes
             {
                 CurrentLoginStep = LoginSteps.Connecting;
             }
-            
+
             if (!await NetClient.LoginSocket.Connect(Settings.GlobalSettings.IP, Settings.GlobalSettings.Port))
             {
                 PopupMessage = ResGeneral.CheckYourConnectionAndTryAgain;
@@ -411,7 +410,7 @@ namespace ClassicUO.Game.Scenes
                     }
                 }
 
-                Settings.GlobalSettings.LastServerNum = (ushort) (1 + ServerIndex);
+                Settings.GlobalSettings.LastServerNum = (ushort)(1 + ServerIndex);
                 Settings.GlobalSettings.LastServerName = Servers[ServerIndex].Name;
                 Settings.GlobalSettings.Save();
 
@@ -427,8 +426,8 @@ namespace ClassicUO.Game.Scenes
         {
             if (CurrentLoginStep == LoginSteps.CharacterSelection)
             {
-                Settings.GlobalSettings.LastCharacterName = Characters[index];
-                Settings.GlobalSettings.Save();
+                LastCharacterManager.Save(Account, World.ServerName, Characters[index]);
+
                 CurrentLoginStep = LoginSteps.EnteringBritania;
                 NetClient.Socket.Send_SelectCharacter(index, Characters[index], NetClient.Socket.LocalIP);
             }
@@ -454,7 +453,7 @@ namespace ClassicUO.Game.Scenes
                 }
             }
 
-            Settings.GlobalSettings.LastCharacterName = character.Name;
+            LastCharacterManager.Save(Account, World.ServerName, character.Name);
 
             NetClient.Socket.Send_CreateCharacter(character,
                                                   cityIndex,
@@ -540,12 +539,12 @@ namespace ClassicUO.Game.Scenes
 
             if (Client.Version >= ClientVersion.CV_6040)
             {
-                uint clientVersion = (uint) Client.Version;
+                uint clientVersion = (uint)Client.Version;
 
-                byte major = (byte) (clientVersion >> 24);
-                byte minor = (byte) (clientVersion >> 16);
-                byte build = (byte) (clientVersion >> 8);
-                byte extra = (byte) clientVersion;
+                byte major = (byte)(clientVersion >> 24);
+                byte minor = (byte)(clientVersion >> 16);
+                byte build = (byte)(clientVersion >> 8);
+                byte extra = (byte)clientVersion;
 
 
                 NetClient.LoginSocket.Send_Seed(address, major, minor, build, extra);
@@ -652,7 +651,7 @@ namespace ClassicUO.Game.Scenes
             ParseCharacterList(ref p);
             ParseCities(ref p);
 
-            World.ClientFeatures.SetFlags((CharacterListFlags) p.ReadUInt32BE());
+            World.ClientFeatures.SetFlags((CharacterListFlags)p.ReadUInt32BE());
             CurrentLoginStep = LoginSteps.CharacterSelection;
 
             uint charToSelect = 0;
@@ -665,13 +664,15 @@ namespace ClassicUO.Game.Scenes
                 _autoLogin = false;
             }
 
+            string lastCharName = LastCharacterManager.GetLastCharacter(Account, World.ServerName);
+
             for (byte i = 0; i < Characters.Length; i++)
             {
                 if (Characters[i].Length > 0)
                 {
                     haveAnyCharacter = true;
 
-                    if (Characters[i] == Settings.GlobalSettings.LastCharacterName)
+                    if (Characters[i] == lastCharName)
                     {
                         charToSelect = i;
 
@@ -708,7 +709,7 @@ namespace ClassicUO.Game.Scenes
             ushort port = p.ReadUInt16BE();
             uint seed = p.ReadUInt32BE();
             NetClient.LoginSocket.Disconnect();
-            EncryptionHelper.Initialize(false, seed, (ENCRYPTION_TYPE) Settings.GlobalSettings.Encryption);
+            EncryptionHelper.Initialize(false, seed, (ENCRYPTION_TYPE)Settings.GlobalSettings.Encryption);
 
             NetClient.Socket.Connect(new IPAddress(ip), port)
                      .ContinueWith
@@ -719,7 +720,7 @@ namespace ClassicUO.Game.Scenes
                              {
                                  NetClient.Socket.EnableCompression();
                                  // TODO: stackalloc
-                                 byte[] ss = new byte[4] { (byte) (seed >> 24), (byte) (seed >> 16), (byte) (seed >> 8), (byte) seed };
+                                 byte[] ss = new byte[4] { (byte)(seed >> 24), (byte)(seed >> 16), (byte)(seed >> 8), (byte)seed };
                                  NetClient.Socket.Send(ss, 4, true, true);
 
                                  NetClient.Socket.Send_SecondLogin(Account, Password, seed);
@@ -774,9 +775,9 @@ namespace ClassicUO.Game.Scenes
                     byte cityIndex = p.ReadUInt8();
                     string cityName = p.ReadASCII(32);
                     string cityBuilding = p.ReadASCII(32);
-                    ushort cityX = (ushort) p.ReadUInt32BE();
-                    ushort cityY = (ushort) p.ReadUInt32BE();
-                    sbyte cityZ = (sbyte) p.ReadUInt32BE();
+                    ushort cityX = (ushort)p.ReadUInt32BE();
+                    ushort cityY = (ushort)p.ReadUInt32BE();
+                    sbyte cityZ = (sbyte)p.ReadUInt32BE();
                     uint cityMapIndex = p.ReadUInt32BE();
                     uint cityDescription = p.ReadUInt32BE();
                     p.Skip(4);
@@ -786,7 +787,7 @@ namespace ClassicUO.Game.Scenes
                         cityIndex,
                         cityName,
                         cityBuilding,
-                        ClilocLoader.Instance.GetString((int) cityDescription),
+                        ClilocLoader.Instance.GetString((int)cityDescription),
                         cityX,
                         cityY,
                         cityZ,
@@ -806,8 +807,8 @@ namespace ClassicUO.Game.Scenes
                         cityName,
                         cityBuilding,
                         descriptions != null ? descriptions[i] : string.Empty,
-                        (ushort) oldtowns[i % oldtowns.Length].X,
-                        (ushort) oldtowns[i % oldtowns.Length].Y,
+                        (ushort)oldtowns[i % oldtowns.Length].X,
+                        (ushort)oldtowns[i % oldtowns.Length].Y,
                         0,
                         0,
                         isNew
@@ -856,7 +857,7 @@ namespace ClassicUO.Game.Scenes
 
                         while (stream.Position < stream.Length)
                         {
-                            char b = (char) stream.ReadByte();
+                            char b = (char)stream.ReadByte();
 
                             if (b == '<')
                             {
@@ -874,7 +875,7 @@ namespace ClassicUO.Game.Scenes
                         {
                             char b;
 
-                            while ((b = (char) stream.ReadByte()) != '\0')
+                            while ((b = (char)stream.ReadByte()) != '\0')
                             {
                                 text.Append(b);
                             }
@@ -888,7 +889,7 @@ namespace ClassicUO.Game.Scenes
                             }
 
                             long pos = stream.Position;
-                            byte end = (byte) stream.ReadByte();
+                            byte end = (byte)stream.ReadByte();
                             stream.Position = pos;
 
                             if (end == 0x2E)
@@ -1039,11 +1040,11 @@ namespace ClassicUO.Game.Scenes
 
         private void PingerOnPingCompleted(object sender, PingCompletedEventArgs e)
         {
-            int index = (int) e.UserState;
+            int index = (int)e.UserState;
 
             if (e.Reply != null)
             {
-                Ping = (int) e.Reply.RoundtripTime;
+                Ping = (int)e.Reply.RoundtripTime;
                 PingStatus = e.Reply.Status;
 
                 _last10Results[index] = e.Reply.Status == IPStatus.Success;
@@ -1082,7 +1083,7 @@ namespace ClassicUO.Game.Scenes
                         _pinger.SendAsyncCancel();
                     }
                     catch { }
-                   
+
                 }
 
                 _pinger.Dispose();
