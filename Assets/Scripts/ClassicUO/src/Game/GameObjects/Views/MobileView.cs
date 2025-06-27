@@ -30,8 +30,6 @@
 
 #endregion
 
-using System;
-using System.Collections.Generic;
 using ClassicUO.Configuration;
 using ClassicUO.Data;
 using ClassicUO.Game.Data;
@@ -40,6 +38,9 @@ using ClassicUO.Game.Scenes;
 using ClassicUO.IO.Resources;
 using ClassicUO.Renderer;
 using Microsoft.Xna.Framework;
+using System;
+using System.Collections.Generic;
+using static UnityEditor.Progress;
 
 namespace ClassicUO.Game.GameObjects
 {
@@ -57,6 +58,11 @@ namespace ClassicUO.Game.GameObjects
 
         public override bool Draw(UltimaBatcher2D batcher, int posX, int posY, ref Vector3 hueVec)
         {
+            if (IsDestroyed || !AllowedToDraw)
+            {
+                return false;
+            }
+
             hueVec = Vector3.Zero;
 
             AnimationsLoader.SittingInfoData seatData = AnimationsLoader.SittingInfoData.Empty;
