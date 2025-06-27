@@ -478,7 +478,7 @@ namespace ClassicUO.Game.GameObjects
                         {
                             if (item.ItemData.IsLight)
                             {
-                                Client.Game.GetScene<GameScene>().AddLight(this, this, drawX, drawY);
+                                Client.Game.GetScene<GameScene>().AddLight(this, item, drawX, drawY);
                             }
                         }
 
@@ -488,7 +488,7 @@ namespace ClassicUO.Game.GameObjects
                     {
                         if (item.ItemData.IsLight)
                         {
-                            Client.Game.GetScene<GameScene>().AddLight(this, this, drawX, drawY);
+                            Client.Game.GetScene<GameScene>().AddLight(this, item, drawX, drawY);
 
                             /*DrawInternal
                             (
