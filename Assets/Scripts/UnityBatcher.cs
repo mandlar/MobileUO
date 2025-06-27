@@ -323,7 +323,6 @@ namespace ClassicUO.Renderer
             return true;
         }
 
-        [MethodImpl(256)]
         public void DrawSpriteRotated(Texture2D texture, int x, int y, float width, float height, ref XnaVector3 hue, float angle)
         {
             if (texture.UnityTexture == null)
@@ -393,7 +392,6 @@ namespace ClassicUO.Renderer
             public int Bottom;
         }
 
-        [MethodImpl(256)]
         public bool DrawSpriteLand(Texture2D texture, int x, int y, ref YOffsets yOffsets, ref XnaVector3 normalTop, ref XnaVector3 normalRight, ref XnaVector3 normalLeft, ref XnaVector3 normalBottom, ref XnaVector3 hue)
         {
             if (texture.UnityTexture == null)
@@ -448,7 +446,6 @@ namespace ClassicUO.Renderer
             return true;
         }
 
-        [MethodImpl(256)]
         public void DrawSpriteShadow(Texture2D texture, int x, int y, bool flip)
         { 
             if (texture.UnityTexture == null)
@@ -566,7 +563,6 @@ namespace ClassicUO.Renderer
             Graphics.DrawMeshNow(reusedMesh.Mesh, Vector3.zero, Quaternion.identity);
         }
 
-        [MethodImpl(256)]
         public bool DrawCharacterSitted(Texture2D texture, int x, int y, bool mirror, float h3mod, float h6mod, float h9mod, ref XnaVector3 hue)
         { 
             float width = texture.Width;
@@ -822,7 +818,6 @@ namespace ClassicUO.Renderer
             return true;
         }
 
-        [MethodImpl(256)]
         public bool Draw2D(Texture2D texture, int x, int y, ref XnaVector3 hue)
         {
             if (texture.UnityTexture == null)
@@ -879,7 +874,6 @@ namespace ClassicUO.Renderer
             return true;
         }
 
-        [MethodImpl(256)]
         public bool Draw2D(Texture2D texture, int x, int y, int sx, int sy, float swidth, float sheight, ref XnaVector3 hue)
         { 
             if (texture.UnityTexture == null)
@@ -949,7 +943,6 @@ namespace ClassicUO.Renderer
             return true;
         }
 
-        [MethodImpl(256)]
         public bool Draw2D(Texture2D texture, float dx, float dy, float dwidth, float dheight, float sx, float sy, float swidth, float sheight, ref XnaVector3 hue, float angle = 0.0f)
         {
             if (texture.UnityTexture == null)
@@ -1081,7 +1074,6 @@ namespace ClassicUO.Renderer
             return true;
         }
 
-        [MethodImpl(256)]
         public bool Draw2D(Texture2D texture, float x, float y, float width, float height, ref XnaVector3 hue)
         {
             if (texture.UnityTexture == null)
@@ -1155,7 +1147,6 @@ namespace ClassicUO.Renderer
             return true;
         }
 
-        [MethodImpl(256)]
         public bool Draw2DTiled(Texture2D texture, int dx, int dy, float dwidth, float dheight, ref XnaVector3 hue)
         {
             if (texture.UnityTexture == null)
@@ -1190,7 +1181,6 @@ namespace ClassicUO.Renderer
             return true;
         }
 
-        [MethodImpl(256)]
         public bool DrawRectangle(Texture2D texture, int x, int y, int width, int height, ref XnaVector3 hue)
         {
             if (texture.UnityTexture == null)
@@ -1206,7 +1196,6 @@ namespace ClassicUO.Renderer
             return true;
         }
 
-        [MethodImpl(256)]
         public void DrawLine(Texture2D texture, int startX, int startY, int endX, int endY, int originX, int originY)
         {
             if (texture.UnityTexture == null)
@@ -1277,7 +1266,6 @@ namespace ClassicUO.Renderer
             RenderVertex(vertex, texture, Vector3.zero);
         }
 
-        [MethodImpl(256)]
         public void Begin()
         {
             hueMaterial.SetTexture(HueTex1, GraphicsDevice.Textures[1].UnityTexture);
@@ -1292,7 +1280,6 @@ namespace ClassicUO.Renderer
             Begin(effect, Matrix.Identity);
         }
 
-        [MethodImpl(256)]
         public void End()
         {
             CustomEffect = null;
