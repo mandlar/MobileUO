@@ -208,7 +208,7 @@ namespace ClassicUO.Game.Scenes
                 }
             }
 
-            if (CurrentLoginStep == LoginSteps.CharacterCreation && Time.Ticks > _pingTime)
+            if (CUOEnviroment.NoServerPing == false && CurrentLoginStep == LoginSteps.CharacterCreation && Time.Ticks > _pingTime)
             {
                 if (NetClient.Socket != null && NetClient.Socket.IsConnected)
                 {

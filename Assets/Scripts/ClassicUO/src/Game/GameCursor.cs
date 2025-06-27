@@ -65,7 +65,6 @@ namespace ClassicUO.Game
                 0x2077, 0x2078, 0x2079
             }
         };
-        private static Vector3 _vec = Vector3.Zero;
 
         private readonly Aura _aura = new Aura(30);
         private readonly CustomBuildObject[] _componentsList = new CustomBuildObject[10];
@@ -88,8 +87,8 @@ namespace ClassicUO.Game
                 {
                     ushort id = _cursorData[i, j];
 
-                    IntPtr surface = ArtLoader.Instance.CreateCursorSurfacePtr(id, (ushort) (i == 2 ? 0x0033 : 0), out short w, out short h);
-                 
+                    IntPtr surface = ArtLoader.Instance.CreateCursorSurfacePtr(id, (ushort)(i == 2 ? 0x0033 : 0), out short w, out short h);
+
                     if (i == 0)
                     {
                         if (surface != IntPtr.Zero)
@@ -251,7 +250,7 @@ namespace ClassicUO.Game
 
         public void SetDraggedItem(Point? offset)
         {
-            _draggedItemTexture = ItemHold.IsGumpTexture ? GumpsLoader.Instance.GetTexture((ushort) (ItemHold.DisplayedGraphic - Constants.ITEM_GUMP_TEXTURE_OFFSET)) : ArtLoader.Instance.GetTexture(ItemHold.DisplayedGraphic);
+            _draggedItemTexture = ItemHold.IsGumpTexture ? GumpsLoader.Instance.GetTexture((ushort)(ItemHold.DisplayedGraphic - Constants.ITEM_GUMP_TEXTURE_OFFSET)) : ArtLoader.Instance.GetTexture(ItemHold.DisplayedGraphic);
 
             if (_draggedItemTexture == null)
             {
@@ -265,8 +264,8 @@ namespace ClassicUO.Game
                 scale = UIManager.ContainerScale;
             }
 
-            _offset.X = (int) ((_draggedItemTexture.Width >> 1) * scale);
-            _offset.Y = (int) ((_draggedItemTexture.Height >> 1) * scale);
+            _offset.X = (int)((_draggedItemTexture.Width >> 1) * scale);
+            _offset.Y = (int)((_draggedItemTexture.Height >> 1) * scale);
 
             if (offset.HasValue)
             {
@@ -308,7 +307,7 @@ namespace ClassicUO.Game
 
             if (ItemHold.Enabled)
             {
-                _draggedItemTexture.Ticks = (long) totalTime;
+                _draggedItemTexture.Ticks = (long)totalTime;
 
                 if (ItemHold.IsFixedPosition && !UIManager.IsDragging)
                 {
@@ -398,11 +397,11 @@ namespace ClassicUO.Game
                                         break;
                                     }
 
-                                    _temp[i].X = (ushort) (selectedObj.X + item.X);
+                                    _temp[i].X = (ushort)(selectedObj.X + item.X);
 
-                                    _temp[i].Y = (ushort) (selectedObj.Y + item.Y);
+                                    _temp[i].Y = (ushort)(selectedObj.Y + item.Y);
 
-                                    _temp[i].Z = (sbyte) (selectedObj.Z + z + item.Z);
+                                    _temp[i].Z = (sbyte)(selectedObj.Z + z + item.Z);
 
                                     _temp[i].UpdateRealScreenPosition(gs.ScreenOffset.X, gs.ScreenOffset.Y);
 
@@ -471,7 +470,7 @@ namespace ClassicUO.Game
 
                             Vector3 hue = new Vector3(0, 1, 0);
                             sb.DrawString(Fonts.Bold, dist, Mouse.Position.X - 26, Mouse.Position.Y - 21, ref hue);
-                            
+
                             hue.Y = 0;
                             sb.DrawString(Fonts.Bold, dist, Mouse.Position.X - 25, Mouse.Position.Y - 20, ref hue);
                         }
@@ -531,6 +530,8 @@ namespace ClassicUO.Game
 
             if (!Settings.GlobalSettings.RunMouseInASeparateThread)
             {
+                Graphic = AssignGraphicByState();
+
                 ushort graphic = Graphic;
 
                 if (graphic < 0x206A)
@@ -545,18 +546,14 @@ namespace ClassicUO.Game
                 int offX = _cursorOffset[0, graphic];
                 int offY = _cursorOffset[1, graphic];
 
+                Vector3 hueVec = Vector3.Zero;
+
                 if (World.InGame && World.MapIndex != 0 && !World.Player.InWarMode)
                 {
-                    _vec.X = 0x0034;
-                    _vec.Y = 1;
-                    _vec.Z = 0;
-                }
-                else
-                {
-                    _vec = Vector3.Zero;
+                    ShaderHueTranslator.GetHueVector(ref hueVec, 0x0033);
                 }
 
-                sb.Draw2D(ArtLoader.Instance.GetTexture(Graphic), Mouse.Position.X + offX, Mouse.Position.Y + offY, ref _vec);
+                sb.Draw2D(ArtLoader.Instance.GetTexture(Graphic), Mouse.Position.X + offX, Mouse.Position.Y + offY, ref hueVec);
             }
         }
 
@@ -705,37 +702,37 @@ namespace ClassicUO.Game
 
             switch (hashf)
             {
-                case 111: return (int) Direction.West; // W
+                case 111: return (int)Direction.West; // W
 
-                case 112: return (int) Direction.Up; // NW
+                case 112: return (int)Direction.Up; // NW
 
-                case 113: return (int) Direction.North; // N
+                case 113: return (int)Direction.North; // N
 
-                case 120: return (int) Direction.West; // W
+                case 120: return (int)Direction.West; // W
 
-                case 131: return (int) Direction.West; // W
+                case 131: return (int)Direction.West; // W
 
-                case 132: return (int) Direction.Left; // SW
+                case 132: return (int)Direction.Left; // SW
 
-                case 133: return (int) Direction.South; // S
+                case 133: return (int)Direction.South; // S
 
-                case 210: return (int) Direction.North; // N
+                case 210: return (int)Direction.North; // N
 
-                case 230: return (int) Direction.South; // S
+                case 230: return (int)Direction.South; // S
 
-                case 311: return (int) Direction.East; // E
+                case 311: return (int)Direction.East; // E
 
-                case 312: return (int) Direction.Right; // NE
+                case 312: return (int)Direction.Right; // NE
 
-                case 313: return (int) Direction.North; // N
+                case 313: return (int)Direction.North; // N
 
-                case 320: return (int) Direction.East; // E
+                case 320: return (int)Direction.East; // E
 
-                case 331: return (int) Direction.East; // E
+                case 331: return (int)Direction.East; // E
 
-                case 332: return (int) Direction.Down; // SE
+                case 332: return (int)Direction.Down; // SE
 
-                case 333: return (int) Direction.South; // S
+                case 333: return (int)Direction.South; // S
             }
 
             return current_facing;
