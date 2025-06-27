@@ -106,13 +106,12 @@ namespace ClassicUO.Game.Scenes
         private UseItemQueue _useItemQueue = new UseItemQueue();
         private bool _useObjectHandles;
         private RenderTarget2D _world_render_target, _lightRenderTarget;
-        
+
         // MobileUO: joystick variables
         public Vector2 JoystickInput;
         public float JoystickRunThreshold;
 
-
-        public GameScene() : base((int) SceneType.Game, true, true, false)
+        public GameScene() : base((int)SceneType.Game, true, true, false)
         {
         }
 
@@ -254,6 +253,7 @@ namespace ClassicUO.Game.Scenes
 
                 case MessageType.System:
                     name = string.IsNullOrEmpty(e.Name) || string.Equals(e.Name, "system", StringComparison.InvariantCultureIgnoreCase) ? ResGeneral.System : e.Name;
+
                     text = e.Text;
 
                     break;
@@ -270,6 +270,7 @@ namespace ClassicUO.Game.Scenes
                     break;
 
                 case MessageType.Label:
+
                     if (e.Parent == null || !SerialHelper.IsValid(e.Parent.Serial))
                     {
                         name = string.Empty;
@@ -388,7 +389,7 @@ namespace ClassicUO.Game.Scenes
 
             Settings.GlobalSettings.IsWindowMaximized = Client.Game.IsWindowMaximized();
             Client.Game.SetWindowBorderless(false);
-            
+
             // MobileUO: dispose
             CircleOfTransparency.Dispose();
 
@@ -457,7 +458,7 @@ namespace ClassicUO.Game.Scenes
 
             if (tile != null)
             {
-                sbyte z5 = (sbyte) (obj.Z + 5);
+                sbyte z5 = (sbyte)(obj.Z + 5);
 
                 for (GameObject o = tile; o != null; o = o.TNext)
                 {
@@ -494,7 +495,7 @@ namespace ClassicUO.Game.Scenes
                     }
                     else if (lightObject is Item it)
                     {
-                        light.ID = (byte) it.ItemData.LightIndex;
+                        light.ID = (byte)it.ItemData.LightIndex;
                     }
                     else if (obj is Mobile _)
                     {
@@ -512,7 +513,7 @@ namespace ClassicUO.Game.Scenes
                     return;
                 }
 
-                light.Color = ProfileManager.CurrentProfile.UseColoredLights ? LightColors.GetHue(graphic) : (ushort) 0;
+                light.Color = ProfileManager.CurrentProfile.UseColoredLights ? LightColors.GetHue(graphic) : (ushort)0;
 
                 if (light.Color != 0)
                 {
@@ -527,6 +528,16 @@ namespace ClassicUO.Game.Scenes
 
         private void FillGameObjectList()
         {
+
+#if RENDER_LIST_LINKED_LIST
+            _first = null;
+            _renderList = null;
+
+            _firstLand = null;
+            _renderListLand = null;
+            _renderListLandCount = 0;
+#endif
+
             _renderListCount = 0;
             _foliageCount = 0;
 
@@ -552,7 +563,6 @@ namespace ClassicUO.Game.Scenes
 
             GetViewPort();
 
-            _objectHandlesCount = 0;
             _useObjectHandles = NameOverHeadManager.IsToggled || Keyboard.Ctrl && Keyboard.Shift;
 
             if (_useObjectHandles)
@@ -564,10 +574,8 @@ namespace ClassicUO.Game.Scenes
                 NameOverHeadManager.Close();
             }
 
-            _rectanglePlayer.X = (int) (World.Player.RealScreenPosition.X - World.Player.FrameInfo.X + 22 + World.Player.Offset.X);
-
-            _rectanglePlayer.Y = (int) (World.Player.RealScreenPosition.Y - World.Player.FrameInfo.Y + 22 + (World.Player.Offset.Y - World.Player.Offset.Z));
-
+            _rectanglePlayer.X = (int)(World.Player.RealScreenPosition.X - World.Player.FrameInfo.X + 22 + World.Player.Offset.X);
+            _rectanglePlayer.Y = (int)(World.Player.RealScreenPosition.Y - World.Player.FrameInfo.Y + 22 + (World.Player.Offset.Y - World.Player.Offset.Z));
             _rectanglePlayer.Width = World.Player.FrameInfo.Width;
             _rectanglePlayer.Height = World.Player.FrameInfo.Height;
 
@@ -626,11 +634,11 @@ namespace ClassicUO.Game.Scenes
 
                     if (f.FoliageIndex == FoliageIndex)
                     {
-                        f.ProcessAlpha(Constants.FOLIAGE_ALPHA);
+                        CalculateAlpha(ref f.AlphaHue, Constants.FOLIAGE_ALPHA);
                     }
                     else
                     {
-                        f.ProcessAlpha(0xFF);
+                        CalculateAlpha(ref f.AlphaHue, 0xFF);
                     }
                 }
             }
@@ -657,7 +665,7 @@ namespace ClassicUO.Game.Scenes
                 if (e.UseInRender != _renderIndex && e.TextContainer != null && !e.TextContainer.IsEmpty && (force || e.Graphic == 0x2006))
                 {
                     e.UpdateRealScreenPosition(_offset.X, _offset.Y);
-                    e.UseInRender = (byte) _renderIndex;
+                    e.UseInRender = (byte)_renderIndex;
                 }
             }
         }
@@ -741,7 +749,7 @@ namespace ClassicUO.Game.Scenes
             if (totalTime > _timePing)
             {
                 NetClient.Socket.Statistics.SendPing();
-                _timePing = (long) totalTime + 1000;
+                _timePing = (long)totalTime + 1000;
             }
 
             Macros.Update();
@@ -799,9 +807,9 @@ namespace ClassicUO.Game.Scenes
                         groundZ = gobj.Z;
                     }
 
-                    x = (ushort) (x - TargetManager.MultiTargetInfo.XOff);
-                    y = (ushort) (y - TargetManager.MultiTargetInfo.YOff);
-                    z = (sbyte) (groundZ - TargetManager.MultiTargetInfo.ZOff);
+                    x = (ushort)(x - TargetManager.MultiTargetInfo.XOff);
+                    y = (ushort)(y - TargetManager.MultiTargetInfo.YOff);
+                    z = (sbyte)(groundZ - TargetManager.MultiTargetInfo.ZOff);
 
                     _multi.X = x;
                     _multi.Y = y;
@@ -814,9 +822,9 @@ namespace ClassicUO.Game.Scenes
                     foreach (Multi s in house.Components)
                     {
                         s.IsHousePreview = true;
-                        s.X = (ushort) (_multi.X + s.MultiOffsetX);
-                        s.Y = (ushort) (_multi.Y + s.MultiOffsetY);
-                        s.Z = (sbyte) (_multi.Z + s.MultiOffsetZ);
+                        s.X = (ushort)(_multi.X + s.MultiOffsetX);
+                        s.Y = (ushort)(_multi.Y + s.MultiOffsetY);
+                        s.Z = (sbyte)(_multi.Z + s.MultiOffsetZ);
                         s.UpdateScreenPosition();
                         s.AddToTile();
                     }
@@ -1061,8 +1069,8 @@ namespace ClassicUO.Game.Scenes
 
             if (usecircle)
             {
-                int fx = (int) (World.Player.RealScreenPosition.X + World.Player.Offset.X);
-                int fy = (int) (World.Player.RealScreenPosition.Y + (World.Player.Offset.Y - World.Player.Offset.Z));
+                int fx = (int)(World.Player.RealScreenPosition.X + World.Player.Offset.X);
+                int fy = (int)(World.Player.RealScreenPosition.Y + (World.Player.Offset.Y - World.Player.Offset.Z));
 
                 fx += 22;
                 fy += 22;
@@ -1074,11 +1082,43 @@ namespace ClassicUO.Game.Scenes
 
             int z = World.Player.Z + 5;
 
-            ushort hue = 0;
+
             Vector3 hueVec = Vector3.Zero;
 
             GameObject.DrawTransparent = usecircle;
 
+#if RENDER_LIST_LINKED_LIST
+            var obj = _firstLand;
+
+            for (int i = 0; i < _renderListLandCount; obj = obj.RenderListNext, ++i)
+            {
+                if (obj.Z <= _maxGroundZ)
+                {
+                    if (usecircle)
+                    {
+                        GameObject.DrawTransparent = obj.TransparentTest(z);
+                    }
+
+                    if (obj.Draw(batcher, obj.RealScreenPosition.X, obj.RealScreenPosition.Y, ref hueVec))
+                    {
+                        ++RenderedObjectsCount;
+                    }
+                }
+            }
+
+            obj = _first;
+            for (int i = 0; i < _renderListCount; obj = obj.RenderListNext, ++i)
+            {
+                if (obj.Z <= _maxGroundZ)
+                {
+                    if (obj.Draw(batcher, obj.RealScreenPosition.X, obj.RealScreenPosition.Y, ref hueVec))
+                    {
+                        ++RenderedObjectsCount;
+                    }
+                }
+            }
+#else
+            ushort hue = 0;
             for (int i = 0; i < _renderListCount; ++i)
             {
                 ref var info = ref _renderList[i];
@@ -1103,13 +1143,15 @@ namespace ClassicUO.Game.Scenes
                     obj.Hue = hue;
                 }
             }
+#endif
+
 
             if (_multi != null && TargetManager.IsTargeting && TargetManager.TargetingState == CursorTarget.MultiPlacement)
             {
                 hueVec = Vector3.Zero;
                 _multi.Draw(batcher, _multi.RealScreenPosition.X, _multi.RealScreenPosition.Y, ref hueVec);
             }
-        
+
             // draw weather
             Weather.Draw(batcher, 0, 0);
             batcher.End();
@@ -1140,7 +1182,7 @@ namespace ClassicUO.Game.Scenes
                 {
                     lightColor -= 0.04f;
                 }
-                
+
                 batcher.GraphicsDevice.Clear(ClearOptions.Target, new Vector4(lightColor, lightColor, lightColor, 1), 0, 0);
             }
 
