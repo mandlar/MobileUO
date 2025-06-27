@@ -415,7 +415,7 @@ namespace ClassicUO.Renderer
             ushort hue = 0
         )
         {
-            if (string.IsNullOrEmpty(Text) || Texture == null)
+            if (string.IsNullOrEmpty(Text) || Texture == null || IsDestroyed || Texture.IsDisposed)
             {
                 return false;
             }
@@ -516,7 +516,7 @@ namespace ClassicUO.Renderer
             int hue = -1
         )
         {
-            if (string.IsNullOrEmpty(Text) || Texture == null)
+            if (string.IsNullOrEmpty(Text) || Texture == null || IsDestroyed || Texture.IsDisposed)
             {
                 return false;
             }
@@ -578,7 +578,7 @@ namespace ClassicUO.Renderer
 
         public bool Draw(UltimaBatcher2D batcher, int x, int y, float alpha = 0, ushort hue = 0)
         {
-            if (string.IsNullOrEmpty(Text) || Texture == null)
+            if (string.IsNullOrEmpty(Text) || Texture == null || IsDestroyed || Texture.IsDisposed)
             {
                 return false;
             }

@@ -83,7 +83,7 @@ namespace ClassicUO.Game.UI.Gumps
 
         private void CreateMap()
         {
-            _gumpTexture = GumpsLoader.Instance.GetTexture(_useLargeMap ? (ushort) 5011 : (ushort) 5010);
+            _gumpTexture = GumpsLoader.Instance.GetTexture(_useLargeMap ? (ushort)5011 : (ushort)5010);
 
             int index = _useLargeMap ? 1 : 0;
 
@@ -132,18 +132,18 @@ namespace ClassicUO.Game.UI.Gumps
 
             if (_gumpTexture != null)
             {
-                _gumpTexture.Ticks = (long) totalTime;
+                _gumpTexture.Ticks = (long)totalTime;
             }
 
             if (_mapTexture != null)
             {
-                _mapTexture.Ticks = (long) totalTime;
+                _mapTexture.Ticks = (long)totalTime;
             }
 
             if (_timeMS < totalTime)
             {
                 _draw = !_draw;
-                _timeMS = (long) totalTime + 500;
+                _timeMS = (long)totalTime + 500;
             }
         }
 
@@ -299,7 +299,7 @@ namespace ClassicUO.Game.UI.Gumps
             int index = _useLargeMap ? 1 : 0;
 
             _blankGumpsPixels[index].CopyTo(_blankGumpsPixels[index + 2], 0);
-          
+
             uint[] data = _blankGumpsPixels[index + 2];
 
             Point* table = stackalloc Point[2];
@@ -307,6 +307,8 @@ namespace ClassicUO.Game.UI.Gumps
             table[0].Y = 0;
             table[1].X = 0;
             table[1].Y = 1;
+
+
 
             for (int i = minBlockX; i <= maxBlockX; i++)
             {
@@ -321,14 +323,18 @@ namespace ClassicUO.Game.UI.Gumps
                         break;
                     }
 
-                    RadarMapBlock? mbbv = MapLoader.Instance.GetRadarMapBlock(World.MapIndex, i, j);
+                    ref IndexMap indexMap = ref World.Map.GetIndex(i, j);
 
-                    if (!mbbv.HasValue)
+                    if (indexMap.MapAddress == 0)
                     {
                         break;
                     }
 
-                    RadarMapBlock mb = mbbv.Value;
+                    MapBlock* mp = (MapBlock*)indexMap.MapAddress;
+                    MapCells* cells = (MapCells*)&mp->Cells;
+                    StaticsBlock* sb = (StaticsBlock*)indexMap.StaticAddress;
+                    uint staticCount = indexMap.StaticCount;
+
                     Chunk block = World.Map.Chunks[blockIndex];
                     int realBlockX = i << 3;
                     int realBlockY = j << 3;
@@ -339,13 +345,29 @@ namespace ClassicUO.Game.UI.Gumps
 
                         for (int y = 0; y < 8; y++)
                         {
-                            int py = realBlockY + y - lastY;
-                            int gx = px - py;
-                            int gy = px + py;
+                            ref MapCells cell = ref cells[(y << 3) + x];
+                            int color = cell.TileID;
+                            bool isLand = true;
+                            int z = cell.Z;
 
-                            int color = mb.Cells[x, y].Graphic;
+                            for (int c = 0; c < staticCount; ++c)
+                            {
+                                ref StaticsBlock stblock = ref sb[c];
 
-                            bool island = mb.Cells[x, y].IsLand;
+                                if (stblock.X == x && stblock.Y == y &&
+                                    stblock.Color > 0 && stblock.Color != 0xFFFF &&
+                                    GameObject.CanBeDrawn(stblock.Color))
+                                {
+                                    if (stblock.Z >= z)
+                                    {
+                                        color = stblock.Hue > 0 ? (ushort)(stblock.Hue + 0x4000) : stblock.Color;
+                                        isLand = stblock.Hue > 0;
+
+                                        z = stblock.Z;
+                                    }
+                                }
+                            }
+
 
                             if (block != null)
                             {
@@ -363,7 +385,7 @@ namespace ClassicUO.Game.UI.Gumps
                                         if (obj.Hue == 0)
                                         {
                                             color = obj.Graphic;
-                                            island = false;
+                                            isLand = false;
                                         }
                                         else
                                         {
@@ -375,21 +397,25 @@ namespace ClassicUO.Game.UI.Gumps
                                 }
                             }
 
-                            if (!island)
+                            if (!isLand)
                             {
                                 color += 0x4000;
                             }
 
                             int tableSize = 2;
 
-                            if (island && color > 0x4000)
+                            if (isLand && color > 0x4000)
                             {
-                                color = HuesLoader.Instance.GetColor16(16384, (ushort) (color - 0x4000)); //28672 is an arbitrary position in hues.mul, is the 14 position in the range
+                                color = HuesLoader.Instance.GetColor16(16384, (ushort)(color - 0x4000)); //28672 is an arbitrary position in hues.mul, is the 14 position in the range
                             }
                             else
                             {
                                 color = HuesLoader.Instance.GetRadarColorData(color);
                             }
+
+                            int py = realBlockY + y - lastY;
+                            int gx = px - py;
+                            int gy = px + py;
 
                             CreatePixels
                             (
@@ -413,7 +439,7 @@ namespace ClassicUO.Game.UI.Gumps
             }
 
             _mapTexture.SetData(data);
-            _picker.Set((ulong) index, Width, Height, data);
+            _picker.Set((ulong)index, Width, Height, data);
         }
 
         private unsafe void CreatePixels
@@ -454,14 +480,14 @@ namespace ClassicUO.Game.UI.Gumps
 
                 if (data[block] == 0xFF080808)
                 {
-                    data[block] = HuesHelper.Color16To32((ushort) color) | 0xFF_00_00_00;
+                    data[block] = HuesHelper.Color16To32((ushort)color) | 0xFF_00_00_00;
                 }
             }
         }
 
         public override bool Contains(int x, int y)
         {
-            return _picker.Get((ulong) (_useLargeMap ? 0x01 : 0x00), x - Offset.X, y - Offset.Y);
+            return _picker.Get((ulong)(_useLargeMap ? 0x01 : 0x00), x - Offset.X, y - Offset.Y);
         }
 
         public override void Dispose()
