@@ -235,8 +235,6 @@ namespace ClassicUO.Game.Scenes
                 World.RemoveMobile(mobile);
             }
 
-            World.ProcessQueueToRemove();
-
             World.Mobiles.Clear();
             World.Items.Clear();
 
