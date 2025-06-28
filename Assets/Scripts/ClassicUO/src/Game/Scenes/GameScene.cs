@@ -30,10 +30,6 @@
 
 #endregion
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net.Sockets;
 using ClassicUO.Configuration;
 using ClassicUO.Game.Data;
 using ClassicUO.Game.GameObjects;
@@ -50,6 +46,12 @@ using ClassicUO.Utility.Logging;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using SDL2;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net.Sockets;
+using static UnityEditor.Progress;
+using Item = ClassicUO.Game.GameObjects.Item;
 
 namespace ClassicUO.Game.Scenes
 {
@@ -124,6 +126,8 @@ namespace ClassicUO.Game.Scenes
         public InfoBarManager InfoBars { get; private set; }
 
         public Weather Weather { get; private set; }
+
+        public bool DisconnectionRequested { get; set; }
 
         public bool UseLights => ProfileManager.CurrentProfile != null && ProfileManager.CurrentProfile.UseCustomLightLevel ? World.Light.Personal < World.Light.Overall : World.Light.RealPersonal < World.Light.RealOverall;
 
@@ -434,8 +438,16 @@ namespace ClassicUO.Game.Scenes
                     {
                         if (s)
                         {
-                            NetClient.Socket.Disconnect();
-                            Client.Game.SetScene(new LoginScene());
+                            if ((World.ClientFeatures.Flags & CharacterListFlags.CLF_OWERWRITE_CONFIGURATION_BUTTON) != 0)
+                            {
+                                DisconnectionRequested = true;
+                                NetClient.Socket.Send_LogoutNotification();
+                            }
+                            else
+                            {
+                                NetClient.Socket.Disconnect();
+                                Client.Game.SetScene(new LoginScene());
+                            }
                         }
                     }
                 )
