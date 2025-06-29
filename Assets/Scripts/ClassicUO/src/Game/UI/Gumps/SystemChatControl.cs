@@ -30,8 +30,6 @@
 
 #endregion
 
-using System;
-using System.Collections.Generic;
 using ClassicUO.Configuration;
 using ClassicUO.Game.Data;
 using ClassicUO.Game.Managers;
@@ -45,6 +43,9 @@ using ClassicUO.Resources;
 using ClassicUO.Utility.Collections;
 using ClassicUO.Utility.Platforms;
 using SDL2;
+using System;
+using System.Collections.Generic;
+using static UnityEditor.Progress;
 
 namespace ClassicUO.Game.UI.Gumps
 {
@@ -777,6 +778,28 @@ namespace ClassicUO.Game.UI.Gumps
                                     (
                                         null,
                                         ResGumps.NoOneHasInvitedYouToBeInAParty,
+                                        "System",
+                                        0xFFFF,
+                                        MessageType.Regular,
+                                        3,
+                                        TextType.SYSTEM
+                                    );
+                                }
+
+                                break;
+
+                            case "rem":
+
+                                if (World.Party.Leader != 0 && World.Party.Leader == World.Player)
+                                {
+                                    GameActions.RequestPartyRemoveMemberByTarget();
+                                }
+                                else
+                                {
+                                    MessageManager.HandleMessage
+                                    (
+                                        null,
+                                        ResGumps.YouAreNotPartyLeader,
                                         "System",
                                         0xFFFF,
                                         MessageType.Regular,
